@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جمعية تازولت للتنمية والتعاون والبيئة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #2e8b57 0%, #20b2aa 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-menu a:hover {
+            color: #90ee90;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .section {
+            padding: 3rem 0;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #2e8b57;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #2e8b57, #20b2aa);
+            margin: 1rem auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(46,139,87,0.8), rgba(32,178,170,0.8));
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #90ee90, #20b2aa);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Content Grids */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            height: 180px;
+            background: linear-gradient(45deg, #90ee90, #20b2aa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            color: #2e8b57;
+            margin-bottom: 1rem;
+        }
+
+        /* Forms */
+        .form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2e8b57;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0f2e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #20b2aa;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-text ul {
+            margin: 1rem 0;
+            padding-right: 2rem;
+        }
+
+        .about-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #90ee90, #20b2aa);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Location Section */
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .location-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .location-info h3 {
+            color: #2e8b57;
+            margin-bottom: 1rem;
+        }
+
+        .map-container {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #e0f2e0, #f0f8ff);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2e8b57;
+            font-size: 1.1rem;
+            border: 2px solid #90ee90;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2e8b57;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #90ee90;
+        }
+
+        .footer-section a {
+            color: #90ee90;
+            text-decoration: none;
+        }
+
+        /* Language Content */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content,
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Success message */
+        .success-message {
+            background: #90ee90;
+            color: #2e8b57;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">جمعية تازولت</div>
+                <ul class="nav-menu">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">عن الجمعية</a></li>
+                    <li><a href="#location">الموقع</a></li>
+                    <li><a href="#projects">المشاريع</a></li>
+                    <li><a href="#board">مجلس الإدارة</a></li>
+                    <li><a href="#legal">الوثائق القانونية</a></li>
+                    <li><a href="#donate">❤️ تبرع</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+                <div class="language-switcher">
+                    <button class="lang-btn active" onclick="switchLanguage('ar')">العربية</button>
+                    <button class="lang-btn" onclick="switchLanguage('fr')">Français</button>
+                    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar">
+                    <h1>جمعية تازولت للتنمية والتعاون والبيئة</h1>
+                    <p>نعمل من أجل التنمية المستدامة وتحسين ظروف المعيشة في منطقة تازولت</p>
+                    <a href="#about" class="cta-button">اكتشف المزيد</a>
+                </div>
+                <div class="lang-content" data-lang="fr">
+                    <h1>Association Tazoult pour le Développement et la Coopération et d'Environnement</h1>
+                    <p>Nous œuvrons pour le développement durable et l'amélioration des conditions de vie dans la région de Tazoult</p>
+                    <a href="#about" class="cta-button">Découvrir plus</a>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h1>Tazoult Association for Development, Cooperation and Environment</h1>
+                    <p>We work for sustainable development and improving living conditions in the Tazoult region</p>
+                    <a href="#about" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar">
+                    <h2 class="section-title">عن الجمعية</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>أهدافنا</h3>
+                            <p>جمعية تازولت للتنمية والتعاون والبيئة هي منظمة غير ربحية تهدف إلى تحقيق التنمية الشاملة في منطقة تازولت. نعمل على:</p>
+                            <ul>
+                                <li>تطوير البنية التحتية وتوفير المياه الصالحة للشرب</li>
+                                <li>التعليم ومحاربة الأمية</li>
+                                <li>الرعاية الصحية والحملات التوعوية</li>
+                                <li>حماية البيئة ومحاربة التصحر</li>
+                                <li>تمكين المرأة والطفل والشباب</li>
+                                <li>خلق فرص عمل ومشاريع تنموية</li>
+                            </ul>
+                        </div>
+                        <div class="about-image">
+                            <div class="placeholder-image">
+                                صورة أنشطة الجمعية
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr">
+                    <h2 class="section-title">À Propos de l'Association</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>Nos Objectifs</h3>
+                            <p>L'Association Tazoult pour le Développement et la Coopération et d'Environnement est une organisation à but non lucratif visant le développement global de la région de Tazoult. Nous travaillons sur:</p>
+                            <ul>
+                                <li>Développer l'infrastructure et fournir l'eau potable</li>
+                                <li>L'éducation et la lutte contre l'analphabétisme</li>
+                                <li>Les soins de santé et les campagnes de sensibilisation</li>
+                                <li>Protection de l'environnement et lutte contre la désertification</li>
+                                <li>Autonomisation des femmes, des enfants et des jeunes</li>
+                                <li>Création d'emplois et projets de développement</li>
+                            </ul>
+                        </div>
+                        <div class="about-image">
+                            <div class="placeholder-image">
+                                Photos des activités de l'association
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h2 class="section-title">About Our Association</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>Our Goals</h3>
+                            <p>Tazoult Association for Development, Cooperation and Environment is a non-profit organization aiming for comprehensive development in the Tazoult region. We work on:</p>
+                            <ul>
+                                <li>Developing infrastructure and providing clean drinking water</li>
+                                <li>Education and fighting illiteracy</li>
+                                <li>Healthcare and awareness campaigns</li>
+                                <li>Environmental protection and combating desertification</li>
+                                <li>Empowering women, children and youth</li>
+                                <li>Creating jobs and development projects</li>
+                            </ul>
+                        </div>
+                        <div class="about-image">
+                            <div class="placeholder-image">
+                                Association Activities Photos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="section" style="background: white;">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar">
+                    <h2 class="section-title">موقعنا</h2>
+                    <div class="location-content">
+                        <div class="location-info">
+                            <h3>دوار تازولت</h3>
+                            <p><strong>العنوان:</strong> دوار تازولت، جماعة تويالت، قيادة اسكاون، دائرة تالوين، عمالة تارودانت</p>
+                            <p><strong>الإحداثيات:</strong> Q6MC+XXV تازولت، تارودانت</p>
+                            <p><strong>المنطقة:</strong> تازولت، المغرب</p>
+                            <p>تقع تازولت في منطقة جميلة محاطة بالجبال والطبيعة الخلابة، وهي منطقة زراعية تشتهر بزراعة الزيتون واللوز والأركان.</p>
+                        </div>
+                        <div class="map-container">
+                            <div class="map-placeholder">
+                                خريطة تازولت<br>
+                                Q6MC+XXV<br>
+                                <small>يمكن دمج خريطة Google هنا</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr">
+                    <h2 class="section-title">Notre Localisation</h2>
+                    <div class="location-content">
+                        <div class="location-info">
+                            <h3>Douar Tazoult</h3>
+                            <p><strong>Adresse:</strong> Douar Tazoult, Commune Twiyalt, Caïdat Askawn, Cercle Talwin, Province Taroudannt</p>
+                            <p><strong>Coordonnées:</strong> Q6MC+XXV Tazoult, Taroudannt</p>
+                            <p><strong>Région:</strong> Tazoult, Maroc</p>
+                            <p>Tazoult est située dans une belle région entourée de montagnes et de nature magnifique, c'est une zone agricole connue pour la culture d'olives, d'amandes et d'argan.</p>
+                        </div>
+                        <div class="map-container">
+                            <div class="map-placeholder">
+                                Carte de Tazoult<br>
+                                Q6MC+XXV<br>
+                                <small>Google Map peut être intégrée ici</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h2 class="section-title">Our Location</h2>
+                    <div class="location-content">
+                        <div class="location-info">
+                            <h3>Douar Tazoult</h3>
+                            <p><strong>Address:</strong> Douar Tazoult, Twiyalt Municipality, Askawn District, Talwin Circle, Taroudannt Province</p>
+                            <p><strong>Coordinates:</strong> Q6MC+XXV Tazoult, Taroudannt</p>
+                            <p><strong>Region:</strong> Tazoult, Morocco</p>
+                            <p>Tazoult is located in a beautiful region surrounded by mountains and magnificent nature, it's an agricultural area known for olive, almond and argan cultivation.</p>
+                        </div>
+                        <div class="map-container">
+                            <div class="map-placeholder">
+                                Tazoult Map<br>
+                                Q6MC+XXV<br>
+                                <small>Google Map can be integrated here</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar">
+                    <h2 class="section-title">مشاريعنا</h2>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="card-image">💧</div>
+                            <div class="card-content">
+                                <h3>توفير المياه الصالحة للشرب</h3>
+                                <p>حفر الآبار وتطوير شبكة المياه لضمان وصول المياه النظيفة لجميع سكان المنطقة.</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">📚</div>
+                            <div class="card-content">
+                                <h3>محاربة الأمية</h3>
+                                <p>برامج تعليمية لمحاربة الأمية وتحسين مستوى التعليم في المنطقة.</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">🏥</div>
+                            <div class="card-content">
+                                <h3>الرعاية الصحية</h3>
+                                <p>حملات طبية وتوعوية لتحسين الوضع الصحي في المنطقة.</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">🌱</div>
+                            <div class="card-content">
+                                <h3>حماية البيئة</h3>
+                                <p>مشاريع لحماية البيئة ومحاربة التصحر والحفاظ على الموارد الطبيعية.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr">
+                    <h2 class="section-title">Nos Projets</h2>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="card-image">💧</div>
+                            <div class="card-content">
+                                <h3>Approvisionnement en Eau Potable</h3>
+                                <p>Forage de puits et développement du réseau d'eau pour assurer l'accès à l'eau propre pour tous les habitants.</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">📚</div>
+                            <div class="card-content">
+                                <h3>Lutte contre l'Analphabétisme</h3>
+                                <p>Programmes éducatifs pour lutter contre l'analphabétisme et améliorer le niveau d'éducation dans la région.</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">🏥</div>
+                            <div class="card-content">
+                                <h3>Soins de Santé</h3>
+                                <p>Campagnes médicales et de sensibilisation pour améliorer la situation sanitaire dans la région.</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">🌱</div>
+                            <div class="card-content">
+                                <h3>Protection de l'Environnement</h3>
+                                <p>Projets de protection de l'environnement et de lutte contre la désertification.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h2 class="section-title">Our Projects</h2>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="card-image">💧</div>
+                            <div class="card-content">
+                                <h3>Clean Drinking Water Supply</h3>
+                                <p>Well drilling and water network development to ensure clean water access for all residents.</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">📚</div>
+                            <div class="card-content">
+                                <h3>Fighting Illiteracy</h3>
+                                <p>Educational programs to combat illiteracy and improve education levels in the region.</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">🏥</div>
+                            <div class="card-content">
+                                <h3>Healthcare</h3>
+                                <p>Medical and awareness campaigns to improve health conditions in the region.</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">🌱</div>
+                            <div class="card-content">
+                                <h3>Environmental Protection</h3>
+                                <p>Projects to protect the environment and combat desertification.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Board Members Section -->
+        <section id="board" class="section" style="background: white;">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar">
+                    <h2 class="section-title">مجلس الإدارة</h2>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>الرئيس</h3>
+                                <p>رئيس الجمعية</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>نائب الرئيس</h3>
+                                <p>نائب رئيس الجمعية</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>الأمين العام</h3>
+                                <p>أمين سر الجمعية</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>أمين المال</h3>
+                                <p>المسؤول المالي للجمعية</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>عضو مجلس الإدارة</h3>
+                                <p>عضو في مجلس إدارة الجمعية</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👩‍💼</div>
+                            <div class="card-content">
+                                <h3>عضو مجلس الإدارة</h3>
+                                <p>عضو في مجلس إدارة الجمعية</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>عضو مجلس الإدارة</h3>
+                                <p>عضو في مجلس إدارة الجمعية</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr">
+                    <h2 class="section-title">Conseil d'Administration</h2>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Président</h3>
+                                <p>Président de l'association</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Vice-Président</h3>
+                                <p>Vice-président de l'association</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Secrétaire Général</h3>
+                                <p>Secrétaire de l'association</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Trésorier</h3>
+                                <p>Responsable financier de l'association</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Membre du Conseil</h3>
+                                <p>Membre du conseil d'administration</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👩‍💼</div>
+                            <div class="card-content">
+                                <h3>Membre du Conseil</h3>
+                                <p>Membre du conseil d'administration</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Membre du Conseil</h3>
+                                <p>Membre du conseil d'administration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h2 class="section-title">Board of Directors</h2>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>President</h3>
+                                <p>President of the association</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Vice President</h3>
+                                <p>Vice president of the association</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Secretary General</h3>
+                                <p>Secretary of the association</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Treasurer</h3>
+                                <p>Financial officer of the association</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Board Member</h3>
+                                <p>Member of the board of directors</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👩‍💼</div>
+                            <div class="card-content">
+                                <h3>Board Member</h3>
+                                <p>Member of the board of directors</p>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">👨‍💼</div>
+                            <div class="card-content">
+                                <h3>Board Member</h3>
+                                <p>Member of the board of directors</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legal Documents Section -->
+        <section id="legal" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar">
+                    <h2 class="section-title">الوثائق القانونية</h2>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="card-image">📄</div>
+                            <div class="card-content">
+                                <h3>النظام الأساسي للجمعية</h3>
+                                <p>النظام الأساسي المؤسس للجمعية والقوانين الداخلية</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">تحميل PDF</a>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">🏛️</div>
+                            <div class="card-content">
+                                <h3>وصل الإيداع القانوني</h3>
+                                <p>وثيقة الإيداع القانوني لدى السلطات المختصة</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">تحميل PDF</a>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">📊</div>
+                            <div class="card-content">
+                                <h3>التقرير المالي السنوي</h3>
+                                <p>التقرير المالي والأنشطة السنوية للجمعية</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">تحميل PDF</a>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">📋</div>
+                            <div class="card-content">
+                                <h3>محاضر الجمعيات العامة</h3>
+                                <p>محاضر اجتماعات الجمعية العامة والقرارات المتخذة</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">تحميل PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr">
+                    <h2 class="section-title">Documents Légaux</h2>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="card-image">📄</div>
+                            <div class="card-content">
+                                <h3>Statuts de l'Association</h3>
+                                <p>Statuts fondateurs de l'association et règlement intérieur</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Télécharger PDF</a>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">🏛️</div>
+                            <div class="card-content">
+                                <h3>Récépissé de Dépôt</h3>
+                                <p>Document de dépôt légal auprès des autorités compétentes</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Télécharger PDF</a>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">📊</div>
+                            <div class="card-content">
+                                <h3>Rapport Financier Annuel</h3>
+                                <p>Rapport financier et d'activités annuelles de l'association</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Télécharger PDF</a>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">📋</div>
+                            <div class="card-content">
+                                <h3>Procès-Verbaux AG</h3>
+                                <p>Procès-verbaux des assemblées générales et décisions prises</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Télécharger PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h2 class="section-title">Legal Documents</h2>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <div class="card-image">📄</div>
+                            <div class="card-content">
+                                <h3>Association Bylaws</h3>
+                                <p>Founding bylaws of the association and internal regulations</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Download PDF</a>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">🏛️</div>
+                            <div class="card-content">
+                                <h3>Legal Registration Receipt</h3>
+                                <p>Legal deposit document with competent authorities</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Download PDF</a>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">📊</div>
+                            <div class="card-content">
+                                <h3>Annual Financial Report</h3>
+                                <p>Annual financial and activity report of the association</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Download PDF</a>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <div class="card-image">📋</div>
+                            <div class="card-content">
+                                <h3>General Assembly Minutes</h3>
+                                <p>Minutes of general assembly meetings and decisions taken</p>
+                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Download PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donate" class="section" style="background: white;">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar">
+                    <h2 class="section-title">❤️ تبرع لدعم مشاريعنا</h2>
+                    <div class="form-container">
+                        <div class="success-message" id="donate-success-ar">
+                            شكراً لك! سيتم التواصل معك قريباً بخصوص التبرع.
+                        </div>
+                        <form id="donate-form-ar">
+                            <div class="form-group">
+                                <label for="donor-name-ar">الاسم الكامل</label>
+                                <input type="text" id="donor-name-ar" name="donor-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donor-email-ar">البريد الإلكتروني</label>
+                                <input type="email" id="donor-email-ar" name="donor-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donation-amount-ar">مبلغ التبرع (درهم)</label>
+                                <select id="donation-amount-ar" name="donation-amount">
+                                    <option value="100">100 درهم</option>
+                                    <option value="200">200 درهم</option>
+                                    <option value="500">500 درهم</option>
+                                    <option value="1000">1000 درهم</option>
+                                    <option value="custom">مبلغ آخر</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="donation-project-ar">المشروع المختار</label>
+                                <select id="donation-project-ar" name="donation-project">
+                                    <option value="general">دعم عام</option>
+                                    <option value="water">مشروع المياه</option>
+                                    <option value="education">التعليم</option>
+                                    <option value="health">الصحة</option>
+                                    <option value="environment">البيئة</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="donation-message-ar">رسالة (اختيارية)</label>
+                                <textarea id="donation-message-ar" name="donation-message" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="cta-button">❤️ تبرع الآن</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr">
+                    <h2 class="section-title">❤️ Faire un Don pour Soutenir Nos Projets</h2>
+                    <div class="form-container">
+                        <div class="success-message" id="donate-success-fr">
+                            Merci! Nous vous contacterons bientôt concernant votre don.
+                        </div>
+                        <form id="donate-form-fr">
+                            <div class="form-group">
+                                <label for="donor-name-fr">Nom Complet</label>
+                                <input type="text" id="donor-name-fr" name="donor-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donor-email-fr">Email</label>
+                                <input type="email" id="donor-email-fr" name="donor-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donation-amount-fr">Montant du Don (MAD)</label>
+                                <select id="donation-amount-fr" name="donation-amount">
+                                    <option value="100">100 MAD</option>
+                                    <option value="200">200 MAD</option>
+                                    <option value="500">500 MAD</option>
+                                    <option value="1000">1000 MAD</option>
+                                    <option value="custom">Autre montant</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="donation-project-fr">Projet Choisi</label>
+                                <select id="donation-project-fr" name="donation-project">
+                                    <option value="general">Soutien général</option>
+                                    <option value="water">Projet eau</option>
+                                    <option value="education">Éducation</option>
+                                    <option value="health">Santé</option>
+                                    <option value="environment">Environnement</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="donation-message-fr">Message (optionnel)</label>
+                                <textarea id="donation-message-fr" name="donation-message" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="cta-button">❤️ Faire un Don</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h2 class="section-title">❤️ Donate to Support Our Projects</h2>
+                    <div class="form-container">
+                        <div class="success-message" id="donate-success-en">
+                            Thank you! We will contact you soon regarding your donation.
+                        </div>
+                        <form id="donate-form-en">
+                            <div class="form-group">
+                                <label for="donor-name-en">Full Name</label>
+                                <input type="text" id="donor-name-en" name="donor-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donor-email-en">Email</label>
+                                <input type="email" id="donor-email-en" name="donor-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="donation-amount-en">Donation Amount (MAD)</label>
+                                <select id="donation-amount-en" name="donation-amount">
+                                    <option value="100">100 MAD</option>
+                                    <option value="200">200 MAD</option>
+                                    <option value="500">500 MAD</option>
+                                    <option value="1000">1000 MAD</option>
+                                    <option value="custom">Custom amount</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="donation-project-en">Selected Project</label>
+                                <select id="donation-project-en" name="donation-project">
+                                    <option value="general">General support</option>
+                                    <option value="water">Water project</option>
+                                    <option value="education">Education</option>
+                                    <option value="health">Health</option>
+                                    <option value="environment">Environment</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="donation-message-en">Message (optional)</label>
+                                <textarea id="donation-message-en" name="donation-message" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="cta-button">❤️ Donate Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar">
+                    <h2 class="section-title">اتصل بنا</h2>
+                    <div class="form-container">
+                        <div class="success-message" id="contact-success-ar">
+                            شكراً لك! تم إرسال رسالتك بنجاح.
+                        </div>
+                        <form id="contact-form-ar">
+                            <div class="form-group">
+                                <label for="contact-name-ar">الاسم الكامل</label>
+                                <input type="text" id="contact-name-ar" name="contact-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email-ar">البريد الإلكتروني</label>
+                                <input type="email" id="contact-email-ar" name="contact-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject-ar">الموضوع</label>
+                                <input type="text" id="contact-subject-ar" name="contact-subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message-ar">الرسالة</label>
+                                <textarea id="contact-message-ar" name="contact-message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="cta-button">إرسال الرسالة</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr">
+                    <h2 class="section-title">Nous Contacter</h2>
+                    <div class="form-container">
+                        <div class="success-message" id="contact-success-fr">
+                            Merci! Votre message a été envoyé avec succès.
+                        </div>
+                        <form id="contact-form-fr">
+                            <div class="form-group">
+                                <label for="contact-name-fr">Nom Complet</label>
+                                <input type="text" id="contact-name-fr" name="contact-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email-fr">Email</label>
+                                <input type="email" id="contact-email-fr" name="contact-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject-fr">Sujet</label>
+                                <input type="text" id="contact-subject-fr" name="contact-subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message-fr">Message</label>
+                                <textarea id="contact-message-fr" name="contact-message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="cta-button">Envoyer le Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h2 class="section-title">Contact Us</h2>
+                    <div class="form-container">
+                        <div class="success-message" id="contact-success-en">
+                            Thank you! Your message has been sent successfully.
+                        </div>
+                        <form id="contact-form-en">
+                            <div class="form-group">
+                                <label for="contact-name-en">Full Name</label>
+                                <input type="text" id="contact-name-en" name="contact-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email-en">Email</label>
+                                <input type="email" id="contact-email-en" name="contact-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject-en">Subject</label>
+                                <input type="text" id="contact-subject-en" name="contact-subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message-en">Message</label>
+                                <textarea id="contact-message-en" name="contact-message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="cta-button">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section lang-content active" data-lang="ar">
+                    <h4>جمعية تازولت</h4>
+                    <p>دوار تازولت، جماعة تويالت<br>
+                    قيادة اسكاون، دائرة تالوين<br>
+                    عمالة تارودانت، المغرب</p>
+                </div>
+                <div class="footer-section lang-content" data-lang="fr">
+                    <h4>Association Tazoult</h4>
+                    <p>Douar Tazoult, Commune Twiyalt<br>
+                    Caïdat Askawn, Cercle Talwin<br>
+                    Province Taroudannt, Maroc</p>
+                </div>
+                <div class="footer-section lang-content" data-lang="en">
+                    <h4>Tazoult Association</h4>
+                    <p>Douar Tazoult, Twiyalt Municipality<br>
+                    Askawn District, Talwin Circle<br>
+                    Taroudannt Province, Morocco</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>المراجع / Références / References</h4>
+                    <p><a href="https://www.assohelp.org/asso-419-association-tazoult-pour-le-developement-et-la-cooperation-et-d-environement">AssoHelp.org</a></p>
+                </div>
+            </div>
+            <div class="text-center">
+                <p>&copy; 2025 جمعية تازولت للتنمية والتعاون والبيئة. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language switching functionality
+        function switchLanguage(lang) {
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Show selected language content
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(content => {
+                content.classList.add('active');
+            });
+
+            // Update page direction and language
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', lang);
+            }
+
+            // Update navigation links based on language
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            const navTexts = {
+                'ar': ['الرئيسية', 'عن الجمعية', 'الموقع', 'المشاريع', 'مجلس الإدارة', 'الوثائق القانونية', '❤️ تبرع', 'اتصل بنا'],
+                'fr': ['Accueil', 'À Propos', 'Localisation', 'Projets', 'Conseil', 'Documents Légaux', '❤️ Faire un Don', 'Contact'],
+                'en': ['Home', 'About', 'Location', 'Projects', 'Board', 'Legal Documents', '❤️ Donate', 'Contact']
+            };
+
+            navLinks.forEach((link, index) => {
+                if (navTexts[lang] && navTexts[lang][index]) {
+                    link.textContent = navTexts[lang][index];
+                }
+            });
+
+            // Update logo text
+            const logoTexts = {
+                'ar': 'جمعية تازولت',
+                'fr': 'Association Tazoult',
+                'en': 'Tazoult Association'
+            };
+            document.querySelector('.logo').textContent = logoTexts[lang];
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handlers
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form language
+                const formId = this.id;
+                let lang = 'ar';
+                if (formId.includes('-fr')) lang = 'fr';
+                if (formId.includes('-en')) lang = 'en';
+                
+                // Show success message
+                const successId = formId.replace('form', 'success');
+                const successMessage = document.getElementById(successId);
+                if (successMessage) {
+                    successMessage.style.display = 'block';
+                    // Hide after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                }
+                
+                // Reset form
+                this.reset();
+            });
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animations
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Initialize first section animation
+        window.addEventListener('load', () => {
+            document.querySelector('.hero').style.opacity = '1';
+            document.querySelector('.hero').style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>
