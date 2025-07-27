@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>جمعية تازولت للتنمية والتعاون والبيئة</title>
     <style>
         * {
@@ -297,6 +297,15 @@
             padding: 1rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 5px;
         }
 
         .map-placeholder {
@@ -348,29 +357,322 @@
             display: block;
         }
 
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-menu.mobile-open {
+            display: flex;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            /* Header adjustments */
+            nav {
+                padding: 0.5rem 0;
+                position: relative;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
             .nav-menu {
-                gap: 1rem;
-                font-size: 0.8rem;
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #2e8b57 0%, #20b2aa 100%);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.5rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                z-index: 1000;
             }
-            
+
+            .nav-menu.mobile-open {
+                display: flex;
+            }
+
+            .nav-menu a {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+                border-radius: 3px;
+                transition: background 0.3s;
+            }
+
+            .nav-menu a:hover {
+                background: rgba(255,255,255,0.1);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .language-switcher {
+                gap: 5px;
+            }
+
+            .lang-btn {
+                padding: 3px 6px;
+                font-size: 0.7rem;
+            }
+
+            /* Main content adjustments */
+            main {
+                margin-top: 60px;
+            }
+
+            .section {
+                padding: 2rem 0;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Hero section */
+            .hero {
+                padding: 4rem 0;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
             }
-            
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            /* Section titles */
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .section-title::after {
+                width: 60px;
+                height: 2px;
+            }
+
+            /* Grid layouts */
             .about-content,
             .location-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
-            
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            /* Card adjustments */
+            .content-card {
+                margin-bottom: 1rem;
+            }
+
+            .card-image {
+                height: 150px;
+                font-size: 1.5rem;
+            }
+
+            .card-content {
+                padding: 1rem;
+            }
+
+            .card-content h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .card-content p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+
+            /* About section */
+            .about-text {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .about-text p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .about-text ul {
+                padding-right: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .about-text li {
+                margin-bottom: 0.3rem;
+                line-height: 1.4;
+            }
+
+            /* Location section */
+            .location-info {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .location-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .location-info p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+                margin-bottom: 0.5rem;
+            }
+
+            .map-container {
+                padding: 0.5rem;
+            }
+
+            .map-container iframe {
+                height: 250px;
+            }
+
+            .map-placeholder {
+                height: 250px;
+                font-size: 1rem;
+                padding: 0.5rem;
+            }
+
+            /* Forms */
+            .form-container {
+                padding: 1.5rem;
+                margin: 0 10px;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+
+            .form-group textarea {
+                min-height: 80px;
+            }
+
+            /* Footer */
+            footer {
+                padding: 2rem 0;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .footer-section h4 {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .footer-section p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+
+            /* Utility adjustments */
+            .placeholder-image {
+                height: 200px;
+                font-size: 1rem;
+            }
+
+            /* Success messages */
+            .success-message {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+                margin: 0.5rem 0;
+            }
+
+            /* Button adjustments */
+            .cta-button {
+                width: 100%;
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+
+            /* Text adjustments for better readability */
+            h1, h2, h3 {
+                line-height: 1.3;
+            }
+
+            p {
+                line-height: 1.5;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
+            }
+
+            .card-image {
+                height: 120px;
+                font-size: 1.2rem;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
+            .form-container {
+                padding: 1rem;
+                margin: 0 5px;
             }
 
             nav {
-                flex-direction: column;
-                gap: 1rem;
+                padding: 0.3rem 0;
+            }
+
+            .language-switcher {
+                margin-top: 0.5rem;
             }
         }
 
@@ -392,7 +694,8 @@
         <div class="container">
             <nav>
                 <div class="logo">جمعية تازولت</div>
-                <ul class="nav-menu">
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+                <ul class="nav-menu" id="navMenu">
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#about">عن الجمعية</a></li>
                     <li><a href="#location">الموقع</a></li>
@@ -521,9 +824,9 @@
                         <div class="map-container">
                             <iframe 
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4422.921801715557!2d-7.782654811305695!3d30.784322167553054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdba827111e28f4b%3A0x8e112529c0bc9609!2sTazoulte%2C%20Morocco!5e1!3m2!1sen!2snl!4v1753638931707!5m2!1sen!2snl" 
-                                width="600" 
-                                height="450" 
-                                style="border:0;" 
+                                width="100%" 
+                                height="300" 
+                                style="border:0; border-radius: 5px;" 
                                 allowfullscreen="" 
                                 loading="lazy" 
                                 referrerpolicy="no-referrer-when-downgrade">
@@ -542,11 +845,15 @@
                             <p>Tazoult est située dans une belle région entourée de montagnes et de nature magnifique, c'est une zone agricole connue pour la culture d'olives, d'amandes et d'argan.</p>
                         </div>
                         <div class="map-container">
-                            <div class="map-placeholder">
-                                Carte de Tazoult<br>
-                                Q6MC+XXV<br>
-                                <small>Google Map peut être intégrée ici</small>
-                            </div>
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4422.921801715557!2d-7.782654811305695!3d30.784322167553054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdba827111e28f4b%3A0x8e112529c0bc9609!2sTazoulte%2C%20Morocco!5e1!3m2!1sen!2snl!4v1753638931707!5m2!1sen!2snl" 
+                                width="100%" 
+                                height="300" 
+                                style="border:0; border-radius: 5px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
                         </div>
                     </div>
                 </div>
@@ -561,11 +868,15 @@
                             <p>Tazoult is located in a beautiful region surrounded by mountains and magnificent nature, it's an agricultural area known for olive, almond and argan cultivation.</p>
                         </div>
                         <div class="map-container">
-                            <div class="map-placeholder">
-                                Tazoult Map<br>
-                                Q6MC+XXV<br>
-                                <small>Google Map can be integrated here</small>
-                            </div>
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4422.921801715557!2d-7.782654811305695!3d30.784322167553054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdba827111e28f4b%3A0x8e112529c0bc9609!2sTazoulte%2C%20Morocco!5e1!3m2!1sen!2snl!4v1753638931707!5m2!1sen!2snl" 
+                                width="100%" 
+                                height="300" 
+                                style="border:0; border-radius: 5px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
                         </div>
                     </div>
                 </div>
@@ -1220,6 +1531,30 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('mobile-open');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.remove('mobile-open');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const navMenu = document.getElementById('navMenu');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+                navMenu.classList.remove('mobile-open');
+            }
+        });
+
         // Language switching functionality
         function switchLanguage(lang) {
             // Update active language button
