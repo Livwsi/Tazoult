@@ -43,7 +43,37 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
             color: white;
+        }
+
+        .logo-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            padding: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
             font-size: 1.5rem;
             font-weight: bold;
         }
@@ -734,23 +764,49 @@
                 height: 10px;
             }
 
-            .board-carousel {
-                padding: 15px 0;
-                gap: 10px;
+            .board-profiles {
+                padding: 15px 5px;
+                gap: 15px;
             }
 
-            .board-member-mini {
-                width: 80px;
+            .profile-item {
+                width: 75px;
             }
 
-            .member-avatar-mini {
-                width: 60px;
-                height: 60px;
+            .profile-picture {
+                width: 70px;
+                height: 70px;
+                margin: 0 auto 6px;
+            }
+
+            .profile-ring {
+                width: 70px;
+                height: 70px;
+                padding: 2px;
+            }
+
+            .profile-image {
+                width: 66px;
+                height: 66px;
                 font-size: 1rem;
+                border: 2px solid white;
             }
 
-            .member-name-mini {
-                font-size: 0.7rem;
+            .profile-name {
+                font-size: 0.75rem;
+                max-width: 75px;
+            }
+
+            .profile-role {
+                font-size: 0.65rem;
+                max-width: 75px;
+            }
+
+            .profile-picture::after {
+                width: 14px;
+                height: 14px;
+                bottom: 3px;
+                right: 3px;
             }
 
             .modal-content {
@@ -846,6 +902,47 @@
             .language-switcher {
                 margin-top: 0.5rem;
             }
+
+            /* Board member profiles for very small screens */
+            .profile-item {
+                width: 65px;
+            }
+
+            .profile-picture {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 5px;
+            }
+
+            .profile-ring {
+                width: 60px;
+                height: 60px;
+                padding: 2px;
+            }
+
+            .profile-image {
+                width: 56px;
+                height: 56px;
+                font-size: 0.9rem;
+                border: 2px solid white;
+            }
+
+            .profile-name {
+                font-size: 0.7rem;
+                max-width: 65px;
+            }
+
+            .profile-role {
+                font-size: 0.6rem;
+                max-width: 65px;
+            }
+
+            .profile-picture::after {
+                width: 12px;
+                height: 12px;
+                bottom: 2px;
+                right: 2px;
+            }
         }
 
         /* Bank Information Styles */
@@ -927,7 +1024,36 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">جمعية تازولت</div>
+                <a href="#home" class="logo">
+                    <div class="logo-image">
+                        <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background circle -->
+                            <circle cx="50" cy="50" r="50" fill="white"/>
+                            
+                            <!-- Green leaves -->
+                            <path d="M30 35 Q25 25 35 25 Q45 25 40 35 Q35 45 25 40 Q15 35 25 25 Q35 20 35 30 Z" fill="#2e8b57"/>
+                            <path d="M70 35 Q75 25 65 25 Q55 25 60 35 Q65 45 75 40 Q85 35 75 25 Q65 20 65 30 Z" fill="#4db648"/>
+                            
+                            <!-- Blue leaves -->
+                            <path d="M35 70 Q25 75 25 65 Q25 55 35 60 Q45 65 40 75 Q35 85 25 75 Q20 65 30 65 Z" fill="#4facfe"/>
+                            <path d="M65 70 Q75 75 75 65 Q75 55 65 60 Q55 65 60 75 Q65 85 75 75 Q80 65 70 65 Z" fill="#2980b9"/>
+                            
+                            <!-- Orange/Yellow leaves -->
+                            <path d="M35 30 Q30 20 40 25 Q50 30 45 40 Q40 50 30 45 Q20 40 25 30 Z" fill="#f59e0b"/>
+                            <path d="M65 30 Q70 20 60 25 Q50 30 55 40 Q60 50 70 45 Q80 40 75 30 Z" fill="#fbbf24"/>
+                            
+                            <!-- Teal center -->
+                            <circle cx="50" cy="50" r="12" fill="#20b2aa"/>
+                            
+                            <!-- Small decorative circles -->
+                            <circle cx="25" cy="25" r="3" fill="#90ee90"/>
+                            <circle cx="75" cy="25" r="2.5" fill="#95db5e"/>
+                            <circle cx="25" cy="75" r="3.5" fill="#20b2aa"/>
+                            <circle cx="75" cy="75" r="3" fill="#f59e0b"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">جمعية تازولت</span>
+                </a>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home">الرئيسية</a></li>
@@ -1294,147 +1420,234 @@
             <div class="container">
                 <div class="lang-content active" data-lang="ar">
                     <h2 class="section-title">مجلس الإدارة</h2>
-                    <div class="board-carousel">
-                        <div class="board-member-mini">
-                            <div class="member-avatar-mini">م.أ</div>
-                            <div class="member-name-mini">الرئيس</div>
+                    <div class="board-profiles">
+                        <div class="profile-item" onclick="contactMember('president')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image president">م.أ</div>
+                                </div>
+                            </div>
+                            <div class="profile-name">محمد أحمد</div>
+                            <div class="profile-role">الرئيس</div>
                         </div>
-                        <div class="board-member-mini">
-                            <div class="member-avatar-mini">ن.ر</div>
-                            <div class="member-name-mini">نائب الرئيس</div>
+                        
+                        <div class="profile-item" onclick="contactMember('vice-president')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image vice-president">ن.د</div>
+                                </div>
+                            </div>
+                            <div class="profile-name">نور الدين</div>
+                            <div class="profile-role">نائب الرئيس</div>
                         </div>
-                        <div class="board-member-mini">
-                            <div class="member-avatar-mini">أ.س</div>
-                            <div class="member-name-mini">الأمين العام</div>
+                        
+                        <div class="profile-item" onclick="contactMember('secretary')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image secretary">أ.س</div>
+                                </div>
+                            </div>
+                            <div class="profile-name">أمينة سعيد</div>
+                            <div class="profile-role">الأمين العام</div>
                         </div>
-                        <div class="board-member-mini">
-                            <div class="member-avatar-mini">أ.م</div>
-                            <div class="member-name-mini">أمين المال</div>
+                        
+                        <div class="profile-item" onclick="contactMember('treasurer')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image treasurer">ع.م</div>
+                                </div>
+                            </div>
+                            <div class="profile-name">عبد المالك</div>
+                            <div class="profile-role">أمين المال</div>
                         </div>
-                        <div class="board-member-mini">
-                            <div class="member-avatar-mini">ع.1</div>
-                            <div class="member-name-mini">عضو مجلس</div>
+                        
+                        <div class="profile-item" onclick="contactMember('member1')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image member1">ف.ز</div>
+                                </div>
+                            </div>
+                            <div class="profile-name">فاطمة الزهراء</div>
+                            <div class="profile-role">عضو مجلس</div>
                         </div>
-                        <div class="board-member-mini">
-                            <div class="member-avatar-mini">ع.2</div>
-                            <div class="member-name-mini">عضو مجلس</div>
+                        
+                        <div class="profile-item" onclick="contactMember('member2')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image member2">ي.ح</div>
+                                </div>
+                            </div>
+                            <div class="profile-name">يوسف حسن</div>
+                            <div class="profile-role">عضو مجلس</div>
                         </div>
-                        <div class="board-member-mini">
-                            <div class="member-avatar-mini">ع.3</div>
-                            <div class="member-name-mini">عضو مجلس</div>
+                        
+                        <div class="profile-item" onclick="contactMember('member3')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image member3">ر.ع</div>
+                                </div>
+                            </div>
+                            <div class="profile-name">رشيد العلوي</div>
+                            <div class="profile-role">عضو مجلس</div>
                         </div>
                     </div>
-                    <p style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 10px;">
-                        اسحب للمزيد ← أو انقر على الصورة لرؤية التفاصيل
+                    <p style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 15px;">
+                        📱 انقر على الصورة للتواصل | اسحب يميناً لرؤية المزيد
                     </p>
                 </div>
                 <div class="lang-content" data-lang="fr">
                     <h2 class="section-title">Conseil d'Administration</h2>
-                    <div class="content-grid">
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Président</h3>
-                                <p>Président de l'association</p>
+                    <div class="board-profiles">
+                        <div class="profile-item" onclick="contactMember('president')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image president">M.A</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Mohamed Ahmed</div>
+                            <div class="profile-role">Président</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Vice-Président</h3>
-                                <p>Vice-président de l'association</p>
+                        
+                        <div class="profile-item" onclick="contactMember('vice-president')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image vice-president">N.D</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Nour Eddine</div>
+                            <div class="profile-role">Vice-Président</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Secrétaire Général</h3>
-                                <p>Secrétaire de l'association</p>
+                        
+                        <div class="profile-item" onclick="contactMember('secretary')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image secretary">A.S</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Amina Said</div>
+                            <div class="profile-role">Secrétaire</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Trésorier</h3>
-                                <p>Responsable financier de l'association</p>
+                        
+                        <div class="profile-item" onclick="contactMember('treasurer')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image treasurer">A.M</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Abdel Malek</div>
+                            <div class="profile-role">Trésorier</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Membre du Conseil</h3>
-                                <p>Membre du conseil d'administration</p>
+                        
+                        <div class="profile-item" onclick="contactMember('member1')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image member1">F.Z</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Fatima Zahra</div>
+                            <div class="profile-role">Membre</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👩‍💼</div>
-                            <div class="card-content">
-                                <h3>Membre du Conseil</h3>
-                                <p>Membre du conseil d'administration</p>
+                        
+                        <div class="profile-item" onclick="contactMember('member2')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image member2">Y.H</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Youssef Hassan</div>
+                            <div class="profile-role">Membre</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Membre du Conseil</h3>
-                                <p>Membre du conseil d'administration</p>
+                        
+                        <div class="profile-item" onclick="contactMember('member3')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image member3">R.A</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Rachid Alaoui</div>
+                            <div class="profile-role">Membre</div>
                         </div>
                     </div>
+                    <p style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 15px;">
+                        📱 Cliquez sur la photo pour contacter | Faites défiler pour voir plus
+                    </p>
                 </div>
                 <div class="lang-content" data-lang="en">
                     <h2 class="section-title">Board of Directors</h2>
-                    <div class="content-grid">
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>President</h3>
-                                <p>President of the association</p>
+                    <div class="board-profiles">
+                        <div class="profile-item" onclick="contactMember('president')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image president">M.A</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Mohamed Ahmed</div>
+                            <div class="profile-role">President</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Vice President</h3>
-                                <p>Vice president of the association</p>
+                        
+                        <div class="profile-item" onclick="contactMember('vice-president')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image vice-president">N.D</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Nour Eddine</div>
+                            <div class="profile-role">Vice President</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Secretary General</h3>
-                                <p>Secretary of the association</p>
+                        
+                        <div class="profile-item" onclick="contactMember('secretary')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image secretary">A.S</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Amina Said</div>
+                            <div class="profile-role">Secretary</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Treasurer</h3>
-                                <p>Financial officer of the association</p>
+                        
+                        <div class="profile-item" onclick="contactMember('treasurer')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image treasurer">A.M</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Abdel Malek</div>
+                            <div class="profile-role">Treasurer</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Board Member</h3>
-                                <p>Member of the board of directors</p>
+                        
+                        <div class="profile-item" onclick="contactMember('member1')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image member1">F.Z</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Fatima Zahra</div>
+                            <div class="profile-role">Board Member</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👩‍💼</div>
-                            <div class="card-content">
-                                <h3>Board Member</h3>
-                                <p>Member of the board of directors</p>
+                        
+                        <div class="profile-item" onclick="contactMember('member2')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image member2">Y.H</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Youssef Hassan</div>
+                            <div class="profile-role">Board Member</div>
                         </div>
-                        <div class="content-card">
-                            <div class="card-image">👨‍💼</div>
-                            <div class="card-content">
-                                <h3>Board Member</h3>
-                                <p>Member of the board of directors</p>
+                        
+                        <div class="profile-item" onclick="contactMember('member3')">
+                            <div class="profile-picture">
+                                <div class="profile-ring">
+                                    <div class="profile-image member3">R.A</div>
+                                </div>
                             </div>
+                            <div class="profile-name">Rachid Alaoui</div>
+                            <div class="profile-role">Board Member</div>
                         </div>
                     </div>
+                    <p style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 15px;">
+                        📱 Click photo to contact | Scroll to see more members
+                    </p>
                 </div>
             </div>
         </section>
@@ -2074,6 +2287,74 @@
             }
         }
 
+        // Contact member functionality
+        function contactMember(memberId) {
+            const memberContacts = {
+                'president': {
+                    name: 'محمد أحمد / Mohamed Ahmed',
+                    phone: '+212 6XX XXX XXX',
+                    email: 'president@tazoult.org'
+                },
+                'vice-president': {
+                    name: 'نور الدين / Nour Eddine', 
+                    phone: '+212 6XX XXX XXX',
+                    email: 'vicepresident@tazoult.org'
+                },
+                'secretary': {
+                    name: 'أمينة سعيد / Amina Said',
+                    phone: '+212 6XX XXX XXX', 
+                    email: 'secretary@tazoult.org'
+                },
+                'treasurer': {
+                    name: 'عبد المالك / Abdel Malek',
+                    phone: '+212 6XX XXX XXX',
+                    email: 'treasurer@tazoult.org'
+                },
+                'member1': {
+                    name: 'فاطمة الزهراء / Fatima Zahra',
+                    phone: '+212 6XX XXX XXX',
+                    email: 'member1@tazoult.org'
+                },
+                'member2': {
+                    name: 'يوسف حسن / Youssef Hassan',
+                    phone: '+212 6XX XXX XXX',
+                    email: 'member2@tazoult.org'
+                },
+                'member3': {
+                    name: 'رشيد العلوي / Rachid Alaoui',
+                    phone: '+212 6XX XXX XXX',
+                    email: 'member3@tazoult.org'
+                }
+            };
+
+            const member = memberContacts[memberId];
+            if (member) {
+                const currentLang = document.documentElement.getAttribute('lang') || 'ar';
+                let message = '';
+                
+                if (currentLang === 'ar') {
+                    message = `معلومات الاتصال بـ ${member.name}:\n\n📞 الهاتف: ${member.phone}\n📧 البريد الإلكتروني: ${member.email}\n\nهل تريد إرسال رسالة واتساب؟`;
+                } else if (currentLang === 'fr') {
+                    message = `Informations de contact pour ${member.name}:\n\n📞 Téléphone: ${member.phone}\n📧 Email: ${member.email}\n\nVoulez-vous envoyer un message WhatsApp?`;
+                } else {
+                    message = `Contact information for ${member.name}:\n\n📞 Phone: ${member.phone}\n📧 Email: ${member.email}\n\nWould you like to send a WhatsApp message?`;
+                }
+
+                const sendWhatsApp = confirm(message);
+                if (sendWhatsApp) {
+                    const whatsappMessage = currentLang === 'ar' 
+                        ? `مرحباً، أود التواصل معك بخصوص جمعية تازولت` 
+                        : currentLang === 'fr'
+                        ? `Bonjour, j'aimerais vous contacter concernant l'Association Tazoult`
+                        : `Hello, I would like to contact you regarding Tazoult Association`;
+                    
+                    const phoneNumber = member.phone.replace(/\s+/g, '').replace('+', '');
+                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                    window.open(whatsappUrl, '_blank');
+                }
+            }
+        }
+
         // Copy to clipboard functionality
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
@@ -2165,7 +2446,10 @@
                 'fr': 'Association Tazoult',
                 'en': 'Tazoult Association'
             };
-            document.querySelector('.logo').textContent = logoTexts[lang];
+            const logoTextElement = document.querySelector('.logo-text');
+            if (logoTextElement) {
+                logoTextElement.textContent = logoTexts[lang];
+            }
         }
 
         // Smooth scrolling for navigation links
