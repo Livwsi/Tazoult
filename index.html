@@ -1847,58 +1847,54 @@
                     <!-- Contact Form for Donation Coordination -->
                     <div class="form-container">
                         <h3 style="text-align: center; margin-bottom: 20px;">تنسيق التبرع</h3>
-                        <div class="success-message" id="donate-success-ar">
-                            شكراً لك! سيتم التواصل معك قريباً بخصوص التبرع.
+                        
+                        <!-- Google Forms Embed -->
+                        <div style="width: 100%; margin: 20px 0;">
+                            <iframe src="https://docs.google.com/forms/d/e/YOUR_DONATION_FORM_ID/viewform?embedded=true" 
+                                    width="100%" 
+                                    height="800" 
+                                    frameborder="0" 
+                                    marginheight="0" 
+                                    marginwidth="0"
+                                    style="border-radius: 10px;">
+                                جاري التحميل...
+                            </iframe>
                         </div>
-                        <form id="donate-form-ar">
-                            <div class="form-group">
-                                <label for="donor-name-ar">الاسم الكامل</label>
-                                <input type="text" id="donor-name-ar" name="donor-name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="donor-email-ar">البريد الإلكتروني</label>
-                                <input type="email" id="donor-email-ar" name="donor-email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="donor-phone-ar">رقم الهاتف</label>
-                                <input type="tel" id="donor-phone-ar" name="donor-phone" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="donation-amount-ar">مبلغ التبرع (درهم)</label>
-                                <select id="donation-amount-ar" name="donation-amount">
-                                    <option value="100">100 درهم</option>
-                                    <option value="200">200 درهم</option>
-                                    <option value="500">500 درهم</option>
-                                    <option value="1000">1000 درهم</option>
-                                    <option value="custom">مبلغ آخر</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="donation-method-ar">طريقة التبرع</label>
-                                <select id="donation-method-ar" name="donation-method">
-                                    <option value="bank">تحويل بنكي</option>
-                                    <option value="orange">Orange Money</option>
-                                    <option value="inwi">inwi money</option>
-                                    <option value="cash">Cash Plus</option>
-                                    <option value="hand">تسليم يدوي</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="donation-project-ar">المشروع المختار</label>
-                                <select id="donation-project-ar" name="donation-project">
-                                    <option value="general">دعم عام</option>
-                                    <option value="water">مشروع المياه</option>
-                                    <option value="education">التعليم</option>
-                                    <option value="health">الصحة</option>
-                                    <option value="environment">البيئة</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="donation-message-ar">رسالة أو ملاحظات</label>
-                                <textarea id="donation-message-ar" name="donation-message" rows="3" placeholder="مثال: تم التحويل بتاريخ XX/XX/XXXX عبر البنك الشعبي..."></textarea>
-                            </div>
-                            <button type="submit" class="cta-button">❤️ تنسيق التبرع</button>
-                        </form>
+                        
+                        <!-- Alternative: Custom styled form that redirects to Google Form -->
+                        <div class="google-form-alternative" style="display: none;">
+                            <form action="https://docs.google.com/forms/d/e/YOUR_DONATION_FORM_ID/formResponse" 
+                                  method="POST" 
+                                  target="_blank">
+                                <div class="form-group">
+                                    <label for="donor-name-ar">الاسم الكامل</label>
+                                    <input type="text" name="entry.YOUR_NAME_FIELD_ID" id="donor-name-ar" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="donor-email-ar">البريد الإلكتروني</label>
+                                    <input type="email" name="entry.YOUR_EMAIL_FIELD_ID" id="donor-email-ar" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="donor-phone-ar">رقم الهاتف</label>
+                                    <input type="tel" name="entry.YOUR_PHONE_FIELD_ID" id="donor-phone-ar" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="donation-amount-ar">مبلغ التبرع (درهم)</label>
+                                    <select name="entry.YOUR_AMOUNT_FIELD_ID" id="donation-amount-ar">
+                                        <option value="100 درهم">100 درهم</option>
+                                        <option value="200 درهم">200 درهم</option>
+                                        <option value="500 درهم">500 درهم</option>
+                                        <option value="1000 درهم">1000 درهم</option>
+                                        <option value="مبلغ آخر">مبلغ آخر</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="donation-message-ar">رسالة أو ملاحظات</label>
+                                    <textarea name="entry.YOUR_MESSAGE_FIELD_ID" id="donation-message-ar" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="cta-button">❤️ إرسال طلب التبرع</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="lang-content" data-lang="fr">
