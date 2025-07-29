@@ -860,6 +860,51 @@
                 box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             }
 
+            /* Google Earth responsive design */
+            .google-earth-container {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .google-earth-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .google-earth-header p {
+                font-size: 0.9rem;
+            }
+
+            .google-earth-embed {
+                height: 350px;
+            }
+
+            .earth-features {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .earth-feature {
+                padding: 0.8rem;
+            }
+
+            .earth-feature-icon {
+                font-size: 1.5rem;
+            }
+
+            .earth-feature h4 {
+                font-size: 0.9rem;
+            }
+
+            .earth-feature p {
+                font-size: 0.8rem;
+            }
+
+            .earth-link-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
             /* Button adjustments */
             .cta-button {
                 width: 100%;
@@ -958,6 +1003,51 @@
                 max-width: 65px;
             }
 
+            /* Google Earth for very small screens */
+            .google-earth-container {
+                padding: 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .google-earth-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .google-earth-header p {
+                font-size: 0.85rem;
+            }
+
+            .google-earth-embed {
+                height: 300px;
+            }
+
+            .earth-features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+                margin-top: 1rem;
+            }
+
+            .earth-feature {
+                padding: 0.6rem;
+            }
+
+            .earth-feature-icon {
+                font-size: 1.3rem;
+            }
+
+            .earth-feature h4 {
+                font-size: 0.8rem;
+            }
+
+            .earth-feature p {
+                font-size: 0.75rem;
+            }
+
+            .earth-link-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
             .profile-picture::after {
                 width: 12px;
                 height: 12px;
@@ -1047,7 +1137,7 @@
             <nav>
                 <a href="#home" class="logo">
                     <div class="logo-image">
-                        <img src="Images/Logo-removebg-preview.png" alt="Tazoult Association Logo">
+                        <img src="images/logo.png" alt="Tazoult Association Logo">
                     </div>
                     <span class="logo-text">جمعية تازولت</span>
                 </a>
@@ -1078,7 +1168,7 @@
                 <div class="lang-content active" data-lang="ar">
                     <div class="hero-title-container">
                         <div class="hero-logo">
-                            <img src="images/Logo-removebg-preview.png" alt="شعار جمعية تازولت">
+                            <img src="images/logo.png" alt="شعار جمعية تازولت">
                         </div>
                         <h1 class="hero-title">جمعية تازولت للتنمية والتعاون والبيئة</h1>
                     </div>
@@ -1259,8 +1349,8 @@
                         <div class="map-container">
                             <iframe 
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4422.921801715557!2d-7.782654811305695!3d30.784322167553054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdba827111e28f4b%3A0x8e112529c0bc9609!2sTazoulte%2C%20Morocco!5e1!3m2!1sen!2snl!4v1753638931707!5m2!1sen!2snl" 
-                                width="940" 
-                                height="1330" 
+                                width="100%" 
+                                height="300" 
                                 style="border:0; border-radius: 5px;" 
                                 allowfullscreen="" 
                                 loading="lazy" 
@@ -1312,6 +1402,168 @@
                                 loading="lazy" 
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Google Earth Section -->
+        <section class="section" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar">
+                    <div class="google-earth-container">
+                        <div class="google-earth-header">
+                            <h3>🌍 استكشف تازولت من السماء</h3>
+                            <p>اكتشف المناظر الطبيعية الخلابة والمواقع المهمة في منطقة تازولت من خلال جولة تفاعلية بالأقمار الصناعية</p>
+                        </div>
+                        
+                        <div class="google-earth-embed">
+                            <iframe src="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm" 
+                                    width="100%" 
+                                    height="100%" 
+                                    allowfullscreen="true" 
+                                    loading="lazy">
+                            </iframe>
+                            
+                            <!-- Fallback if iframe doesn't load -->
+                            <div class="earth-fallback" style="display: none;">
+                                <div class="earth-feature-icon">🛰️</div>
+                                <h4>مشاهدة تازولت من الفضاء</h4>
+                                <p>استكشف منطقة تازولت والمناطق المحيطة بها من خلال صور الأقمار الصناعية عالية الدقة</p>
+                                <a href="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm?usp=sharing" 
+                                   target="_blank" 
+                                   class="earth-link-btn">
+                                   🌍 فتح في Google Earth
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="earth-features">
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">🏔️</div>
+                                <h4>الجبال والتضاريس</h4>
+                                <p>استكشف التضاريس الجبلية المحيطة بتازولت</p>
+                            </div>
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">🌾</div>
+                                <h4>الأراضي الزراعية</h4>
+                                <p>اكتشف المناطق الزراعية ومشاريع التنمية</p>
+                            </div>
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">💧</div>
+                                <h4>الموارد المائية</h4>
+                                <p>تتبع مسارات المياه ومصادر الري</p>
+                            </div>
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">🏘️</div>
+                                <h4>المجتمعات المحلية</h4>
+                                <p>استكشف القرى والمجتمعات في المنطقة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lang-content" data-lang="fr">
+                    <div class="google-earth-container">
+                        <div class="google-earth-header">
+                            <h3>🌍 Explorez Tazoult depuis le ciel</h3>
+                            <p>Découvrez les paysages magnifiques et les sites importants de la région de Tazoult à travers une visite interactive par satellite</p>
+                        </div>
+                        
+                        <div class="google-earth-embed">
+                            <iframe src="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm" 
+                                    width="100%" 
+                                    height="100%" 
+                                    allowfullscreen="true" 
+                                    loading="lazy">
+                            </iframe>
+                            
+                            <div class="earth-fallback" style="display: none;">
+                                <div class="earth-feature-icon">🛰️</div>
+                                <h4>Voir Tazoult depuis l'espace</h4>
+                                <p>Explorez la région de Tazoult et ses environs grâce aux images satellite haute résolution</p>
+                                <a href="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm?usp=sharing" 
+                                   target="_blank" 
+                                   class="earth-link-btn">
+                                   🌍 Ouvrir dans Google Earth
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="earth-features">
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">🏔️</div>
+                                <h4>Montagnes et reliefs</h4>
+                                <p>Explorez les terrains montagneux autour de Tazoult</p>
+                            </div>
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">🌾</div>
+                                <h4>Terres agricoles</h4>
+                                <p>Découvrez les zones agricoles et projets de développement</p>
+                            </div>
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">💧</div>
+                                <h4>Ressources en eau</h4>
+                                <p>Suivez les cours d'eau et sources d'irrigation</p>
+                            </div>
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">🏘️</div>
+                                <h4>Communautés locales</h4>
+                                <p>Explorez les villages et communautés de la région</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lang-content" data-lang="en">
+                    <div class="google-earth-container">
+                        <div class="google-earth-header">
+                            <h3>🌍 Explore Tazoult from Above</h3>
+                            <p>Discover the beautiful landscapes and important sites in the Tazoult region through an interactive satellite tour</p>
+                        </div>
+                        
+                        <div class="google-earth-embed">
+                            <iframe src="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm" 
+                                    width="100%" 
+                                    height="100%" 
+                                    allowfullscreen="true" 
+                                    loading="lazy">
+                            </iframe>
+                            
+                            <div class="earth-fallback" style="display: none;">
+                                <div class="earth-feature-icon">🛰️</div>
+                                <h4>View Tazoult from Space</h4>
+                                <p>Explore the Tazoult region and surrounding areas through high-resolution satellite imagery</p>
+                                <a href="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm?usp=sharing" 
+                                   target="_blank" 
+                                   class="earth-link-btn">
+                                   🌍 Open in Google Earth
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="earth-features">
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">🏔️</div>
+                                <h4>Mountains & Terrain</h4>
+                                <p>Explore the mountainous terrain surrounding Tazoult</p>
+                            </div>
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">🌾</div>
+                                <h4>Agricultural Land</h4>
+                                <p>Discover farming areas and development projects</p>
+                            </div>
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">💧</div>
+                                <h4>Water Resources</h4>
+                                <p>Track water courses and irrigation sources</p>
+                            </div>
+                            <div class="earth-feature">
+                                <div class="earth-feature-icon">🏘️</div>
+                                <h4>Local Communities</h4>
+                                <p>Explore villages and communities in the region</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1675,7 +1927,18 @@
                             <div class="card-content">
                                 <h3>النظام الأساسي للجمعية</h3>
                                 <p>النظام الأساسي المؤسس للجمعية والقوانين الداخلية</p>
-                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">تحميل PDF</a>
+                                <a href="https://drive.google.com/uc?export=download&id=YOUR_BYLAWS_FILE_ID" 
+                                   target="_blank" 
+                                   class="cta-button" 
+                                   style="font-size: 0.9rem; padding: 8px 16px;">
+                                   📥 تحميل PDF
+                                </a>
+                                <br><br>
+                                <a href="https://drive.google.com/file/d/YOUR_BYLAWS_FILE_ID/view" 
+                                   target="_blank" 
+                                   style="color: #20b2aa; font-size: 0.8rem; text-decoration: none;">
+                                   👁️ عرض في المتصفح
+                                </a>
                             </div>
                         </div>
                         <div class="content-card">
@@ -1683,7 +1946,18 @@
                             <div class="card-content">
                                 <h3>وصل الإيداع القانوني</h3>
                                 <p>وثيقة الإيداع القانوني لدى السلطات المختصة</p>
-                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">تحميل PDF</a>
+                                <a href="https://drive.google.com/uc?export=download&id=YOUR_REGISTRATION_FILE_ID" 
+                                   target="_blank" 
+                                   class="cta-button" 
+                                   style="font-size: 0.9rem; padding: 8px 16px;">
+                                   📥 تحميل PDF
+                                </a>
+                                <br><br>
+                                <a href="https://drive.google.com/file/d/YOUR_REGISTRATION_FILE_ID/view" 
+                                   target="_blank" 
+                                   style="color: #20b2aa; font-size: 0.8rem; text-decoration: none;">
+                                   👁️ عرض في المتصفح
+                                </a>
                             </div>
                         </div>
                         <div class="content-card">
@@ -1691,7 +1965,18 @@
                             <div class="card-content">
                                 <h3>التقرير المالي السنوي</h3>
                                 <p>التقرير المالي والأنشطة السنوية للجمعية</p>
-                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">تحميل PDF</a>
+                                <a href="https://drive.google.com/uc?export=download&id=YOUR_FINANCIAL_REPORT_FILE_ID" 
+                                   target="_blank" 
+                                   class="cta-button" 
+                                   style="font-size: 0.9rem; padding: 8px 16px;">
+                                   📥 تحميل PDF
+                                </a>
+                                <br><br>
+                                <a href="https://drive.google.com/file/d/YOUR_FINANCIAL_REPORT_FILE_ID/view" 
+                                   target="_blank" 
+                                   style="color: #20b2aa; font-size: 0.8rem; text-decoration: none;">
+                                   👁️ عرض في المتصفح
+                                </a>
                             </div>
                         </div>
                         <div class="content-card">
@@ -1699,7 +1984,18 @@
                             <div class="card-content">
                                 <h3>محاضر الجمعيات العامة</h3>
                                 <p>محاضر اجتماعات الجمعية العامة والقرارات المتخذة</p>
-                                <a href="#" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">تحميل PDF</a>
+                                <a href="https://drive.google.com/uc?export=download&id=YOUR_MINUTES_FILE_ID" 
+                                   target="_blank" 
+                                   class="cta-button" 
+                                   style="font-size: 0.9rem; padding: 8px 16px;">
+                                   📥 تحميل PDF
+                                </a>
+                                <br><br>
+                                <a href="https://drive.google.com/file/d/YOUR_MINUTES_FILE_ID/view" 
+                                   target="_blank" 
+                                   style="color: #20b2aa; font-size: 0.8rem; text-decoration: none;">
+                                   👁️ عرض في المتصفح
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -1850,12 +2146,14 @@
                         
                         <!-- Google Forms Embed -->
                         <div style="width: 100%; margin: 20px 0;">
-                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform?embedded=true" 
-                                width="640" 
-                                height="1030" 
-                                frameborder="0" 
-                                marginheight="0" 
-                                marginwidth="0">Loading…
+                            <iframe src="https://docs.google.com/forms/d/e/YOUR_DONATION_FORM_ID/viewform?embedded=true" 
+                                    width="100%" 
+                                    height="800" 
+                                    frameborder="0" 
+                                    marginheight="0" 
+                                    marginwidth="0"
+                                    style="border-radius: 10px;">
+                                جاري التحميل...
                             </iframe>
                         </div>
                         
@@ -1990,28 +2288,27 @@
                 <div class="lang-content active" data-lang="ar">
                     <h2 class="section-title">اتصل بنا</h2>
                     <div class="form-container">
-                        <div class="success-message" id="contact-success-ar">
-                            شكراً لك! تم إرسال رسالتك بنجاح.
+                        <!-- Google Forms Embed for Contact -->
+                        <div style="width: 100%; margin: 20px 0;">
+                            <iframe src="https://docs.google.com/forms/d/e/YOUR_CONTACT_FORM_ID/viewform?embedded=true" 
+                                    width="100%" 
+                                    height="700" 
+                                    frameborder="0" 
+                                    marginheight="0" 
+                                    marginwidth="0"
+                                    style="border-radius: 10px;">
+                                جاري التحميل...
+                            </iframe>
                         </div>
-                        <form id="contact-form-ar">
-                            <div class="form-group">
-                                <label for="contact-name-ar">الاسم الكامل</label>
-                                <input type="text" id="contact-name-ar" name="contact-name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-email-ar">البريد الإلكتروني</label>
-                                <input type="email" id="contact-email-ar" name="contact-email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-subject-ar">الموضوع</label>
-                                <input type="text" id="contact-subject-ar" name="contact-subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-message-ar">الرسالة</label>
-                                <textarea id="contact-message-ar" name="contact-message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="cta-button">إرسال الرسالة</button>
-                        </form>
+                        
+                        <!-- Alternative: Show form link if embed doesn't work -->
+                        <div style="text-align: center; margin-top: 20px;">
+                            <a href="https://docs.google.com/forms/d/e/YOUR_CONTACT_FORM_ID/viewform" 
+                               target="_blank" 
+                               class="cta-button">
+                                📝 فتح نموذج الاتصال في نافذة جديدة
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="lang-content" data-lang="fr">
@@ -2526,6 +2823,27 @@
         window.addEventListener('load', () => {
             document.querySelector('.hero').style.opacity = '1';
             document.querySelector('.hero').style.transform = 'translateY(0)';
+            
+            // Google Earth iframe fallback handling
+            const earthIframes = document.querySelectorAll('.google-earth-embed iframe');
+            earthIframes.forEach(iframe => {
+                iframe.onload = function() {
+                    // If iframe loads successfully, hide fallback
+                    const fallback = iframe.parentElement.querySelector('.earth-fallback');
+                    if (fallback) {
+                        fallback.style.display = 'none';
+                    }
+                };
+                
+                iframe.onerror = function() {
+                    // If iframe fails to load, show fallback
+                    iframe.style.display = 'none';
+                    const fallback = iframe.parentElement.querySelector('.earth-fallback');
+                    if (fallback) {
+                        fallback.style.display = 'block';
+                    }
+                };
+            });
         });
     </script>
 </body>
