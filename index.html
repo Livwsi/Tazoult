@@ -1137,7 +1137,7 @@
             <nav>
                 <a href="#home" class="logo">
                     <div class="logo-image">
-                        <img src="images/logo.png" alt="Tazoult Association Logo">
+                        <img src="images/Logo-removebg-preview.png" alt="Tazoult Association Logo">
                     </div>
                     <span class="logo-text">جمعية تازولت</span>
                 </a>
@@ -1168,7 +1168,7 @@
                 <div class="lang-content active" data-lang="ar">
                     <div class="hero-title-container">
                         <div class="hero-logo">
-                            <img src="images/logo.png" alt="شعار جمعية تازولت">
+                            <img src="images/Logo-removebg-preview.png" alt="شعار جمعية تازولت">
                         </div>
                         <h1 class="hero-title">جمعية تازولت للتنمية والتعاون والبيئة</h1>
                     </div>
@@ -1178,7 +1178,7 @@
                 <div class="lang-content" data-lang="fr">
                     <div class="hero-title-container">
                         <div class="hero-logo">
-                            <img src="images/logo.png" alt="Logo Association Tazoult">
+                            <img src="images/Logo-removebg-preview.png" alt="Logo Association Tazoult">
                         </div>
                         <h1 class="hero-title">Association Tazoult pour le Développement et la Coopération et d'Environnement</h1>
                     </div>
@@ -1188,7 +1188,7 @@
                 <div class="lang-content" data-lang="en">
                     <div class="hero-title-container">
                         <div class="hero-logo">
-                            <img src="images/logo.png" alt="Tazoult Association Logo">
+                            <img src="images/Logo-removebg-preview.png" alt="Tazoult Association Logo">
                         </div>
                         <h1 class="hero-title">Tazoult Association for Development, Cooperation and Environment</h1>
                     </div>
@@ -1419,23 +1419,56 @@
                         </div>
                         
                         <div class="google-earth-embed">
-                            <iframe src="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm" 
+                            <!-- Alternative 1: Try different Google Earth embed format -->
+                            <iframe src="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm?usp=sharing" 
                                     width="100%" 
                                     height="100%" 
                                     allowfullscreen="true" 
-                                    loading="lazy">
+                                    loading="lazy"
+                                    style="display: none;" 
+                                    id="earth-iframe-alt">
                             </iframe>
                             
-                            <!-- Fallback if iframe doesn't load -->
+                            <!-- Alternative 2: Google Maps Satellite View -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14491.687078637733!2d-7.792309!3d30.784322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdba827111e28f4b%3A0x8e112529c0bc9609!2sTazoulte%2C%20Morocco!5e1!3m2!1sen!2snl!4v1708000000000!5m2!1sen!2snl" 
+                                    width="100%" 
+                                    height="100%" 
+                                    allowfullscreen="true" 
+                                    loading="lazy"
+                                    style="border-radius: 10px;"
+                                    id="maps-iframe">
+                            </iframe>
+                            
+                            <!-- Fallback Content -->
                             <div class="earth-fallback" style="display: none;">
                                 <div class="earth-feature-icon">🛰️</div>
                                 <h4>مشاهدة تازولت من الفضاء</h4>
                                 <p>استكشف منطقة تازولت والمناطق المحيطة بها من خلال صور الأقمار الصناعية عالية الدقة</p>
-                                <a href="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm?usp=sharing" 
-                                   target="_blank" 
-                                   class="earth-link-btn">
-                                   🌍 فتح في Google Earth
-                                </a>
+                                
+                                <div style="margin: 20px 0;">
+                                    <a href="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm?usp=sharing" 
+                                       target="_blank" 
+                                       class="earth-link-btn"
+                                       style="margin: 5px;">
+                                       🌍 Google Earth الجولة التفاعلية
+                                    </a>
+                                    
+                                    <a href="https://www.google.com/maps/place/Tazoulte,+Morocco/@30.784322,-7.782655,3000m/data=!3m1!1e3!4m6!3m5!1s0xdba827111e28f4b:0x8e112529c0bc9609!8m2!3d30.784322!4d-7.782655!16s%2Fg%2F11c1qm8qm7" 
+                                       target="_blank" 
+                                       class="earth-link-btn"
+                                       style="margin: 5px; background: linear-gradient(45deg, #34a853, #4285f4);">
+                                       🗺️ خريطة الأقمار الصناعية
+                                    </a>
+                                </div>
+                                
+                                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                    <h5 style="color: #2e8b57; margin-bottom: 10px;">📍 إحداثيات تازولت:</h5>
+                                    <p style="margin: 5px 0; font-family: monospace;">
+                                        <strong>خط العرض:</strong> 30.784322°<br>
+                                        <strong>خط الطول:</strong> -7.782655°<br>
+                                        <strong>الارتفاع:</strong> ~1200 متر فوق مستوى البحر
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         
@@ -1472,22 +1505,44 @@
                         </div>
                         
                         <div class="google-earth-embed">
-                            <iframe src="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm" 
+                            <!-- Google Maps Satellite View -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14491.687078637733!2d-7.792309!3d30.784322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdba827111e28f4b%3A0x8e112529c0bc9609!2sTazoulte%2C%20Morocco!5e1!3m2!1sfr!2snl!4v1708000000000!5m2!1sfr!2snl" 
                                     width="100%" 
                                     height="100%" 
                                     allowfullscreen="true" 
-                                    loading="lazy">
+                                    loading="lazy"
+                                    style="border-radius: 10px;">
                             </iframe>
                             
                             <div class="earth-fallback" style="display: none;">
                                 <div class="earth-feature-icon">🛰️</div>
                                 <h4>Voir Tazoult depuis l'espace</h4>
                                 <p>Explorez la région de Tazoult et ses environs grâce aux images satellite haute résolution</p>
-                                <a href="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm?usp=sharing" 
-                                   target="_blank" 
-                                   class="earth-link-btn">
-                                   🌍 Ouvrir dans Google Earth
-                                </a>
+                                
+                                <div style="margin: 20px 0;">
+                                    <a href="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm?usp=sharing" 
+                                       target="_blank" 
+                                       class="earth-link-btn"
+                                       style="margin: 5px;">
+                                       🌍 Visite Google Earth
+                                    </a>
+                                    
+                                    <a href="https://www.google.com/maps/place/Tazoulte,+Morocco/@30.784322,-7.782655,3000m/data=!3m1!1e3!4m6!3m5!1s0xdba827111e28f4b:0x8e112529c0bc9609!8m2!3d30.784322!4d-7.782655!16s%2Fg%2F11c1qm8qm7" 
+                                       target="_blank" 
+                                       class="earth-link-btn"
+                                       style="margin: 5px; background: linear-gradient(45deg, #34a853, #4285f4);">
+                                       🗺️ Vue satellite
+                                    </a>
+                                </div>
+                                
+                                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                    <h5 style="color: #2e8b57; margin-bottom: 10px;">📍 Coordonnées de Tazoult:</h5>
+                                    <p style="margin: 5px 0; font-family: monospace;">
+                                        <strong>Latitude:</strong> 30.784322°<br>
+                                        <strong>Longitude:</strong> -7.782655°<br>
+                                        <strong>Altitude:</strong> ~1200m au-dessus du niveau de la mer
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         
@@ -1524,7 +1579,7 @@
                         </div>
                         
                         <div class="google-earth-embed">
-                            <iframe src="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm" 
+                            <iframe src="https://earth.google.com/earth/d/1ToLXkrzrP4tCcEzADtF3ocIlp2c0_CXm?usp=sharing" 
                                     width="100%" 
                                     height="100%" 
                                     allowfullscreen="true" 
@@ -2146,7 +2201,7 @@
                         
                         <!-- Google Forms Embed -->
                         <div style="width: 100%; margin: 20px 0;">
-                            <iframe src="https://docs.google.com/forms/d/e/YOUR_DONATION_FORM_ID/viewform?embedded=true" 
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform?usp=sharing&ouid=101129669407959928683" 
                                     width="100%" 
                                     height="800" 
                                     frameborder="0" 
@@ -2159,7 +2214,7 @@
                         
                         <!-- Alternative: Custom styled form that redirects to Google Form -->
                         <div class="google-form-alternative" style="display: none;">
-                            <form action="https://docs.google.com/forms/d/e/YOUR_DONATION_FORM_ID/formResponse" 
+                            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform?usp=sharing&ouid=101129669407959928683" 
                                   method="POST" 
                                   target="_blank">
                                 <div class="form-group">
@@ -2290,7 +2345,7 @@
                     <div class="form-container">
                         <!-- Google Forms Embed for Contact -->
                         <div style="width: 100%; margin: 20px 0;">
-                            <iframe src="https://docs.google.com/forms/d/e/YOUR_CONTACT_FORM_ID/viewform?embedded=true" 
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform?usp=sharing&ouid=101129669407959928683" 
                                     width="100%" 
                                     height="700" 
                                     frameborder="0" 
@@ -2303,7 +2358,7 @@
                         
                         <!-- Alternative: Show form link if embed doesn't work -->
                         <div style="text-align: center; margin-top: 20px;">
-                            <a href="https://docs.google.com/forms/d/e/YOUR_CONTACT_FORM_ID/viewform" 
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform?usp=sharing&ouid=101129669407959928683" 
                                target="_blank" 
                                class="cta-button">
                                 📝 فتح نموذج الاتصال في نافذة جديدة
