@@ -524,7 +524,7 @@
         .member-photo {
             width: 60px;
             height: 60px;
-            border-radius: 50%;
+            border-radius: 8px;
             object-fit: cover;
             border: 3px solid #20b2aa;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -538,7 +538,7 @@
         .member-photo-placeholder {
             width: 60px;
             height: 60px;
-            border-radius: 50%;
+            border-radius: 8px;
             background: linear-gradient(45deg, #90ee90, #20b2aa);
             display: flex;
             align-items: center;
@@ -1258,24 +1258,24 @@
                         <div class="content-grid">
                             <div class="content-card">
                                 <div class="card-image">
-                                    <img src="https://via.placeholder.com/400x200/90ee90/ffffff?text=مشروع+المياه" alt="مشروع المياه" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <img src="https://via.placeholder.com/400x200/2e8b57/ffffff?text=مشروع+المدرسة" alt="مشروع المدرسة" style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
                                 <div class="card-content">
-                                    <h3>توفير المياه الصالحة للشرب</h3>
-                                    <p>حفر الآبار وتطوير شبكة المياه لضمان وصول المياه النظيفة لجميع سكان المنطقة.</p>
-                                    <button class="expand-btn" onclick="toggleProject('water-project')">اضغط هنا للتفاصيل ↓</button>
-                                    <div id="water-project" class="project-expandable collapsed">
+                                    <h3>مشروع المدرسة</h3>
+                                    <p>تطوير وتحسين البنية التحتية التعليمية في المنطقة لضمان تعليم أفضل للأطفال.</p>
+                                    <button class="expand-btn" onclick="toggleProject('school-project')">اضغط هنا للتفاصيل ↓</button>
+                                    <div id="school-project" class="project-expandable collapsed">
                                         <div class="project-details">
                                             <h4>📊 تفاصيل المشروع:</h4>
-                                            <p><strong>💰 الميزانية:</strong> 150,000 درهم</p>
-                                            <p><strong>📅 الجدول الزمني:</strong> يناير 2024 - ديسمبر 2024</p>
-                                            <p><strong>🤝 الرعاة:</strong> المجلس الإقليمي تارودانت، مؤسسة محمد الخامس</p>
-                                            <p><strong>🎯 الهدف:</strong> توفير المياه الصالحة للشرب لـ 200 عائلة</p>
-                                            <p><strong>👥 المستفيدون:</strong> 1200 شخص من سكان تازولت</p>
+                                            <p><strong>💰 الميزانية:</strong> 200,000 درهم</p>
+                                            <p><strong>📅 الجدول الزمني:</strong> يناير 2024 - أغسطس 2024</p>
+                                            <p><strong>🤝 الرعاة:</strong> وزارة التربية الوطنية، المجلس الإقليمي</p>
+                                            <p><strong>🎯 الهدف:</strong> بناء فصول دراسية جديدة وتجهيز المدرسة</p>
+                                            <p><strong>👥 المستفيدون:</strong> 150 طالب من أطفال المنطقة</p>
                                             <div class="project-gallery">
-                                                <div class="gallery-image">صورة حفر البئر الأول</div>
-                                                <div class="gallery-image">شبكة التوزيع</div>
-                                                <div class="gallery-image">نظام التنقية</div>
+                                                <div class="gallery-image">بناء الفصول الجديدة</div>
+                                                <div class="gallery-image">تجهيز المدرسة</div>
+                                                <div class="gallery-image">الأطفال في الفصل</div>
                                             </div>
                                         </div>
                                     </div>
@@ -1284,24 +1284,50 @@
                             
                             <div class="content-card">
                                 <div class="card-image">
-                                    <img src="https://via.placeholder.com/400x200/20b2aa/ffffff?text=برنامج+التعليم" alt="برنامج التعليم" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <img src="https://via.placeholder.com/400x200/20b2aa/ffffff?text=مشروع+المياه" alt="مشروع المياه" style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
                                 <div class="card-content">
-                                    <h3>برنامج محو الأمية الرقمية</h3>
-                                    <p>تدريب الشباب والكبار على استخدام الحاسوب والإنترنت لتحسين فرصهم المهنية.</p>
-                                    <button class="expand-btn" onclick="toggleProject('education-project')">اضغط هنا للتفاصيل ↓</button>
-                                    <div id="education-project" class="project-expandable collapsed">
+                                    <h3>مشروع المياه</h3>
+                                    <p>توفير المياه الصالحة للشرب لجميع سكان المنطقة من خلال حفر الآبار وإنشاء شبكة توزيع.</p>
+                                    <button class="expand-btn" onclick="toggleProject('water-project-current')">اضغط هنا للتفاصيل ↓</button>
+                                    <div id="water-project-current" class="project-expandable collapsed">
                                         <div class="project-details">
                                             <h4>📊 تفاصيل المشروع:</h4>
-                                            <p><strong>💰 الميزانية:</strong> 75,000 درهم</p>
-                                            <p><strong>📅 الجدول الزمني:</strong> سبتمبر 2024 - يونيو 2025</p>
-                                            <p><strong>🤝 الرعاة:</strong> وزارة التربية الوطنية، جمعية الأعمال الخيرية</p>
-                                            <p><strong>🎯 الهدف:</strong> تدريب 100 شخص على المهارات الرقمية</p>
-                                            <p><strong>👥 المستفيدون:</strong> الشباب العاطل والنساء الماكثات بالبيت</p>
+                                            <p><strong>💰 الميزانية:</strong> 180,000 درهم</p>
+                                            <p><strong>📅 الجدول الزمني:</strong> مارس 2024 - ديسمبر 2024</p>
+                                            <p><strong>🤝 الرعاة:</strong> مؤسسة محمد الخامس، المندوبية السامية للمياه</p>
+                                            <p><strong>🎯 الهدف:</strong> حفر 3 آبار وإنشاء شبكة توزيع</p>
+                                            <p><strong>👥 المستفيدون:</strong> 1200 نسمة من سكان تازولت</p>
                                             <div class="project-gallery">
-                                                <div class="gallery-image">قاعة الحاسوب</div>
-                                                <div class="gallery-image">دورة تدريبية</div>
-                                                <div class="gallery-image">شهادات التخرج</div>
+                                                <div class="gallery-image">حفر البئر الأول</div>
+                                                <div class="gallery-image">شبكة التوزيع</div>
+                                                <div class="gallery-image">خزان المياه</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/90ee90/333333?text=مقر+الجمعية" alt="مقر الجمعية" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="card-content">
+                                    <h3>مقر الجمعية</h3>
+                                    <p>إنشاء مقر دائم للجمعية ليكون مركزاً لأنشطتها واجتماعاتها وخدماتها المجتمعية.</p>
+                                    <button class="expand-btn" onclick="toggleProject('location-project')">اضغط هنا للتفاصيل ↓</button>
+                                    <div id="location-project" class="project-expandable collapsed">
+                                        <div class="project-details">
+                                            <h4>📊 تفاصيل المشروع:</h4>
+                                            <p><strong>💰 الميزانية:</strong> 120,000 درهم</p>
+                                            <p><strong>📅 الجدول الزمني:</strong> يونيو 2024 - نوفمبر 2024</p>
+                                            <p><strong>🤝 الرعاة:</strong> التعاون الوطني، جمعيات مغربية شريكة</p>
+                                            <p><strong>🎯 الهدف:</strong> بناء مقر يضم مكاتب وقاعة اجتماعات</p>
+                                            <p><strong>👥 المستفيدون:</strong> أعضاء الجمعية والمجتمع المحلي</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">تصميم المقر</div>
+                                                <div class="gallery-image">أعمال البناء</div>
+                                                <div class="gallery-image">قاعة الاجتماعات</div>
                                             </div>
                                         </div>
                                     </div>
@@ -1310,31 +1336,31 @@
                         </div>
                     </div>
 
-                    <!-- Old/Completed Projects -->
+                    <!-- Previous/Completed Projects -->
                     <div class="projects-group">
                         <h3>✅ المشاريع المنجزة</h3>
                         <div class="content-grid">
                             <div class="content-card">
                                 <div class="card-image">
-                                    <img src="https://via.placeholder.com/400x200/2e8b57/ffffff?text=مشروع+الصحة" alt="مشروع الصحة" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <img src="https://via.placeholder.com/400x200/ff6b6b/ffffff?text=مشروع+الفن" alt="مشروع الفن" style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
                                 <div class="card-content">
-                                    <h3>حملة التطعيم الشاملة</h3>
-                                    <p>حملة طبية شاملة لتطعيم الأطفال ضد الأمراض المعدية وفحص صحي مجاني للبالغين.</p>
-                                    <button class="expand-btn" onclick="toggleProject('health-project')">اضغط هنا للتفاصيل ↓</button>
-                                    <div id="health-project" class="project-expandable collapsed">
+                                    <h3>مشروع الفن والثقافة</h3>
+                                    <p>ورشات فنية وثقافية للشباب والأطفال لتنمية مواهبهم الإبداعية والفنية.</p>
+                                    <button class="expand-btn" onclick="toggleProject('art-project')">اضغط هنا للتفاصيل ↓</button>
+                                    <div id="art-project" class="project-expandable collapsed">
                                         <div class="project-details">
                                             <h4>📊 تفاصيل المشروع:</h4>
-                                            <p><strong>💰 الميزانية:</strong> 45,000 درهم</p>
-                                            <p><strong>📅 الجدول الزمني:</strong> مارس 2023 - مايو 2023</p>
-                                            <p><strong>🤝 الرعاة:</strong> وزارة الصحة، منظمة اليونيسف</p>
-                                            <p><strong>🎯 الهدف:</strong> تطعيم 300 طفل وفحص 500 بالغ</p>
-                                            <p><strong>👥 المستفيدون:</strong> جميع سكان المنطقة</p>
-                                            <p><strong>✅ النتائج:</strong> تم تطعيم 325 طفل وفحص 520 بالغ</p>
+                                            <p><strong>💰 الميزانية:</strong> 35,000 درهم</p>
+                                            <p><strong>📅 الجدول الزمني:</strong> مايو 2023 - أغسطس 2023</p>
+                                            <p><strong>🤝 الرعاة:</strong> وزارة الثقافة، جمعية الأعمال الاجتماعية</p>
+                                            <p><strong>🎯 الهدف:</strong> تنظيم ورشات فنية وعرض للمواهب</p>
+                                            <p><strong>👥 المستفيدون:</strong> 60 شاب وطفل من المنطقة</p>
+                                            <p><strong>✅ النتائج:</strong> تم تدريب 65 مشارك وتنظيم معرض فني</p>
                                             <div class="project-gallery">
-                                                <div class="gallery-image">العيادة المتنقلة</div>
-                                                <div class="gallery-image">فريق التطعيم</div>
-                                                <div class="gallery-image">الفحوصات الطبية</div>
+                                                <div class="gallery-image">ورشة الرسم</div>
+                                                <div class="gallery-image">المعرض الفني</div>
+                                                <div class="gallery-image">الأطفال والفن</div>
                                             </div>
                                         </div>
                                     </div>
@@ -1343,25 +1369,106 @@
                             
                             <div class="content-card">
                                 <div class="card-image">
-                                    <img src="https://via.placeholder.com/400x200/228b22/ffffff?text=مشروع+البيئة" alt="مشروع البيئة" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <img src="https://via.placeholder.com/400x200/4ecdc4/ffffff?text=ملعب+كرة+القدم" alt="ملعب كرة القدم" style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
                                 <div class="card-content">
-                                    <h3>زراعة 1000 شجرة أركان</h3>
-                                    <p>مشروع بيئي لمحاربة التصحر وتحسين الغطاء النباتي في المنطقة.</p>
-                                    <button class="expand-btn" onclick="toggleProject('environment-project')">اضغط هنا للتفاصيل ↓</button>
-                                    <div id="environment-project" class="project-expandable collapsed">
+                                    <h3>ملعب كرة القدم</h3>
+                                    <p>إنشاء ملعب كرة قدم للشباب لممارسة الرياضة وتنظيم البطولات المحلية.</p>
+                                    <button class="expand-btn" onclick="toggleProject('football-field-project')">اضغط هنا للتفاصيل ↓</button>
+                                    <div id="football-field-project" class="project-expandable collapsed">
                                         <div class="project-details">
                                             <h4>📊 تفاصيل المشروع:</h4>
-                                            <p><strong>💰 الميزانية:</strong> 30,000 درهم</p>
-                                            <p><strong>📅 الجدول الزمني:</strong> أكتوبر 2022 - أبريل 2023</p>
-                                            <p><strong>🤝 الرعاة:</strong> المندوبية السامية للمياه والغابات، الوكالة الوطنية للتنمية</p>
-                                            <p><strong>🎯 الهدف:</strong> زراعة 1000 شجرة أركان وتحسين التربة</p>
-                                            <p><strong>👥 المستفيدون:</strong> الأجيال الحالية والمستقبلية</p>
-                                            <p><strong>✅ النتائج:</strong> تم زراعة 1100 شجرة بمعدل نجاح 85%</p>
+                                            <p><strong>💰 الميزانية:</strong> 85,000 درهم</p>
+                                            <p><strong>📅 الجدول الزمني:</strong> سبتمبر 2022 - يناير 2023</p>
+                                            <p><strong>🤝 الرعاة:</strong> وزارة الشباب والرياضة، المجلس الجماعي</p>
+                                            <p><strong>🎯 الهدف:</strong> بناء ملعب مجهز بالمرافق الأساسية</p>
+                                            <p><strong>👥 المستفيدون:</strong> شباب المنطقة والقرى المجاورة</p>
+                                            <p><strong>✅ النتائج:</strong> ملعب مكتمل يستقبل 200 متفرج</p>
                                             <div class="project-gallery">
-                                                <div class="gallery-image">عملية الزراعة</div>
+                                                <div class="gallery-image">بناء الملعب</div>
+                                                <div class="gallery-image">الملعب المكتمل</div>
+                                                <div class="gallery-image">أول مباراة</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/45b7d1/ffffff?text=بطولة+كرة+القدم" alt="بطولة كرة القدم" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="card-content">
+                                    <h3>بطولة كرة القدم</h3>
+                                    <p>تنظيم بطولة كرة قدم سنوية للشباب من مختلف القرى لتعزيز روح الرياضة والتنافس الشريف.</p>
+                                    <button class="expand-btn" onclick="toggleProject('football-tournament-project')">اضغط هنا للتفاصيل ↓</button>
+                                    <div id="football-tournament-project" class="project-expandable collapsed">
+                                        <div class="project-details">
+                                            <h4>📊 تفاصيل المشروع:</h4>
+                                            <p><strong>💰 الميزانية:</strong> 25,000 درهم</p>
+                                            <p><strong>📅 الجدول الزمني:</strong> يوليو 2023 - أغسطس 2023</p>
+                                            <p><strong>🤝 الرعاة:</strong> التجار المحليين، جمعيات رياضية</p>
+                                            <p><strong>🎯 الهدف:</strong> تنظيم بطولة بمشاركة 16 فريق</p>
+                                            <p><strong>👥 المستفيدون:</strong> 320 لاعب من المنطقة</p>
+                                            <p><strong>✅ النتائج:</strong> بطولة ناجحة بحضور 500+ مشجع</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">افتتاح البطولة</div>
+                                                <div class="gallery-image">المباراة النهائية</div>
+                                                <div class="gallery-image">توزيع الجوائز</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/96ceb4/333333?text=زراعة+النباتات" alt="زراعة النباتات" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="card-content">
+                                    <h3>زراعة النباتات</h3>
+                                    <p>حملة تشجير وزراعة النباتات في المنطقة لمحاربة التصحر وتحسين البيئة المحلية.</p>
+                                    <button class="expand-btn" onclick="toggleProject('planting-project')">اضغط هنا للتفاصيل ↓</button>
+                                    <div id="planting-project" class="project-expandable collapsed">
+                                        <div class="project-details">
+                                            <h4>📊 تفاصيل المشروع:</h4>
+                                            <p><strong>💰 الميزانية:</strong> 18,000 درهم</p>
+                                            <p><strong>📅 الجدول الزمني:</strong> نوفمبر 2022 - مارس 2023</p>
+                                            <p><strong>🤝 الرعاة:</strong> المندوبية السامية للمياه والغابات</p>
+                                            <p><strong>🎯 الهدف:</strong> زراعة 500 شجرة متنوعة</p>
+                                            <p><strong>👥 المستفيدون:</strong> جميع سكان المنطقة</p>
+                                            <p><strong>✅ النتائج:</strong> تم زراعة 550 شجرة بمعدل نجاح 88%</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">حملة الزراعة</div>
                                                 <div class="gallery-image">الأشجار المزروعة</div>
-                                                <div class="gallery-image">الري والعناية</div>
+                                                <div class="gallery-image">المتطوعون</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/feca57/333333?text=ألعاب+الأطفال" alt="ألعاب الأطفال" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="card-content">
+                                    <h3>ألعاب وأنشطة الأطفال</h3>
+                                    <p>تنظيم فعاليات وألعاب ترفيهية للأطفال لتعزيز روح المرح والتعلم من خلال اللعب.</p>
+                                    <button class="expand-btn" onclick="toggleProject('kids-games-project')">اضغط هنا للتفاصيل ↓</button>
+                                    <div id="kids-games-project" class="project-expandable collapsed">
+                                        <div class="project-details">
+                                            <h4>📊 تفاصيل المشروع:</h4>
+                                            <p><strong>💰 الميزانية:</strong> 15,000 درهم</p>
+                                            <p><strong>📅 الجدول الزمني:</strong> أبريل 2023 - يونيو 2023</p>
+                                            <p><strong>🤝 الرعاة:</strong> جمعيات خيرية، تجار محليون</p>
+                                            <p><strong>🎯 الهدف:</strong> تنظيم 12 فعالية ترفيهية</p>
+                                            <p><strong>👥 المستفيدون:</strong> 120 طفل من عائلات المنطقة</p>
+                                            <p><strong>✅ النتائج:</strong> 15 فعالية بمشاركة 135 طفل</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">يوم الألعاب</div>
+                                                <div class="gallery-image">الأطفال يلعبون</div>
+                                                <div class="gallery-image">توزيع الهدايا</div>
                                             </div>
                                         </div>
                                     </div>
@@ -1429,19 +1536,78 @@
                         <h3>🚀 Current Projects</h3>
                         <div class="content-grid">
                             <div class="content-card">
-                                <div class="card-image">💧</div>
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/2e8b57/ffffff?text=School+Project" alt="School Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
                                 <div class="card-content">
-                                    <h3>Clean Drinking Water Supply</h3>
-                                    <p>Well drilling and water network development to ensure clean water access.</p>
+                                    <h3>School Project</h3>
+                                    <p>Development and improvement of educational infrastructure in the region to ensure better education for children.</p>
+                                    <button class="expand-btn" onclick="toggleProject('school-project-en')">Click for details ↓</button>
+                                    <div id="school-project-en" class="project-expandable collapsed">
+                                        <div class="project-details">
+                                            <h4>📊 Project Details:</h4>
+                                            <p><strong>💰 Budget:</strong> 200,000 MAD</p>
+                                            <p><strong>📅 Timeline:</strong> January 2024 - August 2024</p>
+                                            <p><strong>🤝 Sponsors:</strong> Ministry of Education, Regional Council</p>
+                                            <p><strong>🎯 Goal:</strong> Building new classrooms and equipping the school</p>
+                                            <p><strong>👥 Beneficiaries:</strong> 150 students from the region</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">Building new classrooms</div>
+                                                <div class="gallery-image">School equipment</div>
+                                                <div class="gallery-image">Children in classroom</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/20b2aa/ffffff?text=Water+Project" alt="Water Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Water Project</h3>
+                                    <p>Providing clean drinking water to all residents through well drilling and creating a distribution network.</p>
                                     <button class="expand-btn" onclick="toggleProject('water-project-en')">Click for details ↓</button>
                                     <div id="water-project-en" class="project-expandable collapsed">
                                         <div class="project-details">
                                             <h4>📊 Project Details:</h4>
-                                            <p><strong>💰 Budget:</strong> 150,000 MAD</p>
-                                            <p><strong>📅 Timeline:</strong> January 2024 - December 2024</p>
-                                            <p><strong>🤝 Sponsors:</strong> Taroudannt Regional Council, Mohammed V Foundation</p>
-                                            <p><strong>🎯 Goal:</strong> Provide clean water to 200 families</p>
-                                            <p><strong>👥 Beneficiaries:</strong> 1200 people from Tazoult</p>
+                                            <p><strong>💰 Budget:</strong> 180,000 MAD</p>
+                                            <p><strong>📅 Timeline:</strong> March 2024 - December 2024</p>
+                                            <p><strong>🤝 Sponsors:</strong> Mohammed V Foundation, High Commission for Water</p>
+                                            <p><strong>🎯 Goal:</strong> Drilling 3 wells and creating distribution network</p>
+                                            <p><strong>👥 Beneficiaries:</strong> 1200 inhabitants of Tazoult</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">Drilling first well</div>
+                                                <div class="gallery-image">Distribution network</div>
+                                                <div class="gallery-image">Water reservoir</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/90ee90/333333?text=Association+Location" alt="Association Location" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Association Headquarters</h3>
+                                    <p>Creating a permanent headquarters for the association as a center for its activities, meetings and community services.</p>
+                                    <button class="expand-btn" onclick="toggleProject('location-project-en')">Click for details ↓</button>
+                                    <div id="location-project-en" class="project-expandable collapsed">
+                                        <div class="project-details">
+                                            <h4>📊 Project Details:</h4>
+                                            <p><strong>💰 Budget:</strong> 120,000 MAD</p>
+                                            <p><strong>📅 Timeline:</strong> June 2024 - November 2024</p>
+                                            <p><strong>🤝 Sponsors:</strong> National Cooperation, Partner Associations</p>
+                                            <p><strong>🎯 Goal:</strong> Building headquarters with offices and meeting room</p>
+                                            <p><strong>👥 Beneficiaries:</strong> Association members and local community</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">Headquarters design</div>
+                                                <div class="gallery-image">Construction work</div>
+                                                <div class="gallery-image">Meeting room</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1449,22 +1615,140 @@
                         </div>
                     </div>
 
-                    <!-- Completed Projects -->
+                    <!-- Previous/Completed Projects -->
                     <div class="projects-group">
                         <h3>✅ Completed Projects</h3>
                         <div class="content-grid">
                             <div class="content-card">
-                                <div class="card-image">🏥</div>
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/ff6b6b/ffffff?text=Art+Project" alt="Art Project" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
                                 <div class="card-content">
-                                    <h3>Vaccination Campaign</h3>
-                                    <p>Comprehensive medical campaign for children vaccination and free health checkups.</p>
-                                    <button class="expand-btn" onclick="toggleProject('health-project-en')">Click for details ↓</button>
-                                    <div id="health-project-en" class="project-expandable collapsed">
+                                    <h3>Art and Culture Project</h3>
+                                    <p>Artistic and cultural workshops for youth and children to develop their creative and artistic talents.</p>
+                                    <button class="expand-btn" onclick="toggleProject('art-project-en')">Click for details ↓</button>
+                                    <div id="art-project-en" class="project-expandable collapsed">
                                         <div class="project-details">
                                             <h4>📊 Project Details:</h4>
-                                            <p><strong>💰 Budget:</strong> 45,000 MAD</p>
-                                            <p><strong>📅 Timeline:</strong> March 2023 - May 2023</p>
-                                            <p><strong>✅ Results:</strong> 325 children vaccinated, 520 adults examined</p>
+                                            <p><strong>💰 Budget:</strong> 35,000 MAD</p>
+                                            <p><strong>📅 Timeline:</strong> May 2023 - August 2023</p>
+                                            <p><strong>🤝 Sponsors:</strong> Ministry of Culture, Social Works Association</p>
+                                            <p><strong>🎯 Goal:</strong> Organizing artistic workshops and talent exhibition</p>
+                                            <p><strong>👥 Beneficiaries:</strong> 60 youth and children from the region</p>
+                                            <p><strong>✅ Results:</strong> 65 participants trained and art exhibition organized</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">Painting workshop</div>
+                                                <div class="gallery-image">Art exhibition</div>
+                                                <div class="gallery-image">Children and art</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/4ecdc4/ffffff?text=Football+Field" alt="Football Field" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Football Field</h3>
+                                    <p>Construction of a football field for youth to practice sports and organize local tournaments.</p>
+                                    <button class="expand-btn" onclick="toggleProject('football-field-project-en')">Click for details ↓</button>
+                                    <div id="football-field-project-en" class="project-expandable collapsed">
+                                        <div class="project-details">
+                                            <h4>📊 Project Details:</h4>
+                                            <p><strong>💰 Budget:</strong> 85,000 MAD</p>
+                                            <p><strong>📅 Timeline:</strong> September 2022 - January 2023</p>
+                                            <p><strong>🤝 Sponsors:</strong> Ministry of Youth and Sports, Municipal Council</p>
+                                            <p><strong>🎯 Goal:</strong> Building a field equipped with basic facilities</p>
+                                            <p><strong>👥 Beneficiaries:</strong> Youth from the region and neighboring villages</p>
+                                            <p><strong>✅ Results:</strong> Complete field accommodating 200 spectators</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">Field construction</div>
+                                                <div class="gallery-image">Completed field</div>
+                                                <div class="gallery-image">First match</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/45b7d1/ffffff?text=Football+Tournament" alt="Football Tournament" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Football Tournament</h3>
+                                    <p>Organization of an annual football tournament for youth from different villages to promote sportsmanship.</p>
+                                    <button class="expand-btn" onclick="toggleProject('football-tournament-project-en')">Click for details ↓</button>
+                                    <div id="football-tournament-project-en" class="project-expandable collapsed">
+                                        <div class="project-details">
+                                            <h4>📊 Project Details:</h4>
+                                            <p><strong>💰 Budget:</strong> 25,000 MAD</p>
+                                            <p><strong>📅 Timeline:</strong> July 2023 - August 2023</p>
+                                            <p><strong>🤝 Sponsors:</strong> Local merchants, Sports associations</p>
+                                            <p><strong>🎯 Goal:</strong> Organizing tournament with 16 teams</p>
+                                            <p><strong>👥 Beneficiaries:</strong> 320 players from the region</p>
+                                            <p><strong>✅ Results:</strong> Successful tournament with 500+ supporters</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">Tournament opening</div>
+                                                <div class="gallery-image">Final match</div>
+                                                <div class="gallery-image">Prize distribution</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/96ceb4/333333?text=Planting+Plants" alt="Planting Plants" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Planting Plants</h3>
+                                    <p>Reforestation and planting campaign in the region to combat desertification and improve the local environment.</p>
+                                    <button class="expand-btn" onclick="toggleProject('planting-project-en')">Click for details ↓</button>
+                                    <div id="planting-project-en" class="project-expandable collapsed">
+                                        <div class="project-details">
+                                            <h4>📊 Project Details:</h4>
+                                            <p><strong>💰 Budget:</strong> 18,000 MAD</p>
+                                            <p><strong>📅 Timeline:</strong> November 2022 - March 2023</p>
+                                            <p><strong>🤝 Sponsors:</strong> High Commission for Water and Forests</p>
+                                            <p><strong>🎯 Goal:</strong> Planting 500 various trees</p>
+                                            <p><strong>👥 Beneficiaries:</strong> All inhabitants of the region</p>
+                                            <p><strong>✅ Results:</strong> 550 trees planted with 88% success rate</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">Planting campaign</div>
+                                                <div class="gallery-image">Planted trees</div>
+                                                <div class="gallery-image">Volunteers</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <img src="https://via.placeholder.com/400x200/feca57/333333?text=Kids+Games" alt="Kids Games" style="width: 100%; height: 100%; object-fit: cover;">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Kids Games and Engagement</h3>
+                                    <p>Organizing recreational events and games for children to promote fun and learning through play.</p>
+                                    <button class="expand-btn" onclick="toggleProject('kids-games-project-en')">Click for details ↓</button>
+                                    <div id="kids-games-project-en" class="project-expandable collapsed">
+                                        <div class="project-details">
+                                            <h4>📊 Project Details:</h4>
+                                            <p><strong>💰 Budget:</strong> 15,000 MAD</p>
+                                            <p><strong>📅 Timeline:</strong> April 2023 - June 2023</p>
+                                            <p><strong>🤝 Sponsors:</strong> Charitable associations, Local merchants</p>
+                                            <p><strong>🎯 Goal:</strong> Organizing 12 recreational events</p>
+                                            <p><strong>👥 Beneficiaries:</strong> 120 children from regional families</p>
+                                            <p><strong>✅ Results:</strong> 15 events with 135 children participating</p>
+                                            <div class="project-gallery">
+                                                <div class="gallery-image">Games day</div>
+                                                <div class="gallery-image">Children playing</div>
+                                                <div class="gallery-image">Gift distribution</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1494,70 +1778,66 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <!-- Replace the src URL with actual member photo when available -->
-                                        <!-- Example: <img src="photos/mohamed-ahmed.jpg" alt="محمد أحمد" class="member-photo"> -->
-                                        <img src="https://via.placeholder.com/60x60/2e8b57/ffffff?text=م.أ" alt="محمد أحمد" class="member-photo">
-                                        <!-- Alternative: Use placeholder div if no photo -->
-                                        <!-- <div class="member-photo-placeholder">م.أ</div> -->
+                                        <img src="https://via.placeholder.com/60x60/2e8b57/ffffff?text=ي.ف" alt="يوسف فرغاب" class="member-photo">
                                     </td>
-                                    <td><strong>محمد أحمد المودني</strong></td>
+                                    <td><strong>يوسف فرغاب</strong></td>
                                     <td><strong>الرئيس</strong></td>
-                                    <td><a href="tel:+212600000001">+212 600 000 001</a></td>
-                                    <td><a href="mailto:president@tazoult.org">president@tazoult.org</a></td>
+                                    <td><a href="tel:+212656669162">+212 656-669162</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/20b2aa/ffffff?text=ن.د" alt="نور الدين" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/20b2aa/ffffff?text=إ.ب" alt="إسماعيل باكاس" class="member-photo">
                                     </td>
-                                    <td><strong>نور الدين الحسني</strong></td>
+                                    <td><strong>إسماعيل باكاس</strong></td>
                                     <td><strong>نائب الرئيس</strong></td>
-                                    <td><a href="tel:+212600000002">+212 600 000 002</a></td>
-                                    <td><a href="mailto:vicepresident@tazoult.org">vicepresident@tazoult.org</a></td>
+                                    <td><a href="tel:+212633284840">+212 633-284840</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/90ee90/333333?text=أ.س" alt="أمينة سعيد" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/90ee90/333333?text=س.ح" alt="سعيد حمداني" class="member-photo">
                                     </td>
-                                    <td><strong>أمينة سعيد البركاوي</strong></td>
+                                    <td><strong>سعيد حمداني</strong></td>
                                     <td><strong>الأمين العام</strong></td>
-                                    <td><a href="tel:+212600000003">+212 600 000 003</a></td>
-                                    <td><a href="mailto:secretary@tazoult.org">secretary@tazoult.org</a></td>
+                                    <td><a href="tel:+212687260271">+212 687-260271</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/228b22/ffffff?text=ع.م" alt="عبد المالك" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/228b22/ffffff?text=ع.ح" alt="عمر حمداني" class="member-photo">
                                     </td>
-                                    <td><strong>عبد المالك الزموري</strong></td>
+                                    <td><strong>عمر حمداني</strong></td>
                                     <td><strong>أمين المال</strong></td>
-                                    <td><a href="tel:+212600000004">+212 600 000 004</a></td>
-                                    <td><a href="mailto:treasurer@tazoult.org">treasurer@tazoult.org</a></td>
+                                    <td><a href="tel:+212661760721">+212 661-760721</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/32cd32/333333?text=ف.ز" alt="فاطمة الزهراء" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/32cd32/333333?text=ع.ج" alt="عبد الله جوميط" class="member-photo">
                                     </td>
-                                    <td><strong>فاطمة الزهراء أيت علي</strong></td>
+                                    <td><strong>عبد الله جوميط</strong></td>
                                     <td><strong>عضو</strong></td>
-                                    <td><a href="tel:+212600000005">+212 600 000 005</a></td>
-                                    <td><a href="mailto:fatima@tazoult.org">fatima@tazoult.org</a></td>
+                                    <td><a href="tel:+212662594196">+212 662-594196</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/008b8b/ffffff?text=ي.ح" alt="يوسف حسن" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/008b8b/ffffff?text=ح.أ" alt="حسين أنميكور" class="member-photo">
                                     </td>
-                                    <td><strong>يوسف حسن التازولتي</strong></td>
+                                    <td><strong>حسين أنميكور</strong></td>
                                     <td><strong>عضو</strong></td>
-                                    <td><a href="tel:+212600000006">+212 600 000 006</a></td>
-                                    <td><a href="mailto:youssef@tazoult.org">youssef@tazoult.org</a></td>
+                                    <td><a href="tel:+212658174730">+212 658-174730</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/3cb371/ffffff?text=ر.ع" alt="رشيد العلوي" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/3cb371/ffffff?text=س.م" alt="سعيد إد موسى" class="member-photo">
                                     </td>
-                                    <td><strong>رشيد العلوي السوسي</strong></td>
+                                    <td><strong>سعيد إد موسى</strong></td>
                                     <td><strong>عضو</strong></td>
-                                    <td><a href="tel:+212600000007">+212 600 000 007</a></td>
-                                    <td><a href="mailto:rachid@tazoult.org">rachid@tazoult.org</a></td>
+                                    <td><a href="tel:+212697516903">+212 697-516903</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1579,66 +1859,66 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/2e8b57/ffffff?text=M.A" alt="Mohamed Ahmed" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/2e8b57/ffffff?text=Y.F" alt="Youssef Farghab" class="member-photo">
                                     </td>
-                                    <td><strong>Mohamed Ahmed Almodani</strong></td>
+                                    <td><strong>Youssef Farghab</strong></td>
                                     <td><strong>Président</strong></td>
-                                    <td><a href="tel:+212600000001">+212 600 000 001</a></td>
-                                    <td><a href="mailto:president@tazoult.org">president@tazoult.org</a></td>
+                                    <td><a href="tel:+212656669162">+212 656-669162</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/20b2aa/ffffff?text=N.E" alt="Nour Eddine" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/20b2aa/ffffff?text=I.B" alt="Ismail Bakass" class="member-photo">
                                     </td>
-                                    <td><strong>Nour Eddine Elhassani</strong></td>
+                                    <td><strong>Ismail Bakass</strong></td>
                                     <td><strong>Vice-Président</strong></td>
-                                    <td><a href="tel:+212600000002">+212 600 000 002</a></td>
-                                    <td><a href="mailto:vicepresident@tazoult.org">vicepresident@tazoult.org</a></td>
+                                    <td><a href="tel:+212633284840">+212 633-284840</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/90ee90/333333?text=A.S" alt="Amina Said" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/90ee90/333333?text=S.H" alt="Said Hamdani" class="member-photo">
                                     </td>
-                                    <td><strong>Amina Said Berkaoui</strong></td>
-                                    <td><strong>Secrétaire Général</strong></td>
-                                    <td><a href="tel:+212600000003">+212 600 000 003</a></td>
-                                    <td><a href="mailto:secretary@tazoult.org">secretary@tazoult.org</a></td>
+                                    <td><strong>Said Hamdani</strong></td>
+                                    <td><strong>Secrétaire</strong></td>
+                                    <td><a href="tel:+212687260271">+212 687-260271</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/228b22/ffffff?text=A.M" alt="Abdel Malek" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/228b22/ffffff?text=O.H" alt="Omar Hamdani" class="member-photo">
                                     </td>
-                                    <td><strong>Abdel Malek Zemouri</strong></td>
+                                    <td><strong>Omar Hamdani</strong></td>
                                     <td><strong>Trésorier</strong></td>
-                                    <td><a href="tel:+212600000004">+212 600 000 004</a></td>
-                                    <td><a href="mailto:treasurer@tazoult.org">treasurer@tazoult.org</a></td>
+                                    <td><a href="tel:+212661760721">+212 661-760721</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/32cd32/333333?text=F.Z" alt="Fatima Zahra" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/32cd32/333333?text=A.J" alt="Abdellah Joumit" class="member-photo">
                                     </td>
-                                    <td><strong>Fatima Zahra Ait Ali</strong></td>
+                                    <td><strong>Abdellah Joumit</strong></td>
                                     <td><strong>Membre</strong></td>
-                                    <td><a href="tel:+212600000005">+212 600 000 005</a></td>
-                                    <td><a href="mailto:fatima@tazoult.org">fatima@tazoult.org</a></td>
+                                    <td><a href="tel:+212662594196">+212 662-594196</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/008b8b/ffffff?text=Y.H" alt="Youssef Hassan" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/008b8b/ffffff?text=H.A" alt="Houssain Anmiguer" class="member-photo">
                                     </td>
-                                    <td><strong>Youssef Hassan Tazoulti</strong></td>
+                                    <td><strong>Houssain Anmiguer</strong></td>
                                     <td><strong>Membre</strong></td>
-                                    <td><a href="tel:+212600000006">+212 600 000 006</a></td>
-                                    <td><a href="mailto:youssef@tazoult.org">youssef@tazoult.org</a></td>
+                                    <td><a href="tel:+212658174730">+212 658-174730</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/3cb371/ffffff?text=R.A" alt="Rachid Alaoui" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/3cb371/ffffff?text=S.M" alt="Said Id Moussa" class="member-photo">
                                     </td>
-                                    <td><strong>Rachid Alaoui Soussi</strong></td>
+                                    <td><strong>Said Id Moussa</strong></td>
                                     <td><strong>Membre</strong></td>
-                                    <td><a href="tel:+212600000007">+212 600 000 007</a></td>
-                                    <td><a href="mailto:rachid@tazoult.org">rachid@tazoult.org</a></td>
+                                    <td><a href="tel:+212697516903">+212 697-516903</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1660,66 +1940,66 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/2e8b57/ffffff?text=M.A" alt="Mohamed Ahmed" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/2e8b57/ffffff?text=Y.F" alt="Youssef Farghab" class="member-photo">
                                     </td>
-                                    <td><strong>Mohamed Ahmed Almodani</strong></td>
-                                    <td><strong>President</strong></td>
-                                    <td><a href="tel:+212600000001">+212 600 000 001</a></td>
-                                    <td><a href="mailto:president@tazoult.org">president@tazoult.org</a></td>
+                                    <td><strong>Youssef Farghab</strong></td>
+                                    <td><strong>Chairman</strong></td>
+                                    <td><a href="tel:+212656669162">+212 656-669162</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/20b2aa/ffffff?text=N.E" alt="Nour Eddine" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/20b2aa/ffffff?text=I.B" alt="Ismail Bakass" class="member-photo">
                                     </td>
-                                    <td><strong>Nour Eddine Elhassani</strong></td>
+                                    <td><strong>Ismail Bakass</strong></td>
                                     <td><strong>Vice President</strong></td>
-                                    <td><a href="tel:+212600000002">+212 600 000 002</a></td>
-                                    <td><a href="mailto:vicepresident@tazoult.org">vicepresident@tazoult.org</a></td>
+                                    <td><a href="tel:+212633284840">+212 633-284840</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/90ee90/333333?text=A.S" alt="Amina Said" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/90ee90/333333?text=S.H" alt="Said Hamdani" class="member-photo">
                                     </td>
-                                    <td><strong>Amina Said Berkaoui</strong></td>
-                                    <td><strong>Secretary General</strong></td>
-                                    <td><a href="tel:+212600000003">+212 600 000 003</a></td>
-                                    <td><a href="mailto:secretary@tazoult.org">secretary@tazoult.org</a></td>
+                                    <td><strong>Said Hamdani</strong></td>
+                                    <td><strong>Secretary</strong></td>
+                                    <td><a href="tel:+212687260271">+212 687-260271</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/228b22/ffffff?text=A.M" alt="Abdel Malek" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/228b22/ffffff?text=O.H" alt="Omar Hamdani" class="member-photo">
                                     </td>
-                                    <td><strong>Abdel Malek Zemouri</strong></td>
+                                    <td><strong>Omar Hamdani</strong></td>
                                     <td><strong>Treasurer</strong></td>
-                                    <td><a href="tel:+212600000004">+212 600 000 004</a></td>
-                                    <td><a href="mailto:treasurer@tazoult.org">treasurer@tazoult.org</a></td>
+                                    <td><a href="tel:+212661760721">+212 661-760721</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/32cd32/333333?text=F.Z" alt="Fatima Zahra" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/32cd32/333333?text=A.J" alt="Abdellah Joumit" class="member-photo">
                                     </td>
-                                    <td><strong>Fatima Zahra Ait Ali</strong></td>
-                                    <td><strong>Board Member</strong></td>
-                                    <td><a href="tel:+212600000005">+212 600 000 005</a></td>
-                                    <td><a href="mailto:fatima@tazoult.org">fatima@tazoult.org</a></td>
+                                    <td><strong>Abdellah Joumit</strong></td>
+                                    <td><strong>Member</strong></td>
+                                    <td><a href="tel:+212662594196">+212 662-594196</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/008b8b/ffffff?text=Y.H" alt="Youssef Hassan" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/008b8b/ffffff?text=H.A" alt="Houssain Anmiguer" class="member-photo">
                                     </td>
-                                    <td><strong>Youssef Hassan Tazoulti</strong></td>
-                                    <td><strong>Board Member</strong></td>
-                                    <td><a href="tel:+212600000006">+212 600 000 006</a></td>
-                                    <td><a href="mailto:youssef@tazoult.org">youssef@tazoult.org</a></td>
+                                    <td><strong>Houssain Anmiguer</strong></td>
+                                    <td><strong>Member</strong></td>
+                                    <td><a href="tel:+212658174730">+212 658-174730</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="https://via.placeholder.com/60x60/3cb371/ffffff?text=R.A" alt="Rachid Alaoui" class="member-photo">
+                                        <img src="https://via.placeholder.com/60x60/3cb371/ffffff?text=S.M" alt="Said Id Moussa" class="member-photo">
                                     </td>
-                                    <td><strong>Rachid Alaoui Soussi</strong></td>
-                                    <td><strong>Board Member</strong></td>
-                                    <td><a href="tel:+212600000007">+212 600 000 007</a></td>
-                                    <td><a href="mailto:rachid@tazoult.org">rachid@tazoult.org</a></td>
+                                    <td><strong>Said Id Moussa</strong></td>
+                                    <td><strong>Member</strong></td>
+                                    <td><a href="tel:+212697516903">+212 697-516903</a></td>
+                                    <td><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></td>
                                 </tr>
                             </tbody>
                         </table>
