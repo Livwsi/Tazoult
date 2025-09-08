@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>جمعية تازولت للتنمية والتعاون والبيئة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -780,7 +781,6 @@
 
     <script>
         // Language switcher functionality
-        // This function was added to make the AR/FR/EN buttons work.
         function switchLanguage(lang) {
             const langContents = document.querySelectorAll('.lang-content');
             langContents.forEach(content => {
@@ -804,7 +804,6 @@
         }
 
         // Projects "Details" buttons functionality
-        // This function was added to make the "Details" buttons work.
         function toggleProject(projectId) {
             const project = document.getElementById(projectId);
             if (project) {
@@ -821,7 +820,6 @@
         }
 
         // Image Carousel functionality
-        // This script was added to make the sliding images work.
         let slideIndex = 1;
         showSlides(slideIndex);
 
@@ -879,6 +877,11 @@
         let heroSlideIndex = 0;
         showHeroSlide(heroSlideIndex);
 
+        function nextHeroSlide() {
+            heroSlideIndex++;
+            showHeroSlide(heroSlideIndex);
+        }
+
         function showHeroSlide(n) {
             let i;
             let slides = document.querySelectorAll('.hero .hero-content > div');
@@ -891,11 +894,6 @@
             setTimeout(nextHeroSlide, 5000); // Change image every 5 seconds
         }
 
-        function nextHeroSlide() {
-            heroSlideIndex++;
-            showHeroSlide(heroSlideIndex);
-        }
-        
         // Mobile touch gestures for hero section
         touchStartX = 0;
         touchEndX = 0;
