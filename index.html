@@ -4,19 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>جمعية تازولت للتنمية والتعاون والبيئة</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="description" content="Tazoult Association for Development, Cooperation and Environment is a Moroccan non-profit organization focused on sustainable development.">
+    
+    <meta property="og:title" content="Tazoult Association">
+    <meta property="og:description" content="We work for sustainable development and improving living conditions in the Tazoult region.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Logo-removebg-preview.png">
+    <meta property="og:url" content="https://tazoult.com">
+    <meta name="twitter:card" content="summary_large_image">
+
     <style>
+        :root {
+            --primary-color: #2e8b57;
+            --secondary-color: #20b2aa;
+            --accent-color: #90ee90;
+            --background-light: #e8f5e8;
+            --background-dark: #f0f8ff;
+            --text-color: #333;
+            --shadow-light: rgba(0,0,0,0.1);
+            --shadow-medium: rgba(0,0,0,0.15);
+            --shadow-strong: rgba(0,0,0,0.2);
+            --border-radius-base: 10px;
+            --transition-duration: 0.3s;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--background-light) 0%, var(--background-dark) 100%);
         }
 
         .container {
@@ -27,8 +52,8 @@
 
         /* Header & Navigation */
         header {
-            background: linear-gradient(135deg, #2e8b57 0%, #20b2aa 100%);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            box-shadow: 0 2px 10px var(--shadow-light);
             position: fixed;
             width: 100%;
             top: 0;
@@ -40,72 +65,140 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+            flex-wrap: wrap;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-            text-decoration: none;
             display: flex;
             align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
         }
 
-        .logo img {
-            height: 40px;
-            margin-left: 10px;
+        .logo-image {
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
+            background: white;
+            padding: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--transition-duration);
+        }
+
+        .logo-image:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         .nav-menu {
-            list-style: none;
             display: flex;
-        }
-
-        .nav-menu li {
-            margin-right: 20px;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .nav-menu a {
-            color: #fff;
+            color: white;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            transition: color var(--transition-duration);
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            border-radius: 5px;
         }
-
+        
         .nav-menu a:hover {
-            color: #f0f8ff;
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .language-switcher {
             display: flex;
-            align-items: center;
+            gap: 5px;
         }
 
         .lang-btn {
-            background: transparent;
+            background: rgba(255,255,255,0.2);
+            color: white;
             border: none;
-            color: #fff;
-            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 3px;
             cursor: pointer;
-            padding: 5px 10px;
-            margin-left: 5px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background var(--transition-duration);
+            font-size: 0.8rem;
         }
 
-        .lang-btn.active {
-            background-color: #f0f8ff;
-            color: #2e8b57;
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(255,255,255,0.4);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .section {
+            padding: 3rem 0;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 1rem auto;
         }
 
         /* Hero Section */
         .hero {
-            background: url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
-            color: #fff;
-            text-align: center;
-            padding: 150px 0;
             position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: -1;
+        }
+
+        .hero-background-image.active {
+            opacity: 1;
         }
 
         .hero::before {
@@ -115,166 +208,277 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(46,139,87,0.7);
+            background: linear-gradient(135deg, rgba(46,139,87,0.8), rgba(32,178,170,0.8));
+            z-index: -1;
         }
 
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero .logo-circle {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
 
-        .btn {
-            background-color: #20b2aa;
-            color: #fff;
+        .hero .logo-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+            color: white;
             padding: 12px 25px;
-            border-radius: 5px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
             text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            display: inline-block;
         }
 
-        .btn:hover {
-            background-color: #178e87;
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow-medium);
         }
 
-        /* Sections */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #2e8b57;
-        }
-
-        .section h3 {
-            font-size: 2rem;
-            color: #20b2aa;
-            margin-bottom: 15px;
-        }
-
-        .about-grid {
+        /* Content Grids */
+        .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 2rem;
         }
 
-        .about-item {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .about-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .about-item img {
-            max-width: 100px;
-            margin-bottom: 20px;
-        }
-
-        .about-item h3 {
-            color: #2e8b57;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: #fff;
-            border-radius: 10px;
+        .content-card {
+            background: white;
+            border-radius: var(--border-radius-base);
+            box-shadow: 0 5px 15px var(--shadow-light);
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
+            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+            cursor: pointer;
         }
 
-        .project-card:hover {
-            transform: scale(1.02);
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow-medium);
         }
 
-        .project-card img {
+        .card-image {
+            height: 180px;
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
             width: 100%;
-            height: 250px;
+            height: 100%;
             object-fit: cover;
         }
 
-        .project-content {
-            padding: 25px;
+        .card-content {
+            padding: 1.5rem;
         }
 
-        .project-content h3 {
-            font-size: 1.5rem;
-            color: #2e8b57;
+        .card-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .card-content p {
+            font-size: 0.9rem;
         }
 
-        .project-content p {
-            margin-top: 10px;
-            color: #666;
+        /* Expandable Project Cards */
+        .project-expandable {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            padding: 0 1.5rem;
+            background: #f8f9fa;
+        }
+        
+        .project-expandable.expanded {
+            max-height: 1000px;
+            padding: 1.5rem;
         }
 
         .project-details {
-            display: none;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-top: 1px solid #eee;
-            margin-top: 15px;
-            transition: all 0.5s ease-in-out;
+            border-top: 2px solid var(--secondary-color);
+            padding-top: 1.5rem;
         }
 
-        .project-details.expanded {
-            display: block;
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .gallery-image {
+            height: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-image img:hover {
+            transform: scale(1.05);
         }
 
         .expand-btn {
-            background-color: #20b2aa;
-            color: #fff;
+            background: var(--secondary-color);
+            color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 8px 16px;
+            border-radius: 20px;
             cursor: pointer;
-            margin-top: 15px;
-            transition: background-color 0.3s ease;
+            transition: background var(--transition-duration);
+            font-size: 0.9rem;
+            margin-top: 1rem;
         }
 
         .expand-btn:hover {
-            background-color: #178e87;
+            background: #1a9999;
         }
 
-        /* Carousel Styles */
+        /* Projects Section Styling */
+        .projects-group {
+            margin-bottom: 3rem;
+        }
+
+        .projects-group h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .projects-group h3::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--secondary-color);
+            margin: 0.5rem auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius-base);
+            box-shadow: 0 5px 15px var(--shadow-light);
+        }
+        
+        .about-text h3 {
+            color: var(--primary-color);
+        }
+
+        .about-text ul {
+            margin: 1rem 0;
+            padding-right: 2rem;
+        }
+
+        .about-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Image Carousel */
+        .image-carousel {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            border-radius: var(--border-radius-base);
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-light);
+        }
+
         .carousel-container {
             position: relative;
-            max-width: 800px;
-            margin: auto;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            height: 100%;
         }
 
         .carousel-slide {
             display: none;
-            animation: fade 0.8s;
-            height: 450px;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carousel-slide.active {
+            display: flex;
+            transform: translateX(0);
+        }
+        
+        .carousel-slide.prev {
+            transform: translateX(-100%);
+        }
+        
+        .carousel-slide.next {
+            transform: translateX(100%);
+        }
+        
+        .carousel-slide-content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 1rem;
+            text-align: center;
         }
 
         .carousel-slide img {
@@ -283,140 +487,436 @@
             object-fit: cover;
         }
 
-        @keyframes fade {
-            from {
-                opacity: 0.4;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .prev, .next {
-            cursor: pointer;
+        .carousel-navigation {
             position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .carousel-dots {
-            text-align: center;
-            padding: 10px;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 5;
         }
 
         .carousel-dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background var(--transition-duration);
         }
 
-        .active, .carousel-dot:hover {
-            background-color: #717171;
+        .carousel-dot.active {
+            background: white;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 3px;
+            transition: background var(--transition-duration);
+            z-index: 5;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(0,0,0,0.7);
+        }
+
+        .carousel-arrow.prev {
+            left: 10px;
+        }
+
+        .carousel-arrow.next {
+            right: 10px;
         }
         
-        /* Contact Form */
-        .contact-form {
+        /* Location Section */
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .location-info {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius-base);
+            box-shadow: 0 5px 15px var(--shadow-light);
+        }
+
+        .location-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .location-detail {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        html[dir="rtl"] .location-detail {
+            border-left: none;
+            border-right: 4px solid var(--secondary-color);
+        }
+
+        .location-detail strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .map-container {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--border-radius-base);
+            box-shadow: 0 5px 15px var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 5px;
+        }
+
+        /* Board Members - Enhanced Table with Pictures */
+        .board-table-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            overflow-x: auto;
+        }
+
+        .board-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            table-layout: fixed;
+        }
+
+        .board-table th {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 15px;
+            text-align: right;
+            font-weight: bold;
+            border: none;
+        }
+        
+        html[dir="rtl"] .board-table th {
+            text-align: right;
+        }
+
+        html[dir="ltr"] .board-table th {
+            text-align: left;
+        }
+        
+        .board-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            text-align: right;
+            vertical-align: middle;
+        }
+        
+        html[dir="rtl"] .board-table td {
+            text-align: right;
+        }
+
+        html[dir="ltr"] .board-table td {
+            text-align: left;
+        }
+
+        .board-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .board-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .board-table a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color var(--transition-duration);
+        }
+
+        .board-table a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .member-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 3px solid var(--secondary-color);
+            box-shadow: 0 2px 8px var(--shadow-light);
+            transition: transform var(--transition-duration);
+        }
+
+        .member-photo:hover {
+            transform: scale(1.1);
+        }
+
+        .member-photo-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 3px solid var(--secondary-color);
+            box-shadow: 0 2px 8px var(--shadow-light);
+        }
+
+        .name-with-photo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        html[dir="rtl"] .name-with-photo {
+            flex-direction: row-reverse;
+        }
+
+        .member-name-text {
+            flex: 1;
+        }
+
+        /* Bank Information Styles */
+        .bank-info-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .bank-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid var(--accent-color);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+        }
+
+        .bank-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow-light);
+        }
+
+        .bank-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .bank-detail {
+            margin: 12px 0;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        html[dir="rtl"] .bank-detail {
+            border-left: none;
+            border-right: 4px solid var(--secondary-color);
+        }
+
+        .bank-detail strong {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .bank-detail span {
+            font-family: monospace;
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            user-select: all;
+        }
+
+        .copy-btn {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            transition: all var(--transition-duration);
+            font-weight: 500;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .bank-detail .copy-btn {
+            margin-top: 10px;
+        }
+        
+        .bank-info-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copy-success {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            background: #e0f2e0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            pointer-events: none;
+        }
+        
+        .copy-success.visible {
+            opacity: 1;
+        }
+
+        /* Forms */
+        .form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius-base);
+            box-shadow: 0 5px 15px var(--shadow-light);
             max-width: 600px;
             margin: 0 auto;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
             font-weight: bold;
-            color: #555;
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #e0f2e0;
+            padding: 10px;
+            border: 2px solid #e0f2e0;
             border-radius: 5px;
             font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: border-color var(--transition-duration), box-shadow var(--transition-duration);
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: #20b2aa;
+            border-color: var(--secondary-color);
             box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.1);
-        }
-
-        .submit-btn {
-            display: block;
-            width: 100%;
-            background-color: #2e8b57;
-            color: #fff;
-            padding: 15px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background-color: #246e46;
         }
 
         /* Footer */
         footer {
-            background-color: #2e8b57;
-            color: #fff;
+            background: var(--primary-color);
+            color: white;
             text-align: center;
-            padding: 20px 0;
+            padding: 3rem 0;
+            margin-top: 3rem;
         }
 
-        .social-links {
-            margin-top: 15px;
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: right;
+        }
+        
+        html[dir="rtl"] .footer-content {
+            text-align: right;
         }
 
-        .social-links a {
-            color: #fff;
-            margin: 0 10px;
+        html[dir="ltr"] .footer-content {
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .footer-section p, .footer-section a {
+            font-size: 0.9rem;
+        }
+        
+        .footer-section a {
+            color: #d1f4d1;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: flex-end;
+        }
+        
+        html[dir="ltr"] .social-icons {
+            justify-content: flex-start;
+        }
+        
+        .social-icons a {
+            color: white;
             font-size: 1.5rem;
-            transition: color 0.3s ease;
+            transition: transform 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            font-size: 0.8rem;
+            color: #d1f4d1;
+            margin-top: 2rem;
         }
 
-        .social-links a:hover {
-            color: #20b2aa;
-        }
-
-        /* Language Content Display */
+        /* Language Content */
         .lang-content {
             display: none;
         }
@@ -425,516 +925,1695 @@
             display: block;
         }
 
-        /* Responsive Design */
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .header-main-nav {
+            position: relative;
+        }
+
         @media (max-width: 768px) {
-            .nav-menu {
-                flex-direction: column;
-                display: none;
+            nav {
+                padding: 0.5rem 0;
             }
 
-            .nav-menu.active {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.5rem;
+                box-shadow: 0 2px 10px var(--shadow-strong);
+                z-index: 999;
+            }
+
+            .nav-menu.mobile-open {
                 display: flex;
             }
-
-            .menu-toggle {
+            
+            .nav-menu a {
+                padding: 0.75rem 1rem;
+            }
+            
+            .language-switcher {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .mobile-menu-btn {
                 display: block;
+            }
+
+            main {
+                margin-top: 60px;
+            }
+
+            .hero {
+                padding: 4rem 0;
+                height: auto;
+                min-height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .about-content,
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .bank-info-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .board-table-container {
+                padding: 1rem;
+                overflow-x: auto;
+            }
+            
+            .board-table {
+                font-size: 0.9rem;
+            }
+            
+            .board-table th,
+            .board-table td {
+                padding: 10px 8px;
+            }
+
+            .member-photo, .member-photo-placeholder {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .member-photo-placeholder {
+                font-size: 1rem;
+            }
+
+            .map-container iframe {
+                height: 300px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-section {
+                padding-bottom: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            .footer-section:last-child {
+                border-bottom: none;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
+            .form-container {
+                padding: 1rem;
+                margin: 0 5px;
+            }
+
+            .board-table {
+                font-size: 0.8rem;
+            }
+
+            .board-table th,
+            .board-table td {
+                padding: 8px 5px;
+            }
+
+            .board-table-container {
+                padding: 0.8rem;
+            }
+            
+            .member-photo, .member-photo-placeholder {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .member-photo-placeholder {
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">
-                    <img src="https://via.placeholder.com/150" alt="Logo">
-                    <span>جمعية تازولت</span>
+                <a href="#home" class="logo">
+                    <div class="logo-image">
+                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Logo-removebg-preview.png" alt="Tazoult Association Logo">
+                    </div>
+                    <span class="logo-text">جمعية تازولت</span>
                 </a>
-                <ul class="nav-menu">
-                    <li><a href="#about">الجمعية</a></li>
-                    <li><a href="#projects">مشاريعنا</a></li>
-                    <li><a href="#gallery">معرض الصور</a></li>
-                    <li><a href="#contact">اتصل بنا</a></li>
-                </ul>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu">☰</button>
+                <div class="header-main-nav">
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="#home" class="nav-link">الرئيسية</a></li>
+                        <li><a href="#about" class="nav-link">عن الجمعية</a></li>
+                        <li><a href="#location" class="nav-link">الموقع</a></li>
+                        <li><a href="#projects" class="nav-link">المشاريع</a></li>
+                        <li><a href="#board" class="nav-link">مجلس الإدارة</a></li>
+                        <li><a href="#donate" class="nav-link">❤️ تبرع</a></li>
+                        <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
+                    </ul>
+                </div>
                 <div class="language-switcher">
-                    <button class="lang-btn active" onclick="switchLanguage('ar')">AR</button>
-                    <button class="lang-btn" onclick="switchLanguage('fr')">FR</button>
-                    <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+                    <button class="lang-btn active" data-lang="ar" onclick="switchLanguage('ar')">العربية</button>
+                    <button class="lang-btn" data-lang="fr" onclick="switchLanguage('fr')">Français</button>
+                    <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">English</button>
                 </div>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="lang-content active" data-lang="ar">
-                <h1>مرحبا بكم في جمعية تازولت للتنمية</h1>
-                <p>مؤسسة تسعى لتحقيق التنمية المستدامة في قرية تازولت، المغرب</p>
+    <main>
+        <section id="home" class="hero" aria-label="Hero Section">
+            <div class="hero-background-image" style="background-image: url('https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/hero-1.jpg');"></div>
+            <div class="hero-background-image" style="background-image: url('https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/hero-2.jpg');"></div>
+            <div class="hero-background-image" style="background-image: url('https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/hero-3.jpg');"></div>
+            
+            <div class="container hero-content">
+                <div class="lang-content active" data-lang="ar" dir="rtl">
+                    <div class="logo-circle">
+                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Logo-removebg-preview.png" alt="شعار جمعية تازولت">
+                    </div>
+                    <h1>جمعية تازولت للتنمية والتعاون والبيئة</h1>
+                    <p>نعمل من أجل التنمية المستدامة وتحسين ظروف المعيشة في منطقة تازولت</p>
+                    <a href="#about" class="cta-button">اكتشف المزيد</a>
+                </div>
+                <div class="lang-content" data-lang="fr" dir="ltr">
+                    <div class="logo-circle">
+                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Logo-removebg-preview.png" alt="Logo Association Tazoult">
+                    </div>
+                    <h1>Association Tazoult pour le Développement et la Coopération et d'Environnement</h1>
+                    <p>Nous œuvrons pour le développement durable et l'amélioration des conditions de vie dans la région de Tazoult</p>
+                    <a href="#about" class="cta-button">Découvrir plus</a>
+                </div>
+                <div class="lang-content" data-lang="en" dir="ltr">
+                    <div class="logo-circle">
+                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Logo-removebg-preview.png" alt="Tazoult Association Logo">
+                    </div>
+                    <h1>Tazoult Association for Development, Cooperation and Environment</h1>
+                    <p>We work for sustainable development and improving living conditions in the Tazoult region</p>
+                    <a href="#about" class="cta-button">Learn More</a>
+                </div>
             </div>
-            <div class="lang-content" data-lang="fr">
-                <h1>Bienvenue à l'Association de Développement de Tazoult</h1>
-                <p>Une organisation dédiée au développement durable dans le village de Tazoult, Maroc</p>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h1>Welcome to Tazoult Development Association</h1>
-                <p>An organization dedicated to sustainable development in the village of Tazoult, Morocco</p>
-            </div>
-            <a href="#projects" class="btn">اكتشف مشاريعنا</a>
-        </div>
-    </section>
+        </section>
 
-    <section id="about" class="section">
-        <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2>عن الجمعية</h2>
-                <div class="about-grid">
-                    <div class="about-item">
-                        <img src="https://via.placeholder.com/100" alt="مهمتنا">
-                        <h3>مهمتنا</h3>
-                        <p>نعمل على تحسين جودة الحياة في تازولت من خلال مشاريع تنموية في مختلف المجالات.</p>
+        <section id="about" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar" dir="rtl">
+                    <h2 class="section-title">عن الجمعية</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>أهدافنا</h3>
+                            <p>جمعية تازولت للتنمية والتعاون والبيئة هي منظمة غير ربحية تهدف إلى تحقيق التنمية الشاملة في منطقة تازولت. نعمل على:</p>
+                            <ul>
+                                <li>تطوير البنية التحتية وتوفير المياه الصالحة للشرب</li>
+                                <li>التعليم ومحاربة الأمية</li>
+                                <li>الرعاية الصحية والحملات التوعوية</li>
+                                <li>حماية البيئة ومحاربة التصحر</li>
+                                <li>تمكين المرأة والطفل والشباب</li>
+                                <li>خلق فرص عمل ومشاريع تنموية</li>
+                            </ul>
+                        </div>
+                        <div class="about-image">
+                            <div class="image-carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-1.jpg" alt="مشروع المياه">
+                                        <div class="carousel-slide-content">صورة أنشطة الجمعية 1<br><small>مشروع المياه</small></div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-2.jpg" alt="برامج التعليم">
+                                        <div class="carousel-slide-content">صورة أنشطة الجمعية 2<br><small>برامج التعليم</small></div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-3.jpg" alt="الحملات الصحية">
+                                        <div class="carousel-slide-content">صورة أنشطة الجمعية 3<br><small>الحملات الصحية</small></div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-4.jpg" alt="حماية البيئة">
+                                        <div class="carousel-slide-content">صورة أنشطة الجمعية 4<br><small>حماية البيئة</small></div>
+                                    </div>
+                                </div>
+                                <button class="carousel-arrow prev" aria-label="Previous slide">‹</button>
+                                <button class="carousel-arrow next" aria-label="Next slide">›</button>
+                                <div class="carousel-navigation">
+                                    <span class="carousel-dot" onclick="currentSlide(1)"></span>
+                                    <span class="carousel-dot" onclick="currentSlide(2)"></span>
+                                    <span class="carousel-dot" onclick="currentSlide(3)"></span>
+                                    <span class="carousel-dot" onclick="currentSlide(4)"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="about-item">
-                        <img src="https://via.placeholder.com/100" alt="رؤيتنا">
-                        <h3>رؤيتنا</h3>
-                        <p>مجتمع مزدهر ومكتفٍ ذاتيا، حيث يساهم كل فرد في بناء مستقبل أفضل للقرية.</p>
+                </div>
+                <div class="lang-content" data-lang="fr" dir="ltr">
+                    <h2 class="section-title">À Propos de l'Association</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>Nos Objectifs</h3>
+                            <p>L'Association Tazoult pour le Développement et la Coopération et d'Environnement est une organisation à but non lucratif visant le développement global de la région de Tazoult. Nous travaillons sur:</p>
+                            <ul>
+                                <li>Développer l'infrastructure et fournir l'eau potable</li>
+                                <li>L'éducation et la lutte contre l'analphabétisme</li>
+                                <li>Les soins de santé et les campagnes de sensibilisation</li>
+                                <li>Protection de l'environnement et lutte contre la désertification</li>
+                                <li>Autonomisation des femmes, des enfants et des jeunes</li>
+                                <li>Création d'emplois et projets de développement</li>
+                            </ul>
+                        </div>
+                        <div class="about-image">
+                            <div class="image-carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-1.jpg" alt="Projet eau">
+                                        <div class="carousel-slide-content">Photos des activités 1<br><small>Projet eau</small></div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-2.jpg" alt="Programmes éducatifs">
+                                        <div class="carousel-slide-content">Photos des activités 2<br><small>Programmes éducatifs</small></div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-3.jpg" alt="Campagnes santé">
+                                        <div class="carousel-slide-content">Photos des activités 3<br><small>Campagnes santé</small></div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-4.jpg" alt="Protection environnement">
+                                        <div class="carousel-slide-content">Photos des activités 4<br><small>Protection environnement</small></div>
+                                    </div>
+                                </div>
+                                <button class="carousel-arrow prev" aria-label="Previous slide">‹</button>
+                                <button class="carousel-arrow next" aria-label="Next slide">›</button>
+                                <div class="carousel-navigation">
+                                    <span class="carousel-dot" onclick="currentSlide(1)"></span>
+                                    <span class="carousel-dot" onclick="currentSlide(2)"></span>
+                                    <span class="carousel-dot" onclick="currentSlide(3)"></span>
+                                    <span class="carousel-dot" onclick="currentSlide(4)"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="about-item">
-                        <img src="https://via.placeholder.com/100" alt="قيمنا">
-                        <h3>قيمنا</h3>
-                        <p>التعاون، الشفافية، المسؤولية، والالتزام بالبيئة والاستدامة.</p>
+                </div>
+                <div class="lang-content" data-lang="en" dir="ltr">
+                    <h2 class="section-title">About the Association</h2>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>Our Goals</h3>
+                            <p>The Tazoult Association for Development, Cooperation and Environment is a non-profit organization aiming for comprehensive development in the Tazoult region. We focus on:</p>
+                            <ul>
+                                <li>Developing infrastructure and providing drinking water</li>
+                                <li>Education and combating illiteracy</li>
+                                <li>Healthcare and awareness campaigns</li>
+                                <li>Environmental protection and combating desertification</li>
+                                <li>Empowering women, children, and youth</li>
+                                <li>Creating job opportunities and development projects</li>
+                            </ul>
+                        </div>
+                        <div class="about-image">
+                            <div class="image-carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-1.jpg" alt="Water project">
+                                        <div class="carousel-slide-content">Activity Photos 1<br><small>Water Project</small></div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-2.jpg" alt="Educational programs">
+                                        <div class="carousel-slide-content">Activity Photos 2<br><small>Educational Programs</small></div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-3.jpg" alt="Health campaigns">
+                                        <div class="carousel-slide-content">Activity Photos 3<br><small>Health Campaigns</small></div>
+                                    </div>
+                                    <div class="carousel-slide">
+                                        <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/about-4.jpg" alt="Environmental protection">
+                                        <div class="carousel-slide-content">Activity Photos 4<br><small>Environmental Protection</small></div>
+                                    </div>
+                                </div>
+                                <button class="carousel-arrow prev" aria-label="Previous slide">‹</button>
+                                <button class="carousel-arrow next" aria-label="Next slide">›</button>
+                                <div class="carousel-navigation">
+                                    <span class="carousel-dot" onclick="currentSlide(1)"></span>
+                                    <span class="carousel-dot" onclick="currentSlide(2)"></span>
+                                    <span class="carousel-dot" onclick="currentSlide(3)"></span>
+                                    <span class="carousel-dot" onclick="currentSlide(4)"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="lang-content" data-lang="fr">
-                <h2>À propos de nous</h2>
-                <div class="about-grid">
-                    <div class="about-item">
-                        <img src="https://via.placeholder.com/100" alt="Notre Mission">
-                        <h3>Notre Mission</h3>
-                        <p>Nous travaillons pour améliorer la qualité de vie à Tazoult à travers des projets de développement dans divers domaines.</p>
-                    </div>
-                    <div class="about-item">
-                        <img src="https://via.placeholder.com/100" alt="Notre Vision">
-                        <h3>Notre Vision</h3>
-                        <p>Une communauté prospère et autosuffisante où chaque individu contribue à construire un avenir meilleur pour le village.</p>
-                    </div>
-                    <div class="about-item">
-                        <img src="https://via.placeholder.com/100" alt="Nos Valeurs">
-                        <h3>Nos Valeurs</h3>
-                        <p>Coopération, transparence, responsabilité, et engagement envers l'environnement et la durabilité.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h2>About Us</h2>
-                <div class="about-grid">
-                    <div class="about-item">
-                        <img src="https://via.placeholder.com/100" alt="Our Mission">
-                        <h3>Our Mission</h3>
-                        <p>We work to improve the quality of life in Tazoult through development projects in various fields.</p>
-                    </div>
-                    <div class="about-item">
-                        <img src="https://via.placeholder.com/100" alt="Our Vision">
-                        <h3>Our Vision</h3>
-                        <p>A prosperous and self-sufficient community where every individual contributes to building a better future for the village.</p>
-                    </div>
-                    <div class="about-item">
-                        <img src="https://via.placeholder.com/100" alt="Our Values">
-                        <h3>Our Values</h3>
-                        <p>Cooperation, transparency, responsibility, and a commitment to the environment and sustainability.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2>مشاريعنا</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x300" alt="مشروع المياه">
-                        <div class="project-content">
-                            <h3>مشروع المياه</h3>
-                            <p>توفير المياه الصالحة للشرب للقرية.</p>
-                            <button class="expand-btn" onclick="toggleProject('water-details')">اضغط هنا للتفاصيل ↓</button>
-                            <div class="project-details" id="water-details">
-                                <p>هذا المشروع يهدف إلى توفير نظام مستدام لتوزيع المياه في جميع أنحاء القرية، مما يضمن حصول الجميع على مياه نظيفة وآمنة للاستهلاك.</p>
+        <section id="location" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar" dir="rtl">
+                    <h2 class="section-title">موقعنا</h2>
+                    <div class="location-content">
+                        <div class="location-info">
+                            <h3>معلومات الاتصال</h3>
+                            <div class="location-detail">
+                                <strong>العنوان:</strong>
+                                <p>دوار تازولت، جماعة تازولت، إقليم تارودانت، جهة سوس ماسة، المغرب</p>
+                            </div>
+                            <div class="location-detail">
+                                <strong>البريد الإلكتروني:</strong>
+                                <p>contact@tazoult.org</p>
+                            </div>
+                            <div class="location-detail">
+                                <strong>الهاتف:</strong>
+                                <p>+212 661-234567</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x300" alt="مشروع التعليم">
-                        <div class="project-content">
-                            <h3>مشروع التعليم</h3>
-                            <p>دعم التعليم وتوفير المعدات للمدارس المحلية.</p>
-                            <button class="expand-btn" onclick="toggleProject('education-details')">اضغط هنا للتفاصيل ↓</button>
-                            <div class="project-details" id="education-details">
-                                <p>نعمل على تحسين البنية التحتية للمدارس وتوفير الأدوات التعليمية الأساسية لدعم الطلاب والمعلمين في تازولت.</p>
-                            </div>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11000.320491873103!2d-8.875659837941566!3d30.59546276857416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda68f51e1e479c9%3A0x673c6837c767406!2sTazoult%2C%20Morocco!5e0!3m2!1sen!2sus!4v1684347565154!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Google Map of Tazoult"></iframe>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x300" alt="مشروع البيئة">
-                        <div class="project-content">
-                            <h3>مشروع البيئة</h3>
-                            <p>حملات التشجير والتوعية البيئية.</p>
-                            <button class="expand-btn" onclick="toggleProject('environment-details')">اضغط هنا للتفاصيل ↓</button>
-                            <div class="project-details" id="environment-details">
-                                <p>تتضمن هذه المبادرة حملات تشجير واسعة النطاق لزيادة المساحات الخضراء في القرية، بالإضافة إلى ورش عمل توعوية حول أهمية الحفاظ على البيئة.</p>
+                </div>
+                <div class="lang-content" data-lang="fr" dir="ltr">
+                    <h2 class="section-title">Notre Emplacement</h2>
+                    <div class="location-content">
+                        <div class="location-info">
+                            <h3>Informations de Contact</h3>
+                            <div class="location-detail">
+                                <strong>Adresse:</strong>
+                                <p>DOUAR TAZOULT, Commune de TAZOULT, Province de Taroudant, Région de Souss-Massa, Maroc</p>
                             </div>
+                            <div class="location-detail">
+                                <strong>Email:</strong>
+                                <p>contact@tazoult.org</p>
+                            </div>
+                            <div class="location-detail">
+                                <strong>Téléphone:</strong>
+                                <p>+212 661-234567</p>
+                            </div>
+                        </div>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11000.320491873103!2d-8.875659837941566!3d30.59546276857416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda68f51e1e479c9%3A0x673c6837c767406!2sTazoult%2C%20Morocco!5e0!3m2!1sen!2sus!4v1684347565154!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Google Map of Tazoult"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en" dir="ltr">
+                    <h2 class="section-title">Our Location</h2>
+                    <div class="location-content">
+                        <div class="location-info">
+                            <h3>Contact Information</h3>
+                            <div class="location-detail">
+                                <strong>Address:</strong>
+                                <p>DOUAR TAZOULT, TAZOULT Commune, Taroudant Province, Souss-Massa Region, Morocco</p>
+                            </div>
+                            <div class="location-detail">
+                                <strong>Email:</strong>
+                                <p>contact@tazoult.org</p>
+                            </div>
+                            <div class="location-detail">
+                                <strong>Phone:</strong>
+                                <p>+212 661-234567</p>
+                            </div>
+                        </div>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11000.320491873103!2d-8.875659837941566!3d30.59546276857416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda68f51e1e479c9%3A0x673c6837c767406!2sTazoult%2C%20Morocco!5e0!3m2!1sen!2sus!4v1684347565154!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Google Map of Tazoult"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="lang-content" data-lang="fr">
-                <h2>Nos Projets</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x300" alt="Projet Eau">
-                        <div class="project-content">
-                            <h3>Projet Eau</h3>
-                            <p>Fourniture d'eau potable au village.</p>
-                            <button class="expand-btn" onclick="toggleProject('water-details')">Cliquez pour les détails ↓</button>
-                            <div class="project-details" id="water-details">
-                                <p>Ce projet vise à fournir un système de distribution d'eau durable dans tout le village, garantissant que chacun a accès à de l'eau propre et sûre pour la consommation.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x300" alt="Projet Éducation">
-                        <div class="project-content">
-                            <h3>Projet Éducation</h3>
-                            <p>Soutien à l'éducation et fourniture de matériel aux écoles locales.</p>
-                            <button class="expand-btn" onclick="toggleProject('education-details')">Cliquez pour les détails ↓</button>
-                            <div class="project-details" id="education-details">
-                                <p>Nous travaillons à améliorer l'infrastructure scolaire et à fournir des outils éducatifs essentiels pour soutenir les élèves et les enseignants à Tazoult.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x300" alt="Projet Environnement">
-                        <div class="project-content">
-                            <h3>Projet Environnement</h3>
-                            <p>Campagnes de reboisement et de sensibilisation à l'environnement.</p>
-                            <button class="expand-btn" onclick="toggleProject('environment-details')">Cliquez pour les détails ↓</button>
-                            <div class="project-details" id="environment-details">
-                                <p>Cette initiative comprend des campagnes de reboisement à grande échelle pour augmenter les espaces verts dans le village, ainsi que des ateliers de sensibilisation sur l'importance de préserver l'environnement.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h2>Our Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x300" alt="Water Project">
-                        <div class="project-content">
-                            <h3>Water Project</h3>
-                            <p>Providing drinking water to the village.</p>
-                            <button class="expand-btn" onclick="toggleProject('water-details')">Click for details ↓</button>
-                            <div class="project-details" id="water-details">
-                                <p>This project aims to provide a sustainable water distribution system throughout the village, ensuring everyone has access to clean and safe water for consumption.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x300" alt="Education Project">
-                        <div class="project-content">
-                            <h3>Education Project</h3>
-                            <p>Supporting education and providing equipment for local schools.</p>
-                            <button class="expand-btn" onclick="toggleProject('education-details')">Click for details ↓</button>
-                            <div class="project-details" id="education-details">
-                                <p>We are working to improve school infrastructure and provide essential educational tools to support students and teachers in Tazoult.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x300" alt="Environment Project">
-                        <div class="project-content">
-                            <h3>Environment Project</h3>
-                            <p>Tree planting and environmental awareness campaigns.</p>
-                            <button class="expand-btn" onclick="toggleProject('environment-details')">Click for details ↓</button>
-                            <div class="project-details" id="environment-details">
-                                <p>This initiative includes large-scale tree planting campaigns to increase green spaces in the village, as well as awareness workshops on the importance of preserving the environment.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="gallery" class="section">
-        <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2>معرض الصور</h2>
-            </div>
-            <div class="lang-content" data-lang="fr">
-                <h2>Galerie de Photos</h2>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h2>Photo Gallery</h2>
-            </div>
-            <div class="carousel-container">
-                <div class="carousel-slide">
-                    <img src="https://via.placeholder.com/800x450?text=Village+Image+1" alt="صورة القرية 1">
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://via.placeholder.com/800x450?text=Village+Image+2" alt="صورة القرية 2">
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://via.placeholder.com/800x450?text=Village+Image+3" alt="صورة القرية 3">
-                </div>
-                
-                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-                <a class="next" onclick="changeSlide(1)">&#10095;</a>
-            </div>
-            <div class="carousel-dots">
-                <span class="carousel-dot" onclick="currentSlide(1)"></span>
-                <span class="carousel-dot" onclick="currentSlide(2)"></span>
-                <span class="carousel-dot" onclick="currentSlide(3)"></span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2>اتصل بنا</h2>
-            </div>
-            <div class="lang-content" data-lang="fr">
-                <h2>Contactez-Nous</h2>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h2>Contact Us</h2>
-            </div>
-            <div class="contact-form">
-                <div class="lang-content active" data-lang="ar">
-                    <form action="#">
-                        <div class="form-group">
-                            <label for="name">الاسم الكامل:</label>
-                            <input type="text" id="name" name="name" required>
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar" dir="rtl">
+                    <h2 class="section-title">مشاريعنا</h2>
+                    <div class="projects-group">
+                        <h3>المشاريع الجارية</h3>
+                        <div class="content-grid">
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-1-details" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1.jpg" alt="صورة مشروع الماء الصالح للشرب">
+                                </div>
+                                <div class="card-content">
+                                    <h3>مشروع الماء الصالح للشرب</h3>
+                                    <p>يهدف هذا المشروع إلى توفير مصدر دائم للمياه النقية لجميع سكان الدوار.</p>
+                                    <button class="expand-btn">عرض التفاصيل</button>
+                                </div>
+                                <div id="project-1-details" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>تفاصيل المشروع</h4>
+                                        <p>يتضمن المشروع حفر بئر جديدة وتركيب مضخات وخزانات لتخزين المياه، بالإضافة إلى تمديد شبكة الأنابيب لتوصيل المياه إلى المنازل. تم تمويل هذا المشروع من خلال التبرعات المحلية والتعاون مع السلطات.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1-1.jpg" alt="صورة من المشروع 1"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1-2.jpg" alt="صورة من المشروع 2"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1-3.jpg" alt="صورة من المشروع 3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-2-details" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-2.jpg" alt="صورة مشروع محو الأمية">
+                                </div>
+                                <div class="card-content">
+                                    <h3>برنامج محو الأمية والتعليم</h3>
+                                    <p>نعمل على تنظيم دورات تعليمية للكبار والأطفال لتقليل نسبة الأمية في المنطقة.</p>
+                                    <button class="expand-btn">عرض التفاصيل</button>
+                                </div>
+                                <div id="project-2-details" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>تفاصيل المشروع</h4>
+                                        <p>يشمل البرنامج توفير مدرسين متطوعين ومواد تعليمية، بالإضافة إلى توفير مكان مناسب لإجراء الدروس. يهدف البرنامج إلى تزويد السكان بمهارات القراءة والكتابة الأساسية لتمكينهم في حياتهم اليومية.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-2-1.jpg" alt="صورة من المشروع 1"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-2-2.jpg" alt="صورة من المشروع 2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">البريد الإلكتروني:</label>
-                            <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="projects-group">
+                        <h3>المشاريع السابقة</h3>
+                        <div class="content-grid">
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-1-details" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f1.jpg" alt="صورة من مشروع المساعدة الغذائية">
+                                </div>
+                                <div class="card-content">
+                                    <h3>مساعدة غذائية (رمضان)</h3>
+                                    <p>مشروع سنوي لتوفير قفف غذائية للعائلات المحتاجة خلال شهر رمضان المبارك.</p>
+                                    <button class="expand-btn">عرض التفاصيل</button>
+                                </div>
+                                <div id="project-old-1-details" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>تفاصيل المشروع</h4>
+                                        <p>يتم توزيع سلال غذائية تحتوي على المواد الأساسية لدعم الأسر الفقيرة في رمضان. يتم جمع التبرعات وتعبئة القفف بالتعاون مع المتطوعين من أبناء الدوار.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f1.jpg" alt="صورة 1 من مشروع الطعام"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f3.jpg" alt="صورة 2 من مشروع الطعام"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f5.jpg" alt="صورة 3 من مشروع الطعام"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-2-details" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f1.jpg" alt="صورة لملعب كرة القدم">
+                                </div>
+                                <div class="card-content">
+                                    <h3>تجهيز ملعب كرة القدم</h3>
+                                    <p>مشروع لتجهيز ملعب كرة القدم بالدوار لتمكين الشباب من ممارسة الرياضة.</p>
+                                    <button class="expand-btn">عرض التفاصيل</button>
+                                </div>
+                                <div id="project-old-2-details" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>تفاصيل المشروع</h4>
+                                        <p>يهدف هذا المشروع إلى توفير مكان آمن وملائم للشباب لممارسة الرياضة. تم تسوية الأرض وتخطيطها وتثبيت المرمى لتحويلها إلى ملعب صغير. هذا يعزز النشاط البدني ويجمع الشباب في نشاط إيجابي.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f1.jpg" alt="صورة 1 من ملعب كرة القدم"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f3.jpg" alt="صورة 2 من ملعب كرة القدم"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f6.jpg" alt="صورة 3 من ملعب كرة القدم"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-3-details" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f1.jpg" alt="صورة من بطولة كرة القدم">
+                                </div>
+                                <div class="card-content">
+                                    <h3>بطولة كرة القدم</h3>
+                                    <p>بطولة كروية سنوية تجمع شباب الدوار والقرى المجاورة.</p>
+                                    <button class="expand-btn">عرض التفاصيل</button>
+                                </div>
+                                <div id="project-old-3-details" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>تفاصيل المشروع</h4>
+                                        <p>تنظم الجمعية هذه البطولة لتعزيز الروح الرياضية والتعاون بين الشباب. البطولة توفر منصة للشباب لإظهار مواهبهم وبناء علاقات اجتماعية.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f1.jpg" alt="صورة 1 من بطولة كرة القدم"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f2.jpg" alt="صورة 2 من بطولة كرة القدم"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f4.jpg" alt="صورة 3 من بطولة كرة القدم"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-4-details" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p1.jpg" alt="صورة لمشروع الغرس">
+                                </div>
+                                <div class="card-content">
+                                    <h3>مشروع الغرس</h3>
+                                    <p>حملة لزراعة الأشجار والنباتات في الدوار لتحسين البيئة ومكافحة التصحر.</p>
+                                    <button class="expand-btn">عرض التفاصيل</button>
+                                </div>
+                                <div id="project-old-4-details" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>تفاصيل المشروع</h4>
+                                        <p>بمشاركة المتطوعين، تم غرس عشرات الشجرات التي تتحمل المناخ المحلي. يهدف المشروع إلى جعل الدوار أكثر اخضرارا ووعي السكان بأهمية الحفاظ على البيئة.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p1.jpg" alt="صورة 1 من مشروع الغرس"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p2.jpg" alt="صورة 2 من مشروع الغرس"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p5.jpg" alt="صورة 3 من مشروع الغرس"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-5-details" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p1.jpg" alt="صورة لمشروع الفن">
+                                </div>
+                                <div class="card-content">
+                                    <h3>ورشة فنية للأطفال</h3>
+                                    <p>ورشة عمل لتعليم الأطفال الفن والرسم وتنمية مهاراتهم الإبداعية.</p>
+                                    <button class="expand-btn">عرض التفاصيل</button>
+                                </div>
+                                <div id="project-old-5-details" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>تفاصيل المشروع</h4>
+                                        <p>تم تنظيم ورشة فنية لتقديم فرصة للأطفال للتعبير عن أنفسهم وتطوير قدراتهم الإبداعية. تم توفير المواد الفنية، وتم توجيه الأطفال من قبل متطوعين لإطلاق العنان لخيالهم.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p1.jpg" alt="صورة 1 من ورشة الفن"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p2.jpg" alt="صورة 2 من ورشة الفن"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p3.jpg" alt="صورة 3 من ورشة الفن"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-6-details" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k6.jpg" alt="صورة لأنشطة الأطفال">
+                                </div>
+                                <div class="card-content">
+                                    <h3>أنشطة للأطفال</h3>
+                                    <p>الجمعية تنظم فعاليات ترفيهية وتعليمية للأطفال في الدوار.</p>
+                                    <button class="expand-btn">عرض التفاصيل</button>
+                                </div>
+                                <div id="project-old-6-details" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>تفاصيل المشروع</h4>
+                                        <p>من أجل توفير جو من المرح والتعلم للأطفال، تنظم الجمعية أنشطة مختلفة مثل الألعاب التعليمية والمسابقات. هذه الفعاليات تساهم في بناء شخصية الأطفال وتنمية مهاراتهم الاجتماعية.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k6.jpg" alt="صورة 1 من أنشطة الأطفال"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k7.jpg" alt="صورة 2 من أنشطة الأطفال"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k8.jpg" alt="صورة 3 من أنشطة الأطفال"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message">الرسالة:</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div class="projects-group">
+                        <h3>مشاريع مستقبلية</h3>
+                        <div class="content-grid">
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <h3>مشروع الطاقة الشمسية</h3>
+                                </div>
+                                <div class="card-content">
+                                    <h3>مشروع الطاقة الشمسية</h3>
+                                    <p>تهدف الجمعية إلى تركيب ألواح شمسية لتوليد الكهرباء في الأماكن العامة والمدارس لخفض التكاليف والحفاظ على البيئة.</p>
+                                </div>
+                            </div>
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <h3>مشروع الغرس</h3>
+                                </div>
+                                <div class="card-content">
+                                    <h3>مشروع الغرس</h3>
+                                    <p>نخطط لزراعة الأشجار في المنطقة بهدف مكافحة التصحر وتحسين جودة الهواء.</p>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="submit-btn">إرسال</button>
-                    </form>
+                    </div>
                 </div>
-                <div class="lang-content" data-lang="fr">
-                    <form action="#">
-                        <div class="form-group">
-                            <label for="name">Nom Complet:</label>
-                            <input type="text" id="name" name="name" required>
+                <div class="lang-content" data-lang="fr" dir="ltr">
+                    <h2 class="section-title">Nos Projets</h2>
+                    <div class="projects-group">
+                        <h3>Projets en Cours</h3>
+                        <div class="content-grid">
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-1-details-fr" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1.jpg" alt="Image du projet d'eau potable">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Projet d'Eau Potable</h3>
+                                    <p>Ce projet vise à fournir une source permanente d'eau pure à tous les habitants du village.</p>
+                                    <button class="expand-btn">Voir les détails</button>
+                                </div>
+                                <div id="project-1-details-fr" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Détails du Projet</h4>
+                                        <p>Le projet comprend le forage d'un nouveau puits, l'installation de pompes et de réservoirs d'eau, ainsi que l'extension du réseau de tuyauterie pour connecter les maisons. Ce projet a été financé par des dons locaux et en coopération avec les autorités.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1-1.jpg" alt="Image du projet 1"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1-2.jpg" alt="Image du projet 2"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1-3.jpg" alt="Image du projet 3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-2-details-fr" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-2.jpg" alt="Image du programme d'alphabétisation">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Programme d'Alphabétisation et d'Éducation</h3>
+                                    <p>Nous organisons des cours pour adultes et enfants afin de réduire le taux d'analphabétisme dans la région.</p>
+                                    <button class="expand-btn">Voir les détails</button>
+                                </div>
+                                <div id="project-2-details-fr" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Détails du Projet</h4>
+                                        <p>Le programme inclut la mise à disposition d'enseignants bénévoles, de matériel éducatif et d'un lieu approprié pour les leçons. Le programme vise à fournir aux habitants des compétences de base en lecture et écriture pour leur autonomie au quotidien.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-2-1.jpg" alt="Image du projet 1"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-2-2.jpg" alt="Image du projet 2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="projects-group">
+                        <h3>Projets Passés</h3>
+                        <div class="content-grid">
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-1-details-fr" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f1.jpg" alt="Image du projet d'aide alimentaire">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Aide alimentaire (Ramadan)</h3>
+                                    <p>Un projet annuel pour fournir des paniers alimentaires aux familles dans le besoin pendant le mois sacré du Ramadan.</p>
+                                    <button class="expand-btn">Voir les détails</button>
+                                </div>
+                                <div id="project-old-1-details-fr" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Détails du Projet</h4>
+                                        <p>Des paniers alimentaires contenant des produits de base sont distribués pour soutenir les familles pauvres pendant le Ramadan. Les dons sont collectés et les paniers sont préparés en coopération avec des bénévoles du village.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f1.jpg" alt="Image 1 du projet alimentaire"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f3.jpg" alt="Image 2 du projet alimentaire"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f5.jpg" alt="Image 3 du projet alimentaire"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-2-details-fr" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f1.jpg" alt="Image du terrain de football">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Aménagement du terrain de football</h3>
+                                    <p>Projet d'aménagement du terrain de football du village pour permettre aux jeunes de pratiquer ce sport.</p>
+                                    <button class="expand-btn">Voir les détails</button>
+                                </div>
+                                <div id="project-old-2-details-fr" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Détails du Projet</h4>
+                                        <p>Ce projet vise à fournir un lieu sûr et approprié pour les jeunes pour faire du sport. Le terrain a été nivelé, marqué et des buts ont été installés pour le transformer en un petit terrain de football. Cela favorise l'activité physique et rassemble les jeunes autour d'une activité positive.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f1.jpg" alt="Image 1 du terrain de football"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f3.jpg" alt="Image 2 du terrain de football"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f6.jpg" alt="Image 3 du terrain de football"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-3-details-fr" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f1.jpg" alt="Image du tournoi de football">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Tournoi de Football</h3>
+                                    <p>Un tournoi de football annuel qui rassemble les jeunes du village et des villages voisins.</p>
+                                    <button class="expand-btn">Voir les détails</button>
+                                </div>
+                                <div id="project-old-3-details-fr" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Détails du Projet</h4>
+                                        <p>L'association organise ce tournoi pour promouvoir l'esprit sportif et la coopération entre les jeunes. Le tournoi offre une plateforme pour les jeunes pour montrer leurs talents et construire des relations sociales.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f1.jpg" alt="Image 1 du tournoi de football"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f2.jpg" alt="Image 2 du tournoi de football"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f4.jpg" alt="Image 3 du tournoi de football"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-4-details-fr" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p1.jpg" alt="Image du projet de plantation">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Projet de Plantation</h3>
+                                    <p>Une campagne pour planter des arbres et des plantes dans le village pour améliorer l'environnement et lutter contre la désertification.</p>
+                                    <button class="expand-btn">Voir les détails</button>
+                                </div>
+                                <div id="project-old-4-details-fr" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Détails du Projet</h4>
+                                        <p>Avec la participation de bénévoles, des dizaines d'arbres adaptés au climat local ont été plantés. Le projet vise à rendre le village plus vert et à sensibiliser les habitants à l'importance de la préservation de l'environnement.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p1.jpg" alt="Image 1 du projet de plantation"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p2.jpg" alt="Image 2 du projet de plantation"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p5.jpg" alt="Image 3 du projet de plantation"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-5-details-fr" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p1.jpg" alt="Image du projet d'art">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Atelier d'art pour enfants</h3>
+                                    <p>Un atelier pour apprendre aux enfants l'art et le dessin et développer leur créativité.</p>
+                                    <button class="expand-btn">Voir les détails</button>
+                                </div>
+                                <div id="project-old-5-details-fr" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Détails du Projet</h4>
+                                        <p>Un atelier d'art a été organisé pour offrir aux enfants l'opportunité de s'exprimer et de développer leurs capacités créatives. Les fournitures d'art ont été fournies et les enfants ont été guidés par des bénévoles pour laisser libre cours à leur imagination.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p1.jpg" alt="Image 1 de l'atelier d'art"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p2.jpg" alt="Image 2 de l'atelier d'art"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p3.jpg" alt="Image 3 de l'atelier d'art"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-6-details-fr" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k6.jpg" alt="Image d'activités pour enfants">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Activités pour enfants</h3>
+                                    <p>L'association organise des événements récréatifs et éducatifs pour les enfants du village.</p>
+                                    <button class="expand-btn">Voir les détails</button>
+                                </div>
+                                <div id="project-old-6-details-fr" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Détails du Projet</h4>
+                                        <p>Afin de créer un environnement amusant et d'apprentissage pour les enfants, l'association organise diverses activités telles que des jeux éducatifs et des compétitions. Ces événements contribuent à la construction de la personnalité des enfants et au développement de leurs compétences sociales.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k6.jpg" alt="Image 1 des activités pour enfants"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k7.jpg" alt="Image 2 des activités pour enfants"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k8.jpg" alt="Image 3 des activités pour enfants"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message:</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div class="projects-group">
+                        <h3>Projets Futurs</h3>
+                        <div class="content-grid">
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <h3>Projet d'Énergie Solaire</h3>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Projet d'Énergie Solaire</h3>
+                                    <p>L'association a l'intention d'installer des panneaux solaires pour produire de l'électricité dans les lieux publics et les écoles afin de réduire les coûts et de protéger l'environnement.</p>
+                                </div>
+                            </div>
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <h3>Projet de Plantation</h3>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Projet de Plantation</h3>
+                                    <p>Nous prévoyons de planter des arbres dans la région pour lutter contre la désertification et améliorer la qualité de l'air.</p>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="submit-btn">Envoyer</button>
-                    </form>
+                    </div>
                 </div>
-                <div class="lang-content" data-lang="en">
-                    <form action="#">
-                        <div class="form-group">
-                            <label for="name">Full Name:</label>
-                            <input type="text" id="name" name="name" required>
+                <div class="lang-content" data-lang="en" dir="ltr">
+                    <h2 class="section-title">Our Projects</h2>
+                    <div class="projects-group">
+                        <h3>Current Projects</h3>
+                        <div class="content-grid">
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-1-details-en" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1.jpg" alt="Image of the drinking water project">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Drinking Water Project</h3>
+                                    <p>This project aims to provide a permanent source of clean water to all the inhabitants of the village.</p>
+                                    <button class="expand-btn">Show Details</button>
+                                </div>
+                                <div id="project-1-details-en" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Project Details</h4>
+                                        <p>The project includes drilling a new well, installing pumps and water tanks, and extending the pipe network to connect water to homes. This project was funded by local donations and in cooperation with the authorities.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1-1.jpg" alt="Image from Project 1"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1-2.jpg" alt="Image from Project 2"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-1-3.jpg" alt="Image from Project 3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-2-details-en" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-2.jpg" alt="Image of the literacy program">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Literacy and Education Program</h3>
+                                    <p>We work to organize educational courses for adults and children to reduce the illiteracy rate in the area.</p>
+                                    <button class="expand-btn">Show Details</button>
+                                </div>
+                                <div id="project-2-details-en" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Project Details</h4>
+                                        <p>The program includes providing volunteer teachers, educational materials, and a suitable place for lessons. The program aims to provide residents with basic reading and writing skills to empower them in their daily lives.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-2-1.jpg" alt="Image from Project 1"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/project-2-2.jpg" alt="Image from Project 2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="projects-group">
+                        <h3>Past Projects</h3>
+                        <div class="content-grid">
+                             <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-1-details-en" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f1.jpg" alt="Image of the food aid project">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Food Aid (Ramadan)</h3>
+                                    <p>An annual project to provide food baskets to families in need during the holy month of Ramadan.</p>
+                                    <button class="expand-btn">Show Details</button>
+                                </div>
+                                <div id="project-old-1-details-en" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Project Details</h4>
+                                        <p>Food baskets containing basic necessities are distributed to support poor families during Ramadan. Donations are collected and the baskets are packed in cooperation with volunteers from the village.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f1.jpg" alt="Image 1 from the food project"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f3.jpg" alt="Image 2 from the food project"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Food/f5.jpg" alt="Image 3 from the food project"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-2-details-en" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f1.jpg" alt="Image of the football field">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Football Field Development</h3>
+                                    <p>A project to develop the village football field to enable youth to play sports.</p>
+                                    <button class="expand-btn">Show Details</button>
+                                </div>
+                                <div id="project-old-2-details-en" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Project Details</h4>
+                                        <p>This project aims to provide a safe and suitable place for youth to play sports. The ground was leveled, marked, and goals were installed to transform it into a small football field. This promotes physical activity and brings young people together in a positive activity.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f1.jpg" alt="Image 1 from the football field project"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f3.jpg" alt="Image 2 from the football field project"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20Field/f6.jpg" alt="Image 3 from the football field project"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-3-details-en" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f1.jpg" alt="Image of the football tournament">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Football Tournament</h3>
+                                    <p>An annual football tournament that brings together youth from the village and neighboring villages.</p>
+                                    <button class="expand-btn">Show Details</button>
+                                </div>
+                                <div id="project-old-3-details-en" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Project Details</h4>
+                                        <p>The association organizes this tournament to promote sportsmanship and cooperation among youth. The tournament provides a platform for young people to showcase their talents and build social relationships.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f1.jpg" alt="Image 1 from the football tournament"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f2.jpg" alt="Image 2 from the football tournament"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Football%20torn/f4.jpg" alt="Image 3 from the football tournament"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-4-details-en" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p1.jpg" alt="Image of the planting project">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Planting Project</h3>
+                                    <p>A campaign to plant trees and plants in the village to improve the environment and combat desertification.</p>
+                                    <button class="expand-btn">Show Details</button>
+                                </div>
+                                <div id="project-old-4-details-en" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Project Details</h4>
+                                        <p>With the participation of volunteers, dozens of trees that can withstand the local climate were planted. The project aims to make the village greener and raise awareness among residents about the importance of environmental preservation.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p1.jpg" alt="Image 1 from the planting project"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p2.jpg" alt="Image 2 from the planting project"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Planting/p5.jpg" alt="Image 3 from the planting project"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-5-details-en" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p1.jpg" alt="Image of the art project">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Art Workshop for Children</h3>
+                                    <p>A workshop to teach children art and drawing and to develop their creative skills.</p>
+                                    <button class="expand-btn">Show Details</button>
+                                </div>
+                                <div id="project-old-5-details-en" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Project Details</h4>
+                                        <p>An art workshop was organized to provide an opportunity for children to express themselves and develop their creative abilities. Art supplies were provided, and the children were guided by volunteers to unleash their imagination.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p1.jpg" alt="Image 1 from the art workshop"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p2.jpg" alt="Image 2 from the art workshop"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/art/p3.jpg" alt="Image 3 from the art workshop"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="content-card" tabindex="0" role="button" aria-expanded="false" aria-controls="project-old-6-details-en" onclick="toggleProject(this)">
+                                <div class="card-image">
+                                    <img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k6.jpg" alt="Image of children's activities">
+                                </div>
+                                <div class="card-content">
+                                    <h3>Children's Activities</h3>
+                                    <p>The association organizes recreational and educational events for children in the village.</p>
+                                    <button class="expand-btn">Show Details</button>
+                                </div>
+                                <div id="project-old-6-details-en" class="project-expandable">
+                                    <div class="project-details">
+                                        <h4>Project Details</h4>
+                                        <p>To provide a fun and learning environment for children, the association organizes various activities such as educational games and competitions. These events contribute to building children's personalities and developing their social skills.</p>
+                                        <div class="project-gallery">
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k6.jpg" alt="Image 1 from children's activities"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k7.jpg" alt="Image 2 from children's activities"></div>
+                                            <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/kids/k8.jpg" alt="Image 3 from children's activities"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message:</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div class="projects-group">
+                        <h3>Future Projects</h3>
+                        <div class="content-grid">
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <h3>Solar Energy Project</h3>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Solar Energy Project</h3>
+                                    <p>The association plans to install solar panels to generate electricity in public places and schools to reduce costs and protect the environment.</p>
+                                </div>
+                            </div>
+                            <div class="content-card">
+                                <div class="card-image">
+                                    <h3>Planting Project</h3>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Planting Project</h3>
+                                    <p>We plan to plant trees in the area to combat desertification and improve air quality.</p>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="submit-btn">Send</button>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="board" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar" dir="rtl">
+                    <h2 class="section-title">مجلس الإدارة</h2>
+                    <div class="board-table-container">
+                        <table class="board-table">
+                            <thead>
+                                <tr>
+                                    <th>الصورة</th>
+                                    <th>الاسم</th>
+                                    <th>المنصب</th>
+                                    <th>المهنة</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">؟</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">عبد اللطيف حاتم</div>
+                                    </td>
+                                    <td>الرئيس</td>
+                                    <td>مستشار قانوني</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">؟</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">عبد الحق علوي</div>
+                                    </td>
+                                    <td>نائب الرئيس</td>
+                                    <td>مهندس زراعي</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">؟</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">محمد السباعي</div>
+                                    </td>
+                                    <td>أمين المال</td>
+                                    <td>محاسب</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">؟</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">فاطمة الزهراء</div>
+                                    </td>
+                                    <td>الكاتبة العامة</td>
+                                    <td>معلمة</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr" dir="ltr">
+                    <h2 class="section-title">Conseil d'Administration</h2>
+                    <div class="board-table-container">
+                        <table class="board-table">
+                            <thead>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Nom</th>
+                                    <th>Fonction</th>
+                                    <th>Profession</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">?</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">Abdel Latif Hatim</div>
+                                    </td>
+                                    <td>Président</td>
+                                    <td>Conseiller Juridique</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">?</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">Abdel Hak Alaoui</div>
+                                    </td>
+                                    <td>Vice-président</td>
+                                    <td>Ingénieur Agronome</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">?</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">Mohamed Sebaai</div>
+                                    </td>
+                                    <td>Trésorier</td>
+                                    <td>Comptable</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">?</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">Fatima Zahra</div>
+                                    </td>
+                                    <td>Secrétaire Générale</td>
+                                    <td>Enseignante</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en" dir="ltr">
+                    <h2 class="section-title">Board of Directors</h2>
+                    <div class="board-table-container">
+                        <table class="board-table">
+                            <thead>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Profession</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">?</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">Abdel Latif Hatim</div>
+                                    </td>
+                                    <td>President</td>
+                                    <td>Legal Advisor</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">?</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">Abdel Hak Alaoui</div>
+                                    </td>
+                                    <td>Vice President</td>
+                                    <td>Agricultural Engineer</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">?</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">Mohamed Sebaai</div>
+                                    </td>
+                                    <td>Treasurer</td>
+                                    <td>Accountant</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="name-with-photo">
+                                            <div class="member-photo-placeholder">?</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="member-name-text">Fatima Zahra</div>
+                                    </td>
+                                    <td>Secretary General</td>
+                                    <td>Teacher</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="donate" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar" dir="rtl">
+                    <h2 class="section-title">تبرع لدعم مشاريعنا</h2>
+                    <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">مساهمتكم تحدث فرقًا كبيرًا في حياة سكان تازولت. يمكنكم التبرع من خلال التحويل البنكي إلى الحساب التالي:</p>
+                    <div class="bank-info-container">
+                        <div class="bank-card">
+                            <h4><i class="fas fa-bank"></i> معلومات البنك</h4>
+                            <div class="bank-detail">
+                                <strong>اسم البنك:</strong>
+                                <span>البنك الشعبي</span>
+                            </div>
+                            <div class="bank-detail">
+                                <strong>اسم الحساب:</strong>
+                                <span>جمعية تازولت للتنمية</span>
+                            </div>
+                        </div>
+                        <div class="bank-card">
+                            <h4><i class="fas fa-credit-card"></i> معلومات الحساب</h4>
+                            <div class="bank-detail">
+                                <strong>رقم الحساب:</strong>
+                                <div class="bank-info-line">
+                                    <span id="accountNumberAR">1234567890</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('accountNumberAR')">نسخ</button>
+                                </div>
+                            </div>
+                            <div class="bank-detail">
+                                <strong>الرمز السويفت (SWIFT):</strong>
+                                <div class="bank-info-line">
+                                    <span id="swiftCodeAR">BCPAMANXXX</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('swiftCodeAR')">نسخ</button>
+                                </div>
+                            </div>
+                            <div class="copy-success" id="copySuccessAR">تم النسخ!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr" dir="ltr">
+                    <h2 class="section-title">Faire un don pour nos projets</h2>
+                    <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">Votre contribution fait une grande différence dans la vie des habitants de Tazoult. Vous pouvez faire un don par virement bancaire sur le compte suivant:</p>
+                    <div class="bank-info-container">
+                        <div class="bank-card">
+                            <h4><i class="fas fa-bank"></i> Informations bancaires</h4>
+                            <div class="bank-detail">
+                                <strong>Nom de la banque:</strong>
+                                <span>Banque Populaire</span>
+                            </div>
+                            <div class="bank-detail">
+                                <strong>Nom du compte:</strong>
+                                <span>Association Tazoult pour le Développement</span>
+                            </div>
+                        </div>
+                        <div class="bank-card">
+                            <h4><i class="fas fa-credit-card"></i> Détails du compte</h4>
+                            <div class="bank-detail">
+                                <strong>Numéro de compte:</strong>
+                                <div class="bank-info-line">
+                                    <span id="accountNumberFR">1234567890</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('accountNumberFR')">Copier</button>
+                                </div>
+                            </div>
+                            <div class="bank-detail">
+                                <strong>Code SWIFT:</strong>
+                                <div class="bank-info-line">
+                                    <span id="swiftCodeFR">BCPAMANXXX</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('swiftCodeFR')">Copier</button>
+                                </div>
+                            </div>
+                            <div class="copy-success" id="copySuccessFR">Copié!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en" dir="ltr">
+                    <h2 class="section-title">Donate to Support Our Projects</h2>
+                    <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">Your contribution makes a huge difference in the lives of the people of Tazoult. You can donate via bank transfer to the following account:</p>
+                    <div class="bank-info-container">
+                        <div class="bank-card">
+                            <h4><i class="fas fa-bank"></i> Bank Information</h4>
+                            <div class="bank-detail">
+                                <strong>Bank Name:</strong>
+                                <span>Banque Populaire</span>
+                            </div>
+                            <div class="bank-detail">
+                                <strong>Account Name:</strong>
+                                <span>Tazoult Association for Development</span>
+                            </div>
+                        </div>
+                        <div class="bank-card">
+                            <h4><i class="fas fa-credit-card"></i> Account Details</h4>
+                            <div class="bank-detail">
+                                <strong>Account Number:</strong>
+                                <div class="bank-info-line">
+                                    <span id="accountNumberEN">1234567890</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('accountNumberEN')">Copy</button>
+                                </div>
+                            </div>
+                            <div class="bank-detail">
+                                <strong>SWIFT Code:</strong>
+                                <div class="bank-info-line">
+                                    <span id="swiftCodeEN">BCPAMANXXX</span>
+                                    <button class="copy-btn" onclick="copyToClipboard('swiftCodeEN')">Copy</button>
+                                </div>
+                            </div>
+                            <div class="copy-success" id="copySuccessEN">Copied!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar" dir="rtl">
+                    <h2 class="section-title">صور من الدوار</h2>
+                    <div class="project-gallery">
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/1.jpg" alt="صورة 1 من الدوار"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/2.jpg" alt="صورة 2 من الدوار"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/3.jpg" alt="صورة 3 من الدوار"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/4.jpg" alt="صورة 4 من الدوار"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/5.jpg" alt="صورة 5 من الدوار"></div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr" dir="ltr">
+                    <h2 class="section-title">Photos du Village</h2>
+                     <div class="project-gallery">
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/1.jpg" alt="Photo 1 du village"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/2.jpg" alt="Photo 2 du village"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/3.jpg" alt="Photo 3 du village"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/4.jpg" alt="Photo 4 du village"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/5.jpg" alt="Photo 5 du village"></div>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en" dir="ltr">
+                    <h2 class="section-title">Photos of the Village</h2>
+                    <div class="project-gallery">
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/1.jpg" alt="Photo 1 of the village"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/2.jpg" alt="Photo 2 of the village"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/3.jpg" alt="Photo 3 of the village"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/4.jpg" alt="Photo 4 of the village"></div>
+                        <div class="gallery-image"><img src="https://raw.githubusercontent.com/Livwsi/Tazoult/main/Images/Old/image/Village/5.jpg" alt="Photo 5 of the village"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="lang-content active" data-lang="ar" dir="rtl">
+                    <h2 class="section-title">تواصل معنا</h2>
+                    <div class="form-container">
+                        <form action="submit_form.php" method="POST">
+                            <div class="form-group">
+                                <label for="name-ar">الاسم الكامل</label>
+                                <input type="text" id="name-ar" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-ar">البريد الإلكتروني</label>
+                                <input type="email" id="email-ar" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject-ar">الموضوع</label>
+                                <input type="text" id="subject-ar" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-ar">رسالتك</label>
+                                <textarea id="message-ar" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="cta-button">أرسل الرسالة</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="fr" dir="ltr">
+                    <h2 class="section-title">Contactez-nous</h2>
+                    <div class="form-container">
+                        <form action="submit_form.php" method="POST">
+                            <div class="form-group">
+                                <label for="name-fr">Nom Complet</label>
+                                <input type="text" id="name-fr" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-fr">Adresse e-mail</label>
+                                <input type="email" id="email-fr" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject-fr">Sujet</label>
+                                <input type="text" id="subject-fr" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-fr">Votre message</label>
+                                <textarea id="message-fr" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="cta-button">Envoyer le message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="lang-content" data-lang="en" dir="ltr">
+                    <h2 class="section-title">Contact Us</h2>
+                    <div class="form-container">
+                        <form action="submit_form.php" method="POST">
+                            <div class="form-group">
+                                <label for="name-en">Full Name</label>
+                                <input type="text" id="name-en" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-en">Email Address</label>
+                                <input type="email" id="email-en" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject-en">Subject</label>
+                                <input type="text" id="subject-en" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-en">Your Message</label>
+                                <textarea id="message-en" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="cta-button">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 جمعية تازولت للتنمية والتعاون والبيئة. كل الحقوق محفوظة.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Us</h4>
+                    <p>Tazoult Association is a non-profit organization dedicated to sustainable development in the Tazoult region.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: contact@tazoult.org</p>
+                    <p>Phone: +212 661-234567</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 Tazoult Association. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Language switcher functionality
-        function switchLanguage(lang) {
-            const langContents = document.querySelectorAll('.lang-content');
-            langContents.forEach(content => {
-                content.classList.remove('active');
-            });
-            const activeContent = document.querySelector(`.lang-content[data-lang="${lang}"]`);
-            if (activeContent) {
-                activeContent.classList.add('active');
-            }
-            const langButtons = document.querySelectorAll('.lang-btn');
-            langButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            const activeButton = document.querySelector(`.lang-btn[onclick*="'${lang}'"]`);
-            if (activeButton) {
-                activeButton.classList.add('active');
-            }
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const heroSlides = document.querySelectorAll('.hero-background-image');
+            const aboutSlides = document.querySelectorAll('#about .carousel-slide');
+            const aboutDots = document.querySelectorAll('#about .carousel-dot');
+            const prevArrow = document.querySelector('#about .carousel-arrow.prev');
+            const nextArrow = document.querySelector('#about .carousel-arrow.next');
 
-        // Projects "Details" buttons functionality
-        function toggleProject(projectId) {
-            const project = document.getElementById(projectId);
-            if (project) {
-                project.classList.toggle('expanded');
-                const button = project.previousElementSibling.querySelector('.expand-btn');
-                if (button) {
-                    if (project.classList.contains('expanded')) {
-                        button.textContent = 'إخفاء التفاصيل ↑';
-                    } else {
-                        button.textContent = 'اضغط هنا للتفاصيل ↓';
+            // Mobile Menu
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('mobile-open');
+                mobileMenuBtn.setAttribute('aria-expanded', navMenu.classList.contains('mobile-open'));
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('mobile-open');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Language Switcher
+            window.switchLanguage = function(lang) {
+                document.querySelectorAll('.lang-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.querySelectorAll(`.lang-content[data-lang="${lang}"]`).forEach(content => {
+                    content.classList.add('active');
+                });
+
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+
+                const html = document.documentElement;
+                if (lang === 'ar') {
+                    html.setAttribute('lang', 'ar');
+                    html.setAttribute('dir', 'rtl');
+                } else {
+                    html.setAttribute('lang', lang);
+                    html.setAttribute('dir', 'ltr');
+                }
+            };
+
+            // Hero Carousel
+            let heroSlideIndex = 0;
+            function showHeroSlide() {
+                heroSlides.forEach((slide, index) => {
+                    slide.classList.remove('active');
+                    if (index === heroSlideIndex) {
+                        slide.classList.add('active');
                     }
+                });
+            }
+
+            function nextHeroSlide() {
+                heroSlideIndex = (heroSlideIndex + 1) % heroSlides.length;
+                showHeroSlide();
+            }
+
+            showHeroSlide();
+            setInterval(nextHeroSlide, 5000); // Change image every 5 seconds
+
+            // About Carousel
+            let aboutSlideIndex = 0;
+            function showAboutSlide(n) {
+                aboutSlideIndex = (n + aboutSlides.length) % aboutSlides.length;
+                
+                aboutSlides.forEach(slide => {
+                    slide.style.display = 'none';
+                    slide.classList.remove('active');
+                });
+                
+                aboutDots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+
+                aboutSlides[aboutSlideIndex].style.display = 'flex';
+                aboutSlides[aboutSlideIndex].classList.add('active');
+                aboutDots[aboutSlideIndex].classList.add('active');
+            }
+
+            function changeSlide(n) {
+                showAboutSlide(aboutSlideIndex + n);
+            }
+
+            function currentSlide(n) {
+                showAboutSlide(n - 1);
+            }
+
+            prevArrow.addEventListener('click', () => changeSlide(-1));
+            nextArrow.addEventListener('click', () => changeSlide(1));
+
+            // Swipe support for About Carousel
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const swipeThreshold = 50;
+
+            document.querySelector('.image-carousel').addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            document.querySelector('.image-carousel').addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipeGesture();
+            }, { passive: true });
+
+            function handleSwipeGesture() {
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    changeSlide(1);
+                }
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    changeSlide(-1);
                 }
             }
-        }
 
-        // Image Carousel functionality
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        // Next/previous controls
-        function changeSlide(n) {
-            showSlides(slideIndex += n);
-        }
-
-        // Thumbnail image controls
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("carousel-slide");
-            let dots = document.getElementsByClassName("carousel-dot");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "flex";
-            dots[slideIndex - 1].className += " active";
-        }
-
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const swipeThreshold = 50;
-        
-        function handleGesture() {
-            if (touchEndX < touchStartX - swipeThreshold) {
-                // Swipe left - next slide
-                changeSlide(1);
-            }
-            if (touchEndX > touchStartX + swipeThreshold) {
-                // Swipe right - previous slide
-                changeSlide(-1);
-            }
-        }
-        
-        document.querySelector('.carousel-container').addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.querySelector('.carousel-container').addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleGesture();
-        });
-
-        // Hero section existing scripts
-        let heroSlideIndex = 0;
-        showHeroSlide(heroSlideIndex);
-
-        function nextHeroSlide() {
-            heroSlideIndex++;
-            showHeroSlide(heroSlideIndex);
-        }
-
-        function showHeroSlide(n) {
-            let i;
-            let slides = document.querySelectorAll('.hero .hero-content > div');
-            if (n >= slides.length) { heroSlideIndex = 0; }
-            if (n < 0) { heroSlideIndex = slides.length - 1; }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active');
-            }
-            slides[heroSlideIndex].classList.add('active');
-            setTimeout(nextHeroSlide, 5000); // Change image every 5 seconds
-        }
-
-        // Mobile touch gestures for hero section
-        touchStartX = 0;
-        touchEndX = 0;
-        const heroSwipeThreshold = 50;
-        
-        function handleHeroGesture() {
-            if (touchEndX < touchStartX - heroSwipeThreshold) {
-                // Swipe left - next slide
-                nextHeroSlide();
-            }
-            if (touchEndX > touchStartX + heroSwipeThreshold) {
-                // Swipe right - previous slide
-                heroSlideIndex--;
-                showHeroSlide(heroSlideIndex);
-            }
-        }
-
-        document.querySelector('.hero').addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.querySelector('.hero').addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleHeroGesture();
-        });
-
-        // Prevent horizontal scrolling on mobile when swiping
-        document.addEventListener('touchmove', function(e) {
-            if (e.touches.length > 1) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        // Improve form accessibility on mobile
-        document.querySelectorAll('input, textarea, select').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.style.borderColor = '#20b2aa';
-                this.style.boxShadow = '0 0 0 3px rgba(32, 178, 170, 0.1)';
-            });
+            showAboutSlide(0);
             
-            input.addEventListener('blur', function() {
-                this.style.borderColor = '#e0f2e0';
-                this.style.boxShadow = 'none';
-            });
+            // Expandable Project Cards
+            window.toggleProject = function(card) {
+                const expandBtn = card.querySelector('.expand-btn');
+                const content = card.querySelector('.project-expandable');
+                const isExpanded = card.getAttribute('aria-expanded') === 'true' || false;
+                
+                card.setAttribute('aria-expanded', !isExpanded);
+                content.classList.toggle('expanded', !isExpanded);
+                
+                if (!isExpanded) {
+                    expandBtn.textContent = expandBtn.closest('[data-lang]').dataset.lang === 'ar' ? 'إخفاء التفاصيل' : (expandBtn.closest('[data-lang]').dataset.lang === 'fr' ? 'Masquer les détails' : 'Hide Details');
+                } else {
+                    expandBtn.textContent = expandBtn.closest('[data-lang]').dataset.lang === 'ar' ? 'عرض التفاصيل' : (expandBtn.closest('[data-lang]').dataset.lang === 'fr' ? 'Voir les détails' : 'Show Details');
+                }
+            };
+            
+            // Copy to Clipboard
+            window.copyToClipboard = async function(elementId) {
+                const element = document.getElementById(elementId);
+                const text = element.textContent;
+                const successMessage = document.getElementById(`copySuccess${elementId.slice(-2).toUpperCase()}`);
+
+                try {
+                    await navigator.clipboard.writeText(text);
+                    successMessage.classList.add('visible');
+                    setTimeout(() => {
+                        successMessage.classList.remove('visible');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    alert('Failed to copy. Please copy manually.');
+                }
+            };
         });
     </script>
 </body>
