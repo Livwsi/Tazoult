@@ -786,17 +786,14 @@
             langContents.forEach(content => {
                 content.classList.remove('active');
             });
-
             const activeContent = document.querySelector(`.lang-content[data-lang="${lang}"]`);
             if (activeContent) {
                 activeContent.classList.add('active');
             }
-
             const langButtons = document.querySelectorAll('.lang-btn');
             langButtons.forEach(btn => {
                 btn.classList.remove('active');
             });
-
             const activeButton = document.querySelector(`.lang-btn[onclick*="'${lang}'"]`);
             if (activeButton) {
                 activeButton.classList.add('active');
