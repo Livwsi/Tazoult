@@ -2,18 +2,29 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>جمعية تازولت للتنمية والتعاون والبيئة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #2e8b57;
+            --primary-dark: #1e5d3a;
             --secondary-color: #20b2aa;
-            --light-bg-color: #f2f6f2;
-            --white-color: #fff;
-            --dark-color: #333;
-            --text-color: #555;
-            --border-radius-card: 15px;
-            --border-radius-button: 50px;
+            --accent-color: #90ee90;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --background: #ffffff;
+            --surface: #f0f8ff;
+            --border: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -22,205 +33,166 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Noto Sans Arabic', 'Inter', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            color: var(--text-color);
+            color: var(--text-dark);
             background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+            overflow-x: hidden;
         }
 
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.5rem;
         }
 
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        /* Header */
+        .header {
             position: fixed;
-            width: 100%;
             top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
             z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        
-        header.scrolled {
-            background: var(--primary-color);
-            padding: 0.5rem 0;
+            transition: var(--transition);
         }
 
-        nav {
+        .header.scrolled {
+            background: rgba(46, 139, 87, 0.95);
+        }
+
+        .nav {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             padding: 1rem 0;
-            transition: padding 0.3s ease;
+            gap: 2rem;
         }
 
         .logo {
-            color: var(--white-color);
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: bold;
             display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: white;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
             align-items: center;
         }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-links a {
-            color: var(--white-color);
+        .nav-link {
             text-decoration: none;
-            font-weight: bold;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #a2f2ef;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background-color: #a2f2ef;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-icon {
-            display: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--white-color);
-        }
-
-        .mobile-nav {
-            display: none;
-            flex-direction: column;
-            background-color: var(--secondary-color);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 10px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-nav.active {
-            display: flex;
-        }
-        
-        .mobile-nav a {
-            color: var(--white-color);
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            text-decoration: none;
-        }
-
-        .mobile-nav a:last-child {
-            border-bottom: none;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-icon {
-                display: block;
-            }
-        }
-        
-        .lang-switch-desktop {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .lang-switch-mobile {
-            display: none;
-        }
-        
-        @media (max-width: 768px) {
-            .lang-switch-desktop {
-                display: none;
-            }
-            .lang-switch-mobile {
-                display: flex;
-                margin-top: 10px;
-                justify-content: center;
-                gap: 10px;
-            }
-        }
-
-        .lang-switch button {
-            background-color: transparent;
             color: white;
-            border: 2px solid rgba(255,255,255,0.5);
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
         }
 
-        .lang-switch button.active, .lang-switch button:hover {
-            background-color: rgba(255,255,255,0.2);
-            border: 2px solid white;
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .donate-btn {
+            background: linear-gradient(135deg, var(--warning-color), #f97316);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.875rem;
+        }
+
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         /* Hero Section */
         .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 8rem 0 4rem;
             position: relative;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--white-color);
-            text-align: center;
             overflow: hidden;
-        }
-        
-        .hero-bg-slideshow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .bg-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-        }
-        
-        .bg-slide.active {
-            opacity: 1;
         }
 
         .hero::before {
@@ -228,644 +200,1337 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 2;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="80" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
         }
 
         .hero-content {
             position: relative;
-            z-index: 3;
-            max-width: 800px;
-            padding: 20px;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            background-color: var(--secondary-color);
-            color: var(--white-color);
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: var(--border-radius-button);
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #1a8f87;
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 0;
+            z-index: 2;
             text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Impact Stats */
+        .impact-stats {
+            background: white;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
         }
 
         .section-title {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            margin-bottom: 40px;
             color: var(--primary-color);
+            margin-bottom: 1rem;
             position: relative;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            border-radius: 2px;
         }
 
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 1rem auto;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.125rem;
+        }
+
+        /* Location Section */
+        .location-section {
+            background: white;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .location-info {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .location-detail {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .location-detail strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-container {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        /* Cards */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
         }
 
         .card {
-            background-color: var(--white-color);
-            padding: 30px;
-            border-radius: var(--border-radius-card);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
         }
 
-        .card i {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-            animation: bounce 2s infinite;
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--dark-color);
-        }
-
-        .board-member {
-            background-color: var(--white-color);
-            padding: 20px;
-            border-radius: var(--border-radius-card);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .board-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .board-member img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 4px solid var(--secondary-color);
-            transition: transform 0.3s ease;
-        }
-
-        .board-member:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Projects Section */
-        .project-card {
-            background-color: var(--white-color);
-            border-radius: var(--border-radius-card);
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .project-card img {
-            width: 100%;
+        .card-image {
             height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .project-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 20px;
-        }
-
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        .gallery-grid img {
+        .card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
         }
 
-        .gallery-grid img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        .card-content {
+            padding: 1.5rem;
         }
-        
-        /* Donations */
-        .donation-box {
-            background-color: var(--white-color);
-            padding: 40px;
-            border-radius: var(--border-radius-card);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            max-width: 600px;
+
+        .card-title {
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .card-description {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            border-radius: 6px;
+        }
+
+        /* Project Details */
+        .project-details {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+            display: none;
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .project-details.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 1000px;
+            }
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .detail-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-image {
+            height: 150px;
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 500;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        /* Donation Section */
+        .donation-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+
+        .donation-content {
+            max-width: 800px;
             margin: 0 auto;
         }
-        
-        .donation-box p {
-            margin-bottom: 20px;
-        }
-        
-        .copy-button {
-            background-color: var(--secondary-color);
-            color: var(--white-color);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .copy-button:hover {
-            background-color: #1a8f87;
+
+        .bank-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        /* Contact & Location */
-        .form-control {
-            margin-bottom: 20px;
-            text-align: right;
+        .bank-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--accent-color);
+            transition: var(--transition);
         }
 
-        .form-control label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: var(--dark-color);
+        .bank-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
         }
 
-        .form-control input,
-        .form-control textarea {
-            width: 100%;
-            padding: 10px;
+        .bank-card h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bank-detail {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            border: 1px solid #ccc;
-            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--secondary-color);
         }
 
-        .form-control input:focus,
-        .form-control textarea:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.2);
+        .bank-detail strong {
+            color: white;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
-        .submit-button {
-            background-color: var(--primary-color);
-            color: var(--white-color);
-            padding: 15px 30px;
+        .bank-detail span {
+            font-family: monospace;
+            font-size: 1rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .copy-btn {
+            background: var(--accent-color);
+            color: var(--primary-color);
             border: none;
-            border-radius: var(--border-radius-button);
-            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
+            font-size: 0.875rem;
+            transition: var(--transition);
+            font-weight: 600;
         }
 
-        .submit-button:hover {
-            background-color: #247545;
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .copy-btn:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        /* Board Section */
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .member-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent-color);
+        }
+
+        .member-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .member-role {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .member-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .member-contact a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .member-contact a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
         }
 
         /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white-color);
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
             text-align: center;
-            padding: 20px 0;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .social-links {
-            margin-top: 15px;
-        }
-
-        .social-links a {
-            color: var(--white-color);
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #a2f2ef;
-        }
-        
-        /* Language Content Switch */
+        /* Language Content */
         .lang-content {
             display: none;
-            animation: fadeIn 1s ease-in-out;
         }
 
         .lang-content.active {
             display: block;
         }
-        
-        .hero .lang-content.active {
+
+        /* Projects Group */
+        .projects-group {
+            margin-bottom: 4rem;
+        }
+
+        .projects-group h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .projects-group h3::after {
+            content: '';
             display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--secondary-color);
+            margin: 0.5rem auto;
         }
 
-        /* Modal for images */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            justify-content: center;
-            align-items: center;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0.5rem;
+                box-shadow: var(--shadow-lg);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .bank-info {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            animation: zoomIn 0.5s;
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mt-4 { margin-top: 1rem; }
+        .hidden { display: none; }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
     <!-- Header -->
-    <header>
+    <header class="header" id="header">
         <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <img src="https://placehold.co/40x40/20b2aa/fff?text=L" alt="Logo" style="border-radius: 50%; margin-left: 10px;">
-                    جمعية تازولت
-                </a>
-                <div style="display: flex; align-items: center;">
-                    <ul class="nav-links">
-                        <li><a href="#about">الجمعية</a></li>
-                        <li><a href="#board">أعضاء المكتب</a></li>
-                        <li><a href="#projects">مشاريعنا</a></li>
-                        <li><a href="#gallery">معرض الصور</a></li>
-                        <li><a href="#donations">تبرع</a></li>
-                        <li><a href="#contact">اتصل بنا</a></li>
-                        <li><a href="#location">الموقع</a></li>
-                    </ul>
-                    <div class="lang-switch lang-switch-desktop" id="lang-switch-desktop">
-                        <button onclick="switchLanguage('ar')" class="active">AR</button>
-                        <button onclick="switchLanguage('fr')">FR</button>
-                        <button onclick="switchLanguage('en')">EN</button>
+            <nav class="nav">
+                <a href="#home" class="logo">
+                    <div class="logo-img">
+                        <img src="Logo-removebg-preview.png" alt="شعار جمعية تازولت">
                     </div>
-                </div>
-                <div class="mobile-menu-icon" id="mobile-menu-btn">
-                    <i class="fa fa-bars"></i>
+                    <span class="lang-content active" data-lang="ar">جمعية تازولت</span>
+                    <span class="lang-content" data-lang="fr">Association Tazoult</span>
+                    <span class="lang-content" data-lang="en">Tazoult Association</span>
+                </a>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">
+                        <span class="lang-content active" data-lang="ar">الرئيسية</span>
+                        <span class="lang-content" data-lang="fr">Accueil</span>
+                        <span class="lang-content" data-lang="en">Home</span>
+                    </a></li>
+                    <li><a href="#about" class="nav-link">
+                        <span class="lang-content active" data-lang="ar">عن الجمعية</span>
+                        <span class="lang-content" data-lang="fr">À Propos</span>
+                        <span class="lang-content" data-lang="en">About</span>
+                    </a></li>
+                    <li><a href="#location" class="nav-link">
+                        <span class="lang-content active" data-lang="ar">الموقع</span>
+                        <span class="lang-content" data-lang="fr">Localisation</span>
+                        <span class="lang-content" data-lang="en">Location</span>
+                    </a></li>
+                    <li><a href="#projects" class="nav-link">
+                        <span class="lang-content active" data-lang="ar">المشاريع</span>
+                        <span class="lang-content" data-lang="fr">Projets</span>
+                        <span class="lang-content" data-lang="en">Projects</span>
+                    </a></li>
+                    <li><a href="#board" class="nav-link">
+                        <span class="lang-content active" data-lang="ar">مجلس الإدارة</span>
+                        <span class="lang-content" data-lang="fr">Conseil</span>
+                        <span class="lang-content" data-lang="en">Board</span>
+                    </a></li>
+                    <li><a href="#contact" class="nav-link">
+                        <span class="lang-content active" data-lang="ar">اتصل بنا</span>
+                        <span class="lang-content" data-lang="fr">Contact</span>
+                        <span class="lang-content" data-lang="en">Contact</span>
+                    </a></li>
+                </ul>
+
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" onclick="switchLanguage('ar')">العربية</button>
+                        <button class="lang-btn" onclick="switchLanguage('fr')">Français</button>
+                        <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+                    </div>
+                    <a href="#donate" class="donate-btn">
+                        ❤️
+                        <span class="lang-content active" data-lang="ar">تبرع</span>
+                        <span class="lang-content" data-lang="fr">Faire un Don</span>
+                        <span class="lang-content" data-lang="en">Donate</span>
+                    </a>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
                 </div>
             </nav>
-            <div class="mobile-nav" id="mobile-menu">
-                <a href="#about">الجمعية</a>
-                <a href="#board">أعضاء المكتب</a>
-                <a href="#projects">مشاريعنا</a>
-                <a href="#gallery">معرض الصور</a>
-                <a href="#donations">تبرع</a>
-                <a href="#contact">اتصل بنا</a>
-                <a href="#location">الموقع</a>
-                <div class="lang-switch lang-switch-mobile" id="lang-switch-mobile">
-                    <button onclick="switchLanguage('ar')" class="active">AR</button>
-                    <button onclick="switchLanguage('fr')">FR</button>
-                    <button onclick="switchLanguage('en')">EN</button>
-                </div>
-            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg-slideshow">
-            <div class="bg-slide active" style="background-image: url('https://placehold.co/1920x1080/2e8b57/fff?text=Village+1');"></div>
-            <div class="bg-slide" style="background-image: url('https://placehold.co/1920x1080/20b2aa/fff?text=Village+2');"></div>
-            <div class="bg-slide" style="background-image: url('https://placehold.co/1920x1080/1e7e50/fff?text=Village+3');"></div>
-            <div class="bg-slide" style="background-image: url('https://placehold.co/1920x1080/178e87/fff?text=Village+4');"></div>
-            <div class="bg-slide" style="background-image: url('https://placehold.co/1920x1080/2e8b57/fff?text=Village+5');"></div>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="Logo-removebg-preview.png" alt="شعار جمعية تازولت">
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="lang-content active" data-lang="ar">جمعية تازولت للتنمية والتعاون والبيئة</span>
+                    <span class="lang-content" data-lang="fr">Association Tazoult pour le Développement et la Coopération et d'Environnement</span>
+                    <span class="lang-content" data-lang="en">Tazoult Association for Development, Cooperation and Environment</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    <span class="lang-content active" data-lang="ar">نعمل من أجل التنمية المستدامة وتحسين ظروف المعيشة في منطقة تازولت</span>
+                    <span class="lang-content" data-lang="fr">Nous œuvrons pour le développement durable et l'amélioration des conditions de vie dans la région de Tazoult</span>
+                    <span class="lang-content" data-lang="en">We work for sustainable development and improving living conditions in the Tazoult region</span>
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#about" class="btn btn-primary">
+                        <span class="lang-content active" data-lang="ar">اكتشف المزيد</span>
+                        <span class="lang-content" data-lang="fr">Découvrir plus</span>
+                        <span class="lang-content" data-lang="en">Learn More</span>
+                    </a>
+                    <a href="#donate" class="btn btn-secondary">
+                        <span class="lang-content active" data-lang="ar">ادعم مشاريعنا</span>
+                        <span class="lang-content" data-lang="fr">Soutenir nos projets</span>
+                        <span class="lang-content" data-lang="en">Support Our Projects</span>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="hero-content">
-            <div class="lang-content active" data-lang="ar">
-                <h1>مرحبا بكم في جمعية تازولت للتنمية والتعاون والبيئة</h1>
-                <p>مؤسسة تسعى لتحقيق التنمية المستدامة في قرية تازولت، المغرب</p>
-                <a href="#about" class="cta-button">اكتشف المزيد</a>
-            </div>
-            <div class="lang-content" data-lang="fr">
-                <h1>Bienvenue à l'Association de Développement de Tazoult</h1>
-                <p>Une organisation dédiée au développement durable dans le village de Tazoult, Maroc</p>
-                <a href="#about" class="cta-button">Découvrir plus</a>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h1>Welcome to Tazoult Development Association</h1>
-                <p>An organization dedicated to sustainable development in the village of Tazoult, Morocco</p>
-                <a href="#about" class="cta-button">Discover More</a>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="impact-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number">1200+</span>
+                    <span class="stat-label">
+                        <span class="lang-content active" data-lang="ar">مستفيد</span>
+                        <span class="lang-content" data-lang="fr">Bénéficiaires</span>
+                        <span class="lang-content" data-lang="en">Beneficiaries</span>
+                    </span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">
+                        <span class="lang-content active" data-lang="ar">مشروع منجز</span>
+                        <span class="lang-content" data-lang="fr">Projets réalisés</span>
+                        <span class="lang-content" data-lang="en">Projects Completed</span>
+                    </span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number">550+</span>
+                    <span class="stat-label">
+                        <span class="lang-content active" data-lang="ar">شجرة مزروعة</span>
+                        <span class="lang-content" data-lang="fr">Arbres plantés</span>
+                        <span class="lang-content" data-lang="en">Trees Planted</span>
+                    </span>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">
+                        <span class="lang-content active" data-lang="ar">سنوات من العمل</span>
+                        <span class="lang-content" data-lang="fr">Années d'expérience</span>
+                        <span class="lang-content" data-lang="en">Years of Service</span>
+                    </span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" style="background-color: var(--white-color);">
+    <section id="about" class="section">
         <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2 class="section-title">عن الجمعية</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <i class="fa fa-bullseye"></i>
-                        <h3>مهمتنا</h3>
-                        <p>نعمل على تحسين جودة الحياة في تازولت من خلال مشاريع تنموية في مختلف المجالات.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa fa-eye"></i>
-                        <h3>رؤيتنا</h3>
-                        <p>مجتمع مزدهر ومكتفٍ ذاتيا، حيث يساهم كل فرد في بناء مستقبل أفضل للقرية.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa fa-handshake"></i>
-                        <h3>قيمنا</h3>
-                        <p>التعاون، الشفافية، المسؤولية، والالتزام بالبيئة والاستدامة.</p>
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">
+                    <span class="lang-content active" data-lang="ar">عن الجمعية</span>
+                    <span class="lang-content" data-lang="fr">À Propos de l'Association</span>
+                    <span class="lang-content" data-lang="en">About Our Association</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-content active" data-lang="ar">جمعية تازولت للتنمية والتعاون والبيئة هي منظمة غير ربحية تهدف إلى تحقيق التنمية الشاملة في منطقة تازولت</span>
+                    <span class="lang-content" data-lang="fr">L'Association Tazoult pour le Développement et la Coopération et d'Environnement est une organisation à but non lucratif visant le développement global de la région de Tazoult</span>
+                    <span class="lang-content" data-lang="en">Tazoult Association for Development, Cooperation and Environment is a non-profit organization aiming for comprehensive development in the Tazoult region</span>
+                </p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card animate-on-scroll">
+                    <div class="card-image">🏫</div>
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            <span class="lang-content active" data-lang="ar">التعليم ومحاربة الأمية</span>
+                            <span class="lang-content" data-lang="fr">L'éducation et la lutte contre l'analphabétisme</span>
+                            <span class="lang-content" data-lang="en">Education and fighting illiteracy</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="lang-content active" data-lang="ar">تطوير البنية التحتية وتوفير المياه الصالحة للشرب</span>
+                            <span class="lang-content" data-lang="fr">Développer l'infrastructure et fournir l'eau potable</span>
+                            <span class="lang-content" data-lang="en">Developing infrastructure and providing clean drinking water</span>
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="lang-content" data-lang="fr">
-                <h2 class="section-title">À propos de nous</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <i class="fa fa-bullseye"></i>
-                        <h3>Notre Mission</h3>
-                        <p>Nous travaillons pour améliorer la qualité de vie à Tazoult à travers des projets de développement dans divers domaines.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa fa-eye"></i>
-                        <h3>Notre Vision</h3>
-                        <p>Une communauté prospère et autosuffisante où chaque individu contribue à construire un avenir meilleur pour le village.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa fa-handshake"></i>
-                        <h3>Nos Valeurs</h3>
-                        <p>Coopération, transparence, responsabilité, et engagement envers l'environnement et la durabilité.</p>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-image">💧</div>
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            <span class="lang-content active" data-lang="ar">الرعاية الصحية والحملات التوعوية</span>
+                            <span class="lang-content" data-lang="fr">Les soins de santé et les campagnes de sensibilisation</span>
+                            <span class="lang-content" data-lang="en">Healthcare and awareness campaigns</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="lang-content active" data-lang="ar">حماية البيئة ومحاربة التصحر</span>
+                            <span class="lang-content" data-lang="fr">Protection de l'environnement et lutte contre la désertification</span>
+                            <span class="lang-content" data-lang="en">Environmental protection and combating desertification</span>
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h2 class="section-title">About Us</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <i class="fa fa-bullseye"></i>
-                        <h3>Our Mission</h3>
-                        <p>We work to improve the quality of life in Tazoult through development projects in various fields.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa fa-eye"></i>
-                        <h3>Our Vision</h3>
-                        <p>A prosperous and self-sufficient community where every individual contributes to building a better future for the village.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa fa-handshake"></i>
-                        <h3>Our Values</h3>
-                        <p>Cooperation, transparency, responsibility, and a commitment to the environment and sustainability.</p>
+
+                <div class="card animate-on-scroll">
+                    <div class="card-image">🌱</div>
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            <span class="lang-content active" data-lang="ar">تمكين المرأة والطفل والشباب</span>
+                            <span class="lang-content" data-lang="fr">Autonomisation des femmes, des enfants et des jeunes</span>
+                            <span class="lang-content" data-lang="en">Empowering women, children and youth</span>
+                        </h3>
+                        <p class="card-description">
+                            <span class="lang-content active" data-lang="ar">خلق فرص عمل ومشاريع تنموية</span>
+                            <span class="lang-content" data-lang="fr">Création d'emplois et projets de développement</span>
+                            <span class="lang-content" data-lang="en">Creating jobs and development projects</span>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Board Section -->
-    <section id="board" style="background-color: var(--light-bg-color);">
+
+    <!-- Enhanced Location Section -->
+    <section id="location" class="section location-section">
         <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2 class="section-title">أعضاء المكتب</h2>
-                <div class="card-grid">
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Member+1" alt="عضو 1">
-                        <h3>أحمد الحسناوي</h3>
-                        <p>رئيس الجمعية</p>
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">
+                    <span class="lang-content active" data-lang="ar">موقعنا</span>
+                    <span class="lang-content" data-lang="fr">Notre Localisation</span>
+                    <span class="lang-content" data-lang="en">Our Location</span>
+                </h2>
+            </div>
+
+            <div class="location-content animate-on-scroll">
+                <div class="location-info">
+                    <h3>
+                        <span class="lang-content active" data-lang="ar">دوار تازولت</span>
+                        <span class="lang-content" data-lang="fr">Douar Tazoult</span>
+                        <span class="lang-content" data-lang="en">Douar Tazoult</span>
+                    </h3>
+                    <div class="location-detail">
+                        <strong>📍 
+                            <span class="lang-content active" data-lang="ar">العنوان الكامل:</span>
+                            <span class="lang-content" data-lang="fr">Adresse complète:</span>
+                            <span class="lang-content" data-lang="en">Full Address:</span>
+                        </strong>
+                        <span class="lang-content active" data-lang="ar">دوار تازولت، جماعة تويالت، قيادة اسكاون، دائرة تالوين، عمالة تارودانت، المغرب</span>
+                        <span class="lang-content" data-lang="fr">Douar Tazoult, Commune Twiyalt, Caïdat Askawn, Cercle Talwin, Province Taroudannt, Maroc</span>
+                        <span class="lang-content" data-lang="en">Douar Tazoult, Twiyalt Municipality, Askawn District, Talwin Circle, Taroudannt Province, Morocco</span>
                     </div>
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Member+2" alt="عضو 2">
-                        <h3>فاطمة الزهراء</h3>
-                        <p>نائبة الرئيس</p>
+                    <div class="location-detail">
+                        <strong>🗺️ 
+                            <span class="lang-content active" data-lang="ar">الإحداثيات:</span>
+                            <span class="lang-content" data-lang="fr">Coordonnées:</span>
+                            <span class="lang-content" data-lang="en">Coordinates:</span>
+                        </strong>
+                        Q6MC+XXV تازولت، تارودانت
                     </div>
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Member+3" alt="عضو 3">
-                        <h3>يوسف العلوي</h3>
-                        <p>أمين المال</p>
+                    <div class="location-detail">
+                        <strong>🏔️ 
+                            <span class="lang-content active" data-lang="ar">المنطقة الجغرافية:</span>
+                            <span class="lang-content" data-lang="fr">Région géographique:</span>
+                            <span class="lang-content" data-lang="en">Geographical Region:</span>
+                        </strong>
+                        <span class="lang-content active" data-lang="ar">تقع في منطقة الأطلس الصغير، محاطة بالجبال والوديان</span>
+                        <span class="lang-content" data-lang="fr">Située dans la région du Petit Atlas, entourée de montagnes et vallées</span>
+                        <span class="lang-content" data-lang="en">Located in the Anti-Atlas region, surrounded by mountains and valleys</span>
                     </div>
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Member+4" alt="عضو 4">
-                        <h3>مريم الفهري</h3>
-                        <p>الكاتبة العامة</p>
+                    <div class="location-detail">
+                        <strong>🌾 
+                            <span class="lang-content active" data-lang="ar">النشاط الاقتصادي:</span>
+                            <span class="lang-content" data-lang="fr">Activité économique:</span>
+                            <span class="lang-content" data-lang="en">Economic Activity:</span>
+                        </strong>
+                        <span class="lang-content active" data-lang="ar">منطقة زراعية تشتهر بزراعة الزيتون واللوز والأركان والحبوب</span>
+                        <span class="lang-content" data-lang="fr">Zone agricole connue pour la culture d'olives, d'amandes, d'argan et de céréales</span>
+                        <span class="lang-content" data-lang="en">Agricultural area known for olive, almond, argan and grain cultivation</span>
+                    </div>
+                    <div class="location-detail">
+                        <strong>👥 
+                            <span class="lang-content active" data-lang="ar">عدد السكان:</span>
+                            <span class="lang-content" data-lang="fr">Population:</span>
+                            <span class="lang-content" data-lang="en">Population:</span>
+                        </strong>
+                        <span class="lang-content active" data-lang="ar">حوالي 1200 نسمة موزعين على عدة دواوير</span>
+                        <span class="lang-content" data-lang="fr">Environ 1200 habitants répartis sur plusieurs douars</span>
+                        <span class="lang-content" data-lang="en">Approximately 1200 inhabitants distributed across several douars</span>
                     </div>
                 </div>
-            </div>
-            <div class="lang-content" data-lang="fr">
-                <h2 class="section-title">Les Membres du Conseil</h2>
-                <div class="card-grid">
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Membre+1" alt="Membre 1">
-                        <h3>Ahmed El Hasnaoui</h3>
-                        <p>Président</p>
-                    </div>
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Membre+2" alt="Membre 2">
-                        <h3>Fatima Zahra</h3>
-                        <p>Vice-Présidente</p>
-                    </div>
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Membre+3" alt="Membre 3">
-                        <h3>Youssef El Alaoui</h3>
-                        <p>Trésorier</p>
-                    </div>
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Membre+4" alt="Membre 4">
-                        <h3>Mariam El Fehri</h3>
-                        <p>Secrétaire Générale</p>
-                    </div>
-                </div>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h2 class="section-title">Board Members</h2>
-                <div class="card-grid">
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Member+1" alt="Member 1">
-                        <h3>Ahmed El Hasnaoui</h3>
-                        <p>President</p>
-                    </div>
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Member+2" alt="Member 2">
-                        <h3>Fatima Zahra</h3>
-                        <p>Vice President</p>
-                    </div>
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Member+3" alt="Member 3">
-                        <h3>Youssef El Alaoui</h3>
-                        <p>Treasurer</p>
-                    </div>
-                    <div class="board-member">
-                        <img src="https://placehold.co/150x150/20b2aa/fff?text=Member+4" alt="Member 4">
-                        <h3>Mariam El Fehri</h3>
-                        <p>General Secretary</p>
-                    </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d17691.687973501266!2d-7.777784!3d30.784318!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdba827111e28f4b%3A0x8e112529c0bc9609!2sTazoulte%2C%20Morocco!5e1!3m2!1sen!2snl!4v1753787829734!5m2!1sen!2snl" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0; border-radius: 8px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" style="background-color: var(--white-color);">
+    <section id="projects" class="section" style="background: var(--surface);">
         <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2 class="section-title">مشاريعنا</h2>
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">
+                    <span class="lang-content active" data-lang="ar">مشاريعنا</span>
+                    <span class="lang-content" data-lang="fr">Nos Projets</span>
+                    <span class="lang-content" data-lang="en">Our Projects</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-content active" data-lang="ar">اكتشف المشاريع التي نعمل عليها لتحسين حياة المجتمع</span>
+                    <span class="lang-content" data-lang="fr">Découvrez les projets sur lesquels nous travaillons pour améliorer la vie de la communauté</span>
+                    <span class="lang-content" data-lang="en">Discover the projects we're working on to improve community life</span>
+                </p>
+            </div>
+
+            <!-- Current Projects -->
+            <div class="projects-group">
+                <h3>
+                    <span class="lang-content active" data-lang="ar">🚀 المشاريع الحالية</span>
+                    <span class="lang-content" data-lang="fr">🚀 Projets en Cours</span>
+                    <span class="lang-content" data-lang="en">🚀 Current Projects</span>
+                </h3>
+                
                 <div class="card-grid">
-                    <div class="project-card">
-                        <img src="https://placehold.co/600x400/2e8b57/fff?text=Water+Project" alt="مشروع المياه">
-                        <div class="project-content">
-                            <h3>مشروع المياه</h3>
-                            <p>توفير المياه الصالحة للشرب للقرية.</p>
+                    <div class="card animate-on-scroll">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/400x200/2e8b57/ffffff?text=مشروع+المدرسة" alt="مشروع المدرسة" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <span class="lang-content active" data-lang="ar">مشروع المدرسة</span>
+                                <span class="lang-content" data-lang="fr">Projet École</span>
+                                <span class="lang-content" data-lang="en">School Project</span>
+                            </h3>
+                            <p class="card-description">
+                                <span class="lang-content active" data-lang="ar">تطوير وتحسين البنية التحتية التعليمية في المنطقة لضمان تعليم أفضل للأطفال</span>
+                                <span class="lang-content" data-lang="fr">Développement et amélioration de l'infrastructure éducative dans la région pour assurer une meilleure éducation aux enfants</span>
+                                <span class="lang-content" data-lang="en">Development and improvement of educational infrastructure in the region to ensure better education for children</span>
+                            </p>
+                            <div class="card-meta">
+                                <span>💰 200,000 درهم</span>
+                                <span>📅 يناير 2024 - أغسطس 2024</span>
+                                <span>👥 150 طالب</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-small btn-primary" onclick="toggleProject('school-details')">
+                                    <span class="lang-content active" data-lang="ar">اضغط هنا للتفاصيل ↓</span>
+                                    <span class="lang-content" data-lang="fr">Cliquez pour détails ↓</span>
+                                    <span class="lang-content" data-lang="en">Click for details ↓</span>
+                                </button>
+                            </div>
+                            <div id="school-details" class="project-details">
+                                <h4>📊 
+                                    <span class="lang-content active" data-lang="ar">تفاصيل المشروع:</span>
+                                    <span class="lang-content" data-lang="fr">Détails du Projet:</span>
+                                    <span class="lang-content" data-lang="en">Project Details:</span>
+                                </h4>
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <div class="detail-label">
+                                            <span class="lang-content active" data-lang="ar">الميزانية</span>
+                                            <span class="lang-content" data-lang="fr">Budget</span>
+                                            <span class="lang-content" data-lang="en">Budget</span>
+                                        </div>
+                                        <div class="detail-value">200,000 درهم</div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">
+                                            <span class="lang-content active" data-lang="ar">الرعاة</span>
+                                            <span class="lang-content" data-lang="fr">Sponsors</span>
+                                            <span class="lang-content" data-lang="en">Sponsors</span>
+                                        </div>
+                                        <div class="detail-value">
+                                            <span class="lang-content active" data-lang="ar">وزارة التربية الوطنية، المجلس الإقليمي</span>
+                                            <span class="lang-content" data-lang="fr">Ministère de l'Éducation, Conseil Régional</span>
+                                            <span class="lang-content" data-lang="en">Ministry of Education, Regional Council</span>
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">
+                                            <span class="lang-content active" data-lang="ar">الهدف</span>
+                                            <span class="lang-content" data-lang="fr">Objectif</span>
+                                            <span class="lang-content" data-lang="en">Goal</span>
+                                        </div>
+                                        <div class="detail-value">
+                                            <span class="lang-content active" data-lang="ar">بناء فصول دراسية جديدة وتجهيز المدرسة</span>
+                                            <span class="lang-content" data-lang="fr">Construction de nouvelles salles de classe et équipement de l'école</span>
+                                            <span class="lang-content" data-lang="en">Building new classrooms and equipping the school</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-gallery">
+                                    <div class="gallery-image">بناء الفصول الجديدة</div>
+                                    <div class="gallery-image">تجهيز المدرسة</div>
+                                    <div class="gallery-image">الأطفال في الفصل</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <img src="https://placehold.co/600x400/20b2aa/fff?text=Education+Project" alt="مشروع التعليم">
-                        <div class="project-content">
-                            <h3>مشروع التعليم</h3>
-                            <p>دعم التعليم وتوفير المعدات للمدارس المحلية.</p>
+
+                    <div class="card animate-on-scroll">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/400x200/20b2aa/ffffff?text=مشروع+المياه" alt="مشروع المياه" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <span class="lang-content active" data-lang="ar">مشروع المياه</span>
+                                <span class="lang-content" data-lang="fr">Projet Eau</span>
+                                <span class="lang-content" data-lang="en">Water Project</span>
+                            </h3>
+                            <p class="card-description">
+                                <span class="lang-content active" data-lang="ar">توفير المياه الصالحة للشرب لجميع سكان المنطقة من خلال حفر الآبار وإنشاء شبكة توزيع</span>
+                                <span class="lang-content" data-lang="fr">Fournir de l'eau potable à tous les habitants de la région par le forage de puits et la création d'un réseau de distribution</span>
+                                <span class="lang-content" data-lang="en">Providing clean drinking water to all residents through well drilling and creating a distribution network</span>
+                            </p>
+                            <div class="card-meta">
+                                <span>💰 180,000 درهم</span>
+                                <span>📅 مارس 2024 - ديسمبر 2024</span>
+                                <span>👥 1200 نسمة</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-small btn-primary" onclick="toggleProject('water-details')">
+                                    <span class="lang-content active" data-lang="ar">اضغط هنا للتفاصيل ↓</span>
+                                    <span class="lang-content" data-lang="fr">Cliquez pour détails ↓</span>
+                                    <span class="lang-content" data-lang="en">Click for details ↓</span>
+                                </button>
+                            </div>
+                            <div id="water-details" class="project-details">
+                                <div class="detail-grid">
+                                    <div class="detail-item">
+                                        <div class="detail-label">
+                                            <span class="lang-content active" data-lang="ar">عدد الآبار</span>
+                                            <span class="lang-content" data-lang="fr">Nombre de puits</span>
+                                            <span class="lang-content" data-lang="en">Number of wells</span>
+                                        </div>
+                                        <div class="detail-value">3 آبار</div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">
+                                            <span class="lang-content active" data-lang="ar">الرعاة</span>
+                                            <span class="lang-content" data-lang="fr">Sponsors</span>
+                                            <span class="lang-content" data-lang="en">Sponsors</span>
+                                        </div>
+                                        <div class="detail-value">
+                                            <span class="lang-content active" data-lang="ar">مؤسسة محمد الخامس، المندوبية السامية للمياه</span>
+                                            <span class="lang-content" data-lang="fr">Fondation Mohammed V, Haut Commissariat aux Eaux</span>
+                                            <span class="lang-content" data-lang="en">Mohammed V Foundation, High Commission for Water</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-gallery">
+                                    <div class="gallery-image">حفر البئر الأول</div>
+                                    <div class="gallery-image">شبكة التوزيع</div>
+                                    <div class="gallery-image">خزان المياه</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <img src="https://placehold.co/600x400/2e8b57/fff?text=Environment+Project" alt="مشروع البيئة">
-                        <div class="project-content">
-                            <h3>مشروع البيئة</h3>
-                            <p>حملات التشجير والتوعية البيئية.</p>
+
+                    <div class="card animate-on-scroll">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/400x200/90ee90/333333?text=مقر+الجمعية" alt="مقر الجمعية" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <span class="lang-content active" data-lang="ar">مقر الجمعية</span>
+                                <span class="lang-content" data-lang="fr">Siège de l'Association</span>
+                                <span class="lang-content" data-lang="en">Association Headquarters</span>
+                            </h3>
+                            <p class="card-description">
+                                <span class="lang-content active" data-lang="ar">إنشاء مقر دائم للجمعية ليكون مركزاً لأنشطتها واجتماعاتها وخدماتها المجتمعية</span>
+                                <span class="lang-content" data-lang="fr">Création d'un siège permanent pour l'association comme centre de ses activités, réunions et services communautaires</span>
+                                <span class="lang-content" data-lang="en">Creating a permanent headquarters for the association as a center for its activities, meetings and community services</span>
+                            </p>
+                            <div class="card-meta">
+                                <span>💰 120,000 درهم</span>
+                                <span>📅 يونيو 2024 - نوفمبر 2024</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="lang-content" data-lang="fr">
-                <h2 class="section-title">Nos Projets</h2>
+
+            <!-- Completed Projects -->
+            <div class="projects-group">
+                <h3>
+                    <span class="lang-content active" data-lang="ar">✅ المشاريع المنجزة</span>
+                    <span class="lang-content" data-lang="fr">✅ Projets Achevés</span>
+                    <span class="lang-content" data-lang="en">✅ Completed Projects</span>
+                </h3>
+                
                 <div class="card-grid">
-                    <div class="project-card">
-                        <img src="https://placehold.co/600x400/2e8b57/fff?text=Water+Project" alt="Projet Eau">
-                        <div class="project-content">
-                            <h3>Projet Eau</h3>
-                            <p>Fourniture d'eau potable au village.</p>
+                    <div class="card animate-on-scroll">
+                        <div class="card-image">
+                            <img src="Images/Old/image/art/1.jpg" alt="مشروع الفن" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <span class="lang-content active" data-lang="ar">مشروع الفن والثقافة</span>
+                                <span class="lang-content" data-lang="fr">Projet Art et Culture</span>
+                                <span class="lang-content" data-lang="en">Art and Culture Project</span>
+                            </h3>
+                            <p class="card-description">
+                                <span class="lang-content active" data-lang="ar">ورشات فنية وثقافية للشباب والأطفال لتنمية مواهبهم الإبداعية والفنية</span>
+                                <span class="lang-content" data-lang="fr">Ateliers artistiques et culturels pour les jeunes et enfants pour développer leurs talents créatifs</span>
+                                <span class="lang-content" data-lang="en">Artistic and cultural workshops for youth and children to develop their creative talents</span>
+                            </p>
+                            <div class="card-meta">
+                                <span>✅ منجز</span>
+                                <span>👥 65 مشارك</span>
+                                <span>💰 35,000 درهم</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-small btn-primary" onclick="toggleProject('art-details')">التفاصيل</button>
+                            </div>
+                            <div id="art-details" class="project-details">
+                                <div class="project-gallery">
+                                    <img src="Images/Old/image/art/1.jpg" alt="ورشة الرسم" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/art/2.jpg" alt="المعرض الفني" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/art/3.jpg" alt="الأطفال والفن" class="gallery-image" style="object-fit: cover;">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <img src="https://placehold.co/600x400/20b2aa/fff?text=Education+Project" alt="Projet Éducation">
-                        <div class="project-content">
-                            <h3>Projet Éducation</h3>
-                            <p>Soutien à l'éducation et fourniture de matériel aux écoles locales.</p>
+
+                    <div class="card animate-on-scroll">
+                        <div class="card-image">
+                            <img src="Images/Old/image/Football Field/1.jpg" alt="ملعب كرة القدم" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <span class="lang-content active" data-lang="ar">ملعب كرة القدم</span>
+                                <span class="lang-content" data-lang="fr">Terrain de Football</span>
+                                <span class="lang-content" data-lang="en">Football Field</span>
+                            </h3>
+                            <p class="card-description">
+                                <span class="lang-content active" data-lang="ar">إنشاء ملعب كرة قدم للشباب لممارسة الرياضة وتنظيم البطولات المحلية</span>
+                                <span class="lang-content" data-lang="fr">Construction d'un terrain de football pour les jeunes pour pratiquer le sport</span>
+                                <span class="lang-content" data-lang="en">Construction of a football field for youth to practice sports</span>
+                            </p>
+                            <div class="card-meta">
+                                <span>✅ منجز</span>
+                                <span>👥 200 متفرج</span>
+                                <span>💰 85,000 درهم</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-small btn-primary" onclick="toggleProject('football-details')">التفاصيل</button>
+                            </div>
+                            <div id="football-details" class="project-details">
+                                <div class="project-gallery">
+                                    <img src="Images/Old/image/Football Field/1.jpg" alt="بناء الملعب" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/Football Field/2.jpg" alt="الملعب المكتمل" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/Football Field/3.jpg" alt="أول مباراة" class="gallery-image" style="object-fit: cover;">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <img src="https://placehold.co/600x400/2e8b57/fff?text=Environment+Project" alt="Projet Environnement">
-                        <div class="project-content">
-                            <h3>Projet Environnement</h3>
-                            <p>Campagnes de reboisement et de sensibilisation à l'environnement.</p>
+
+                    <div class="card animate-on-scroll">
+                        <div class="card-image">
+                            <img src="Images/Old/image/Football torn/1.jpg" alt="بطولة كرة القدم" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <span class="lang-content active" data-lang="ar">بطولة كرة القدم</span>
+                                <span class="lang-content" data-lang="fr">Tournoi de Football</span>
+                                <span class="lang-content" data-lang="en">Football Tournament</span>
+                            </h3>
+                            <p class="card-description">
+                                <span class="lang-content active" data-lang="ar">تنظيم بطولة كرة قدم سنوية للشباب من مختلف القرى لتعزيز روح الرياضة</span>
+                                <span class="lang-content" data-lang="fr">Organisation d'un tournoi de football annuel pour les jeunes de différents villages</span>
+                                <span class="lang-content" data-lang="en">Organization of an annual football tournament for youth from different villages</span>
+                            </p>
+                            <div class="card-meta">
+                                <span>✅ منجز</span>
+                                <span>👥 320 لاعب</span>
+                                <span>💰 25,000 درهم</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-small btn-primary" onclick="toggleProject('tournament-details')">التفاصيل</button>
+                            </div>
+                            <div id="tournament-details" class="project-details">
+                                <div class="project-gallery">
+                                    <img src="Images/Old/image/Football torn/1.jpg" alt="افتتاح البطولة" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/Football torn/2.jpg" alt="المباراة النهائية" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/Football torn/3.jpg" alt="توزيع الجوائز" class="gallery-image" style="object-fit: cover;">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h2 class="section-title">Our Projects</h2>
-                <div class="card-grid">
-                    <div class="project-card">
-                        <img src="https://placehold.co/600x400/2e8b57/fff?text=Water+Project" alt="Water Project">
-                        <div class="project-content">
-                            <h3>Water Project</h3>
-                            <p>Providing drinking water to the village.</p>
+
+                    <div class="card animate-on-scroll">
+                        <div class="card-image">
+                            <img src="Images/Old/image/Planting/1.jpg" alt="زراعة النباتات" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <span class="lang-content active" data-lang="ar">زراعة النباتات</span>
+                                <span class="lang-content" data-lang="fr">Plantation d'Arbres</span>
+                                <span class="lang-content" data-lang="en">Tree Planting</span>
+                            </h3>
+                            <p class="card-description">
+                                <span class="lang-content active" data-lang="ar">حملة تشجير وزراعة النباتات في المنطقة لمحاربة التصحر وتحسين البيئة المحلية</span>
+                                <span class="lang-content" data-lang="fr">Campagne de reboisement et de plantation dans la région pour lutter contre la désertification</span>
+                                <span class="lang-content" data-lang="en">Reforestation and planting campaign in the region to combat desertification</span>
+                            </p>
+                            <div class="card-meta">
+                                <span>✅ منجز</span>
+                                <span>🌳 550 شجرة</span>
+                                <span>💰 18,000 درهم</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-small btn-primary" onclick="toggleProject('planting-details')">التفاصيل</button>
+                            </div>
+                            <div id="planting-details" class="project-details">
+                                <div class="project-gallery">
+                                    <img src="Images/Old/image/Planting/1.jpg" alt="حملة الزراعة" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/Planting/2.jpg" alt="الأشجار المزروعة" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/Planting/3.jpg" alt="المتطوعون" class="gallery-image" style="object-fit: cover;">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <img src="https://placehold.co/600x400/20b2aa/fff?text=Education+Project" alt="Education Project">
-                        <div class="project-content">
-                            <h3>Education Project</h3>
-                            <p>Supporting education and providing equipment for local schools.</p>
+
+                    <div class="card animate-on-scroll">
+                        <div class="card-image">
+                            <img src="Images/Old/image/kids/1.jpg" alt="ألعاب الأطفال" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <span class="lang-content active" data-lang="ar">ألعاب وأنشطة الأطفال</span>
+                                <span class="lang-content" data-lang="fr">Jeux et Activités pour Enfants</span>
+                                <span class="lang-content" data-lang="en">Kids Games and Activities</span>
+                            </h3>
+                            <p class="card-description">
+                                <span class="lang-content active" data-lang="ar">تنظيم فعاليات وألعاب ترفيهية للأطفال لتعزيز روح المرح والتعلم من خلال اللعب</span>
+                                <span class="lang-content" data-lang="fr">Organisation d'événements et de jeux récréatifs pour les enfants pour promouvoir l'amusement et l'apprentissage par le jeu</span>
+                                <span class="lang-content" data-lang="en">Organizing recreational events and games for children to promote fun and learning through play</span>
+                            </p>
+                            <div class="card-meta">
+                                <span>✅ منجز</span>
+                                <span>👶 135 طفل</span>
+                                <span>💰 15,000 درهم</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-small btn-primary" onclick="toggleProject('kids-details')">التفاصيل</button>
+                            </div>
+                            <div id="kids-details" class="project-details">
+                                <div class="project-gallery">
+                                    <img src="Images/Old/image/kids/1.jpg" alt="يوم الألعاب" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/kids/2.jpg" alt="الأطفال يلعبون" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/kids/3.jpg" alt="توزيع الهدايا" class="gallery-image" style="object-fit: cover;">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <img src="https://placehold.co/600x400/2e8b57/fff?text=Environment+Project" alt="Environment Project">
-                        <div class="project-content">
-                            <h3>Environment Project</h3>
-                            <p>Tree planting and environmental awareness campaigns.</p>
+
+                    <div class="card animate-on-scroll">
+                        <div class="card-image">
+                            <img src="Images/Old/image/Food/1.jpg" alt="توزيع الطعام" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <span class="lang-content active" data-lang="ar">توزيع الطعام والمساعدات</span>
+                                <span class="lang-content" data-lang="fr">Distribution de Nourriture et d'Aide</span>
+                                <span class="lang-content" data-lang="en">Food Distribution and Aid</span>
+                            </h3>
+                            <p class="card-description">
+                                <span class="lang-content active" data-lang="ar">توزيع المساعدات الغذائية والطرود على الأسر المحتاجة خاصة في المناسبات الدينية</span>
+                                <span class="lang-content" data-lang="fr">Distribution d'aide alimentaire et de colis aux familles nécessiteuses, surtout pendant les occasions religieuses</span>
+                                <span class="lang-content" data-lang="en">Distribution of food aid and packages to needy families, especially during religious occasions</span>
+                            </p>
+                            <div class="card-meta">
+                                <span>✅ منجز</span>
+                                <span>📦 220 طرد</span>
+                                <span>💰 22,000 درهم</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-small btn-primary" onclick="toggleProject('food-details')">التفاصيل</button>
+                            </div>
+                            <div id="food-details" class="project-details">
+                                <div class="project-gallery">
+                                    <img src="Images/Old/image/Food/1.jpg" alt="تحضير الطرود" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/Food/2.jpg" alt="توزيع الطعام" class="gallery-image" style="object-fit: cover;">
+                                    <img src="Images/Old/image/Food/3.jpg" alt="الأسر المستفيدة" class="gallery-image" style="object-fit: cover;">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -873,337 +1538,603 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" style="background-color: var(--light-bg-color);">
+    <!-- Donation Section -->
+    <section id="donate" class="section donation-section">
         <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2 class="section-title">معرض الصور</h2>
-                <div class="gallery-grid">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+1" alt="صورة 1" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+2" alt="صورة 2" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+3" alt="صورة 3" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+4" alt="صورة 4" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+5" alt="صورة 5" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+6" alt="صورة 6" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+7" alt="صورة 7" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+8" alt="صورة 8" onclick="openModal(this.src)">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title" style="color: white;">
+                    <span class="lang-content active" data-lang="ar">❤️ تبرع لدعم مشاريعنا</span>
+                    <span class="lang-content" data-lang="fr">❤️ Faire un Don pour Soutenir Nos Projets</span>
+                    <span class="lang-content" data-lang="en">❤️ Donate to Support Our Projects</span>
+                </h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
+                    <span class="lang-content active" data-lang="ar">مساهمتك تحدث فرقاً حقيقياً في حياة المجتمع</span>
+                    <span class="lang-content" data-lang="fr">Votre contribution fait une vraie différence dans la vie de la communauté</span>
+                    <span class="lang-content" data-lang="en">Your contribution makes a real difference in the community's life</span>
+                </p>
+            </div>
+
+            <div class="bank-info animate-on-scroll">
+                <div class="bank-card">
+                    <h4>🏦 
+                        <span class="lang-content active" data-lang="ar">التحويل البنكي</span>
+                        <span class="lang-content" data-lang="fr">Virement Bancaire</span>
+                        <span class="lang-content" data-lang="en">Bank Transfer</span>
+                    </h4>
+                    <div class="bank-detail">
+                        <div>
+                            <strong>
+                                <span class="lang-content active" data-lang="ar">اسم الحساب:</span>
+                                <span class="lang-content" data-lang="fr">Nom du compte:</span>
+                                <span class="lang-content" data-lang="en">Account Name:</span>
+                            </strong>
+                            <span>جمعية تازولت للتنمية والتعاون والبيئة</span>
+                        </div>
+                    </div>
+                    <div class="bank-detail">
+                        <div>
+                            <strong>
+                                <span class="lang-content active" data-lang="ar">رقم الحساب:</span>
+                                <span class="lang-content" data-lang="fr">Numéro de compte:</span>
+                                <span class="lang-content" data-lang="en">Account Number:</span>
+                            </strong>
+                            <span>123456789012345</span>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('123456789012345')">
+                            <span class="lang-content active" data-lang="ar">نسخ</span>
+                            <span class="lang-content" data-lang="fr">Copier</span>
+                            <span class="lang-content" data-lang="en">Copy</span>
+                        </button>
+                    </div>
+                    <div class="bank-detail">
+                        <div>
+                            <strong>
+                                <span class="lang-content active" data-lang="ar">البنك:</span>
+                                <span class="lang-content" data-lang="fr">Banque:</span>
+                                <span class="lang-content" data-lang="en">Bank:</span>
+                            </strong>
+                            <span>البنك الشعبي المغربي</span>
+                        </div>
+                    </div>
+                    <div class="bank-detail">
+                        <div>
+                            <strong>RIB:</strong>
+                            <span>011 780 0001234567890 12</span>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('011 780 0001234567890 12')">
+                            <span class="lang-content active" data-lang="ar">نسخ</span>
+                            <span class="lang-content" data-lang="fr">Copier</span>
+                            <span class="lang-content" data-lang="en">Copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bank-card">
+                    <h4>📱 
+                        <span class="lang-content active" data-lang="ar">التحويل عبر الهاتف</span>
+                        <span class="lang-content" data-lang="fr">Transfert Mobile</span>
+                        <span class="lang-content" data-lang="en">Mobile Transfer</span>
+                    </h4>
+                    <div class="bank-detail">
+                        <div>
+                            <strong>Orange Money:</strong>
+                            <span>+212 600 000 100</span>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('+212 600 000 100')">
+                            <span class="lang-content active" data-lang="ar">نسخ</span>
+                            <span class="lang-content" data-lang="fr">Copier</span>
+                            <span class="lang-content" data-lang="en">Copy</span>
+                        </button>
+                    </div>
+                    <div class="bank-detail">
+                        <div>
+                            <strong>inwi money:</strong>
+                            <span>+212 500 000 100</span>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('+212 500 000 100')">
+                            <span class="lang-content active" data-lang="ar">نسخ</span>
+                            <span class="lang-content" data-lang="fr">Copier</span>
+                            <span class="lang-content" data-lang="en">Copy</span>
+                        </button>
+                    </div>
+                    <div class="bank-detail">
+                        <div>
+                            <strong>Cash Plus:</strong>
+                            <span>+212 700 000 100</span>
+                        </div>
+                        <button class="copy-btn" onclick="copyToClipboard('+212 700 000 100')">
+                            <span class="lang-content active" data-lang="ar">نسخ</span>
+                            <span class="lang-content" data-lang="fr">Copier</span>
+                            <span class="lang-content" data-lang="en">Copy</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="lang-content" data-lang="fr">
-                <h2 class="section-title">Galerie de Photos</h2>
-                <div class="gallery-grid">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+1" alt="Photo 1" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+2" alt="Photo 2" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+3" alt="Photo 3" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+4" alt="Photo 4" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+5" alt="Photo 5" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+6" alt="Photo 6" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+7" alt="Photo 7" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+8" alt="Photo 8" onclick="openModal(this.src)">
-                </div>
+
+            <div style="text-align: center; margin: 30px 0; padding: 20px; background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); backdrop-filter: blur(10px);">
+                <p style="color: white; margin-bottom: 15px; font-size: 1.1rem;"><strong>💡 
+                    <span class="lang-content active" data-lang="ar">تنويه مهم:</span>
+                    <span class="lang-content" data-lang="fr">Note importante:</span>
+                    <span class="lang-content" data-lang="en">Important Note:</span>
+                </strong></p>
+                <p style="font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.9);">
+                    <span class="lang-content active" data-lang="ar">
+                        بعد إتمام التحويل، يرجى التواصل معنا عبر النموذج أدناه أو واتساب 
+                        <a href="https://wa.me/212656669162" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a>
+                        لتأكيد التبرع وإرسال إيصال الاستلام.
+                    </span>
+                    <span class="lang-content" data-lang="fr">
+                        Après avoir effectué le virement, veuillez nous contacter via le formulaire ci-dessous ou WhatsApp 
+                        <a href="https://wa.me/212656669162" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a>
+                        pour confirmer le don et envoyer un reçu.
+                    </span>
+                    <span class="lang-content" data-lang="en">
+                        After completing the transfer, please contact us via the form below or WhatsApp 
+                        <a href="https://wa.me/212656669162" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a>
+                        to confirm the donation and send a receipt.
+                    </span>
+                </p>
             </div>
-            <div class="lang-content" data-lang="en">
-                <h2 class="section-title">Photo Gallery</h2>
-                <div class="gallery-grid">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+1" alt="Photo 1" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+2" alt="Photo 2" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+3" alt="Photo 3" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+4" alt="Photo 4" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+5" alt="Photo 5" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+6" alt="Photo 6" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/2e8b57/fff?text=Photo+7" alt="Photo 7" onclick="openModal(this.src)">
-                    <img src="https://placehold.co/800x600/20b2aa/fff?text=Photo+8" alt="Photo 8" onclick="openModal(this.src)">
+        </div>
+    </section>
+
+    <!-- Board Section -->
+    <section id="board" class="section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">
+                    <span class="lang-content active" data-lang="ar">مجلس الإدارة</span>
+                    <span class="lang-content" data-lang="fr">Conseil d'Administration</span>
+                    <span class="lang-content" data-lang="en">Board of Directors</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-content active" data-lang="ar">تعرف على فريق القيادة الذي يقود رؤية الجمعية</span>
+                    <span class="lang-content" data-lang="fr">Rencontrez l'équipe de direction qui mène la vision de l'association</span>
+                    <span class="lang-content" data-lang="en">Meet the leadership team that drives the association's vision</span>
+                </p>
+            </div>
+
+            <div class="board-grid">
+                <div class="member-card animate-on-scroll">
+                    <div class="member-avatar">ي.ف</div>
+                    <div class="member-name">يوسف فرغاب</div>
+                    <div class="member-role">
+                        <span class="lang-content active" data-lang="ar">الرئيس</span>
+                        <span class="lang-content" data-lang="fr">Président</span>
+                        <span class="lang-content" data-lang="en">Chairman</span>
+                    </div>
+                    <div class="member-contact">
+                        <a href="tel:+212656669162">+212 656-669162</a>
+                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll">
+                    <div class="member-avatar">إ.ب</div>
+                    <div class="member-name">إسماعيل باكاس</div>
+                    <div class="member-role">
+                        <span class="lang-content active" data-lang="ar">نائب الرئيس</span>
+                        <span class="lang-content" data-lang="fr">Vice-Président</span>
+                        <span class="lang-content" data-lang="en">Vice President</span>
+                    </div>
+                    <div class="member-contact">
+                        <a href="tel:+212633284840">+212 633-284840</a>
+                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll">
+                    <div class="member-avatar">س.ح</div>
+                    <div class="member-name">سعيد حمداني</div>
+                    <div class="member-role">
+                        <span class="lang-content active" data-lang="ar">الأمين العام</span>
+                        <span class="lang-content" data-lang="fr">Secrétaire</span>
+                        <span class="lang-content" data-lang="en">Secretary</span>
+                    </div>
+                    <div class="member-contact">
+                        <a href="tel:+212687260271">+212 687-260271</a>
+                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll">
+                    <div class="member-avatar">ع.ح</div>
+                    <div class="member-name">عمر حمداني</div>
+                    <div class="member-role">
+                        <span class="lang-content active" data-lang="ar">أمين المال</span>
+                        <span class="lang-content" data-lang="fr">Trésorier</span>
+                        <span class="lang-content" data-lang="en">Treasurer</span>
+                    </div>
+                    <div class="member-contact">
+                        <a href="tel:+212661760721">+212 661-760721</a>
+                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll">
+                    <div class="member-avatar">ع.ج</div>
+                    <div class="member-name">عبد الله جوميط</div>
+                    <div class="member-role">
+                        <span class="lang-content active" data-lang="ar">عضو</span>
+                        <span class="lang-content" data-lang="fr">Membre</span>
+                        <span class="lang-content" data-lang="en">Member</span>
+                    </div>
+                    <div class="member-contact">
+                        <a href="tel:+212662594196">+212 662-594196</a>
+                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll">
+                    <div class="member-avatar">ح.أ</div>
+                    <div class="member-name">حسين أنميكور</div>
+                    <div class="member-role">
+                        <span class="lang-content active" data-lang="ar">عضو</span>
+                        <span class="lang-content" data-lang="fr">Membre</span>
+                        <span class="lang-content" data-lang="en">Member</span>
+                    </div>
+                    <div class="member-contact">
+                        <a href="tel:+212658174730">+212 658-174730</a>
+                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="member-card animate-on-scroll">
+                    <div class="member-avatar">س.م</div>
+                    <div class="member-name">سعيد إد موسى</div>
+                    <div class="member-role">
+                        <span class="lang-content active" data-lang="ar">عضو</span>
+                        <span class="lang-content" data-lang="fr">Membre</span>
+                        <span class="lang-content" data-lang="en">Member</span>
+                    </div>
+                    <div class="member-contact">
+                        <a href="tel:+212697516903">+212 697-516903</a>
+                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Donations Section -->
-    <section id="donations" style="background-color: var(--white-color);">
-        <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2 class="section-title">تبرع</h2>
-                <div class="donation-box">
-                    <p>يمكنك التبرع لدعم مشاريعنا التنموية عبر الحساب البنكي التالي:</p>
-                    <p style="font-weight: bold; color: var(--primary-color);">بنك الأمان - رقم الحساب: 1234567890</p>
-                    <button onclick="copyAccountDetails()" class="copy-button">
-                        انسخ التفاصيل
-                    </button>
-                    <div id="copy-message-ar" style="color: var(--primary-color); margin-top: 10px; display: none;">تم نسخ التفاصيل بنجاح!</div>
-                </div>
-            </div>
-            <div class="lang-content" data-lang="fr">
-                <h2 class="section-title">Faire un don</h2>
-                <div class="donation-box">
-                    <p>Vous pouvez faire un don pour soutenir nos projets de développement via le compte bancaire suivant:</p>
-                    <p style="font-weight: bold; color: var(--primary-color);">Bank Al-Amal - Numéro de compte: 1234567890</p>
-                    <button onclick="copyAccountDetails()" class="copy-button">
-                        Copier les détails
-                    </button>
-                    <div id="copy-message-fr" style="color: var(--primary-color); margin-top: 10px; display: none;">Détails copiés avec succès!</div>
-                </div>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h2 class="section-title">Donate</h2>
-                <div class="donation-box">
-                    <p>You can donate to support our development projects via the following bank account:</p>
-                    <p style="font-weight: bold; color: var(--primary-color);">Bank Al-Amal - Account Number: 1234567890</p>
-                    <button onclick="copyAccountDetails()" class="copy-button">
-                        Copy Details
-                    </button>
-                    <div id="copy-message-en" style="color: var(--primary-color); margin-top: 10px; display: none;">Details copied successfully!</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <!-- Contact Section -->
-    <section id="contact" style="background-color: var(--light-bg-color);">
+    <section id="contact" class="section" style="background: var(--surface);">
         <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2 class="section-title">اتصل بنا</h2>
-                <form action="#" style="max-width: 600px; margin: 0 auto; background-color: var(--white-color); padding: 30px; border-radius: var(--border-radius-card); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                    <div class="form-control">
-                        <label for="name-ar">الاسم الكامل:</label>
-                        <input type="text" id="name-ar" name="name" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="email-ar">البريد الإلكتروني:</label>
-                        <input type="email" id="email-ar" name="email" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="message-ar">الرسالة:</label>
-                        <textarea id="message-ar" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">إرسال</button>
-                </form>
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">
+                    <span class="lang-content active" data-lang="ar">اتصل بنا</span>
+                    <span class="lang-content" data-lang="fr">Nous Contacter</span>
+                    <span class="lang-content" data-lang="en">Contact Us</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-content active" data-lang="ar">نحن هنا للإجابة على أسئلتكم ومساعدتكم</span>
+                    <span class="lang-content" data-lang="fr">Nous sommes là pour répondre à vos questions et vous aider</span>
+                    <span class="lang-content" data-lang="en">We're here to answer your questions and help you</span>
+                </p>
             </div>
-            <div class="lang-content" data-lang="fr">
-                <h2 class="section-title">Contactez-Nous</h2>
-                <form action="#" style="max-width: 600px; margin: 0 auto; background-color: var(--white-color); padding: 30px; border-radius: var(--border-radius-card); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                    <div class="form-control">
-                        <label for="name-fr">Nom Complet:</label>
-                        <input type="text" id="name-fr" name="name" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="email-fr">Email:</label>
-                        <input type="email" id="email-fr" name="email" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="message-fr">Message:</label>
-                        <textarea id="message-fr" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Envoyer</button>
-                </form>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h2 class="section-title">Contact Us</h2>
-                <form action="#" style="max-width: 600px; margin: 0 auto; background-color: var(--white-color); padding: 30px; border-radius: var(--border-radius-card); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                    <div class="form-control">
-                        <label for="name-en">Full Name:</label>
-                        <input type="text" id="name-en" name="name" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="email-en">Email:</label>
-                        <input type="email" id="email-en" name="email" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="message-en">Message:</label>
-                        <textarea id="message-en" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Send</button>
-                </form>
-            </div>
-        </div>
-    </section>
 
-    <!-- Location Section with Google Map -->
-    <section id="location" style="background-color: var(--white-color);">
-        <div class="container">
-            <div class="lang-content active" data-lang="ar">
-                <h2 class="section-title">موقعنا على الخريطة</h2>
-            </div>
-            <div class="lang-content" data-lang="fr">
-                <h2 class="section-title">Notre emplacement sur la carte</h2>
-            </div>
-            <div class="lang-content" data-lang="en">
-                <h2 class="section-title">Our Location on the Map</h2>
-            </div>
-            <div style="height: 400px; width: 100%; border-radius: var(--border-radius-card); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                <!-- Google Maps iframe for Tazoult, Morocco -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13149.336474163914!2d-8.879796677931306!3d31.54714417387258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafe1e8d388e6e5%3A0x6b160b6d26715f5a!2sTazoult%2C%20Morocco!5e0!3m2!1sen!2sus!4v1684346850239!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="contact-form animate-on-scroll">
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform?embedded=true" 
+                    width="100%" 
+                    height="800" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    style="border-radius: var(--border-radius);">
+                    <span class="lang-content active" data-lang="ar">جاري التحميل...</span>
+                    <span class="lang-content" data-lang="fr">Chargement...</span>
+                    <span class="lang-content" data-lang="en">Loading...</span>
+                </iframe>
+                
+                <div class="text-center mt-4">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform" 
+                       target="_blank" 
+                       class="btn btn-primary">
+                        <span class="lang-content active" data-lang="ar">📝 فتح نموذج الاتصال في نافذة جديدة</span>
+                        <span class="lang-content" data-lang="fr">📝 Ouvrir le formulaire dans une nouvelle fenêtre</span>
+                        <span class="lang-content" data-lang="en">📝 Open contact form in new window</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 جمعية تازولت للتنمية والتعاون والبيئة. كل الحقوق محفوظة.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>
+                        <span class="lang-content active" data-lang="ar">جمعية تازولت</span>
+                        <span class="lang-content" data-lang="fr">Association Tazoult</span>
+                        <span class="lang-content" data-lang="en">Tazoult Association</span>
+                    </h4>
+                    <p>
+                        <span class="lang-content active" data-lang="ar">
+                            دوار تازولت، جماعة تويالت<br>
+                            قيادة اسكاون، دائرة تالوين<br>
+                            عمالة تارودانت، المغرب
+                        </span>
+                        <span class="lang-content" data-lang="fr">
+                            Douar Tazoult, Commune Twiyalt<br>
+                            Caïdat Askawn, Cercle Talwin<br>
+                            Province Taroudannt, Maroc
+                        </span>
+                        <span class="lang-content" data-lang="en">
+                            Douar Tazoult, Twiyalt Municipality<br>
+                            Askawn District, Talwin Circle<br>
+                            Taroudannt Province, Morocco
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>
+                        <span class="lang-content active" data-lang="ar">تواصل معنا</span>
+                        <span class="lang-content" data-lang="fr">Nous Contacter</span>
+                        <span class="lang-content" data-lang="en">Contact Us</span>
+                    </h4>
+                    <p>
+                        <a href="tel:+212656669162">+212 656-669162</a><br>
+                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>
+                        <span class="lang-content active" data-lang="ar">المراجع</span>
+                        <span class="lang-content" data-lang="fr">Références</span>
+                        <span class="lang-content" data-lang="en">References</span>
+                    </h4>
+                    <p>
+                        <a href="https://www.assohelp.org/asso-419-association-tazoult-pour-le-developement-et-la-cooperation-et-d-environement" target="_blank">AssoHelp.org</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 جمعية تازولت للتنمية والتعاون والبيئة. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Image Modal -->
-    <div id="image-modal" class="modal">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modal-image">
-    </div>
-
     <script>
-        // Language switching functionality
-        function switchLanguage(lang) {
-            document.querySelectorAll('.lang-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.querySelectorAll(`.lang-content[data-lang="${lang}"]`).forEach(content => {
-                content.classList.add('active');
-            });
-
-            document.querySelectorAll('.lang-switch button').forEach(button => {
-                if (button.textContent.toLowerCase() === lang) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-            });
-            
-            // Update direction
-            if (lang === 'ar') {
-                document.documentElement.setAttribute('dir', 'rtl');
-            } else {
-                document.documentElement.setAttribute('dir', 'ltr');
-            }
-        }
-        
-        // Initial language setting
-        window.addEventListener('load', () => {
-             switchLanguage('ar');
-        });
-
-        // Mobile menu functionality
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-        
-        // Hide mobile menu when a link is clicked
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
-
-        // Hero background slideshow functionality
-        let heroSlideIndex = 0;
-        let slideInterval;
-        const slides = document.querySelectorAll('.bg-slide');
-
-        function showHeroSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[n].classList.add('active');
-            heroSlideIndex = n;
-        }
-
-        function nextHeroSlide() {
-            heroSlideIndex = (heroSlideIndex + 1) % slides.length;
-            showHeroSlide(heroSlideIndex);
-        }
-
-        function startSlideshow() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextHeroSlide, 5000); // Change image every 5 seconds
-        }
-
-        // Start slideshow on page load
-        window.addEventListener('load', () => {
-            showHeroSlide(0);
-            startSlideshow();
-        });
-
-        // Pause slideshow on hover
-        document.querySelector('.hero').addEventListener('mouseover', () => clearInterval(slideInterval));
-        document.querySelector('.hero').addEventListener('mouseout', startSlideshow);
-
-        // Touch swipe for hero section
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const swipeThreshold = 50;
-
-        function handleGesture() {
-            if (touchEndX < touchStartX - swipeThreshold) {
-                // Swipe left - next slide
-                nextHeroSlide();
-            }
-            if (touchEndX > touchStartX + swipeThreshold) {
-                // Swipe right - previous slide
-                heroSlideIndex = (heroSlideIndex - 1 + slides.length) % slides.length;
-                showHeroSlide(heroSlideIndex);
-            }
-        }
-
-        document.querySelector('.hero').addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.querySelector('.hero').addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleGesture();
-        });
-        
-        // Prevent horizontal scrolling on mobile when swiping
-        document.addEventListener('touchmove', function(e) {
-            if (e.touches.length > 1) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        // Function to copy bank details to clipboard
-        function copyAccountDetails() {
-            const accountDetails = "Bank Al-Amal - Account Number: 1234567890";
-            const tempTextArea = document.createElement('textarea');
-            tempTextArea.value = accountDetails;
-            document.body.appendChild(tempTextArea);
-            tempTextArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempTextArea);
-
-            const currentLang = document.querySelector('.lang-content.active').dataset.lang;
-            const messageElement = document.getElementById(`copy-message-${currentLang}`);
-            if (messageElement) {
-                messageElement.style.display = 'block';
-                setTimeout(() => {
-                    messageElement.style.display = 'none';
-                }, 3000);
-            }
-        }
-        
-        // Image Modal Functionality
-        const modal = document.getElementById('image-modal');
-        const modalImg = document.getElementById('modal-image');
-
-        function openModal(src) {
-            modal.style.display = 'flex';
-            modalImg.src = src;
-        }
-
-        function closeModal() {
-            modal.style.display = 'none';
-        }
-
-        // Add header scroll effect
+        // Header scroll effect
         window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const isOpen = navMenu.classList.contains('active');
+            
+            if (isOpen) {
+                navMenu.classList.remove('active');
+                menuBtn.innerHTML = '☰';
+            } else {
+                navMenu.classList.add('active');
+                menuBtn.innerHTML = '✕';
+            }
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('navMenu');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                navMenu.classList.remove('active');
+                menuBtn.innerHTML = '☰';
+            });
+        });
+
+        // Language switching functionality
+        function switchLanguage(lang) {
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Hide all language content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Show selected language content
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(content => {
+                content.classList.add('active');
+            });
+
+            // Update page direction and language
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', lang);
+            }
+        }
+
+        // Project details toggle
+        function toggleProject(projectId) {
+            const details = document.getElementById(projectId);
+            const isActive = details.classList.contains('active');
+            
+            // Close all other project details
+            document.querySelectorAll('.project-details').forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            // Toggle current project
+            if (!isActive) {
+                details.classList.add('active');
+            }
+        }
+
+        // Enhanced copy to clipboard functionality
+        function copyToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(function() {
+                    showCopyFeedback(event.target);
+                }).catch(function(err) {
+                    console.error('Could not copy text: ', err);
+                    fallbackCopy(text, event.target);
+                });
+            } else {
+                fallbackCopy(text, event.target);
+            }
+        }
+
+        function fallbackCopy(text, button) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopyFeedback(button);
+            } catch (err) {
+                console.error('Fallback copy failed: ', err);
+                alert('نسخ النص فشل. يرجى نسخ النص يدوياً.');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showCopyFeedback(button) {
+            const originalText = button.textContent;
+            const isArabic = document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.getAttribute('dir') === 'rtl';
+            const copyText = isArabic ? 'تم النسخ!' : 'Copié!';
+            
+            button.textContent = copyText;
+            button.style.background = 'var(--success-color)';
+            button.style.color = 'white';
+            button.style.transform = 'scale(1.05)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = 'var(--accent-color)';
+                button.style.color = 'var(--primary-color)';
+                button.style.transform = 'scale(1)';
+            }, 2000);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const navMenu = document.getElementById('navMenu');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('.nav');
+            
+            if (!nav.contains(e.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileBtn.innerHTML = '☰';
+            }
+        });
+
+        // Add touch gesture support for mobile carousel if needed
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function handleGesture() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // Swipe left - could be used for project navigation
+                console.log('Swiped left');
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                // Swipe right - could be used for project navigation
+                console.log('Swiped right');
+            }
+        }
+
+        // Improve form accessibility on mobile
+        document.querySelectorAll('input, textarea, select, iframe').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.style.borderColor = 'var(--primary-color)';
+                this.style.boxShadow = '0 0 0 3px rgba(46, 139, 87, 0.1)';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.style.borderColor = 'var(--border)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Initialize animations on page load
+        window.addEventListener('load', () => {
+            // Trigger initial animations
+            setTimeout(() => {
+                document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight) {
+                        el.classList.add('in-view');
+                    }
+                });
+            }, 100);
+        });
+
+        // Add scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.documentElement.style.setProperty('--scroll-progress', scrolled + '%');
+        });
+
+        // Enhance button interactions
+        document.querySelectorAll('.btn, .copy-btn, .expand-btn').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
         });
     </script>
 </body>
