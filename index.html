@@ -25,6 +25,7 @@
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
             --border-radius: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --scroll-progress: 0%;
         }
 
         * {
@@ -39,6 +40,18 @@
             color: var(--text-dark);
             background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
             overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--warning-color), var(--success-color));
+            width: var(--scroll-progress);
+            z-index: 9999;
+            transition: width 0.1s linear;
         }
 
         /* Typography */
@@ -65,15 +78,15 @@
             top: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.8) 0%, rgba(32, 178, 170, 0.8) 100%);
             backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-lg);
             z-index: 1000;
             transition: var(--transition);
         }
 
         .header.scrolled {
             background: rgba(46, 139, 87, 0.95);
+            box-shadow: var(--shadow-lg);
         }
 
         .nav {
@@ -202,7 +215,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="80" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>');
             opacity: 0.3;
         }
 
@@ -404,6 +417,32 @@
             border: 0;
             border-radius: 8px;
         }
+        
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
 
         /* Cards */
         .card-grid {
@@ -418,6 +457,8 @@
             box-shadow: var(--shadow);
             overflow: hidden;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
@@ -427,12 +468,6 @@
 
         .card-image {
             height: 200px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
             position: relative;
             overflow: hidden;
         }
@@ -441,10 +476,18 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .card:hover .card-image img {
+            transform: scale(1.05);
         }
 
         .card-content {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .card-title {
@@ -455,6 +498,7 @@
         .card-description {
             color: var(--text-light);
             margin-bottom: 1rem;
+            flex-grow: 1;
         }
 
         .card-meta {
@@ -480,16 +524,16 @@
         /* Project Details */
         .project-details {
             background: var(--surface);
-            padding: 1.5rem;
             border-radius: var(--border-radius);
             margin-top: 1rem;
             display: none;
+            overflow: hidden;
             border-top: 3px solid var(--primary-color);
         }
 
         .project-details.active {
             display: block;
-            animation: slideDown 0.3s ease;
+            animation: slideDown 0.5s ease;
         }
 
         @keyframes slideDown {
@@ -499,8 +543,12 @@
             }
             to {
                 opacity: 1;
-                max-height: 1000px;
+                max-height: 1000px; /* Large enough to not clip content */
             }
+        }
+        
+        .project-details-content {
+            padding: 1.5rem;
         }
 
         .detail-grid {
@@ -533,22 +581,14 @@
 
         .project-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1rem;
             margin-top: 1.5rem;
         }
 
         .gallery-image {
             height: 150px;
-            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 0.9rem;
-            text-align: center;
-            font-weight: 500;
             object-fit: cover;
             width: 100%;
         }
@@ -570,6 +610,7 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            text-align: left;
         }
 
         .bank-card {
@@ -577,7 +618,7 @@
             backdrop-filter: blur(10px);
             padding: 2rem;
             border-radius: var(--border-radius);
-            border: 2px solid var(--accent-color);
+            border: 1px solid var(--accent-color);
             transition: var(--transition);
         }
 
@@ -591,7 +632,7 @@
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .bank-detail {
@@ -599,10 +640,15 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             margin-bottom: 1rem;
             border-left: 4px solid var(--secondary-color);
+        }
+        
+        .bank-detail-text {
+            flex-grow: 1;
+            word-break: break-all;
         }
 
         .bank-detail strong {
@@ -629,6 +675,8 @@
             font-size: 0.875rem;
             transition: var(--transition);
             font-weight: 600;
+            flex-shrink: 0;
+            margin-left: 1rem;
         }
 
         .copy-btn:hover {
@@ -696,6 +744,7 @@
             color: var(--text-light);
             text-decoration: none;
             transition: var(--transition);
+            word-break: break-all;
         }
 
         .member-contact a:hover {
@@ -712,7 +761,7 @@
 
         /* Footer */
         .footer {
-            background: var(--primary-color);
+            background: var(--primary-dark);
             color: white;
             padding: 3rem 0 1rem;
         }
@@ -778,6 +827,13 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
@@ -817,12 +873,7 @@
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .location-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
+            
             .bank-info {
                 grid-template-columns: 1fr;
             }
@@ -836,7 +887,7 @@
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s ease;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .animate-on-scroll.in-view {
@@ -846,14 +897,10 @@
 
         /* Utility Classes */
         .text-center { text-align: center; }
-        .mb-2 { margin-bottom: 0.5rem; }
-        .mb-4 { margin-bottom: 1rem; }
         .mt-4 { margin-top: 1rem; }
-        .hidden { display: none; }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header" id="header">
         <div class="container">
             <nav class="nav">
@@ -882,6 +929,11 @@
                         <span class="lang-content" data-lang="fr">Localisation</span>
                         <span class="lang-content" data-lang="en">Location</span>
                     </a></li>
+                    <li><a href="#gallery" class="nav-link">
+                        <span class="lang-content active" data-lang="ar">معرض الصور</span>
+                        <span class="lang-content" data-lang="fr">Galerie</span>
+                        <span class="lang-content" data-lang="en">Gallery</span>
+                    </a></li>
                     <li><a href="#projects" class="nav-link">
                         <span class="lang-content active" data-lang="ar">المشاريع</span>
                         <span class="lang-content" data-lang="fr">Projets</span>
@@ -901,9 +953,9 @@
 
                 <div style="display: flex; align-items: center; gap: 1rem;">
                     <div class="language-switcher">
-                        <button class="lang-btn active" onclick="switchLanguage('ar')">العربية</button>
-                        <button class="lang-btn" onclick="switchLanguage('fr')">Français</button>
-                        <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+                        <button class="lang-btn active" onclick="switchLanguage('ar', event)">العربية</button>
+                        <button class="lang-btn" onclick="switchLanguage('fr', event)">Français</button>
+                        <button class="lang-btn" onclick="switchLanguage('en', event)">English</button>
                     </div>
                     <a href="#donate" class="donate-btn">
                         ❤️
@@ -911,23 +963,22 @@
                         <span class="lang-content" data-lang="fr">Faire un Don</span>
                         <span class="lang-content" data-lang="en">Donate</span>
                     </a>
-                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">☰</button>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-logo">
-                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=80&h=80&fit=crop&crop=center" alt="شعار جمعية تازولت">
+                    <img src="Logo-removebg-preview.png" alt="شعار جمعية تازولت الكبير">
                 </div>
 
                 <h1 class="hero-title">
                     <span class="lang-content active" data-lang="ar">جمعية تازولت للتنمية والتعاون والبيئة</span>
-                    <span class="lang-content" data-lang="fr">Association Tazoult pour le Développement et la Coopération et d'Environnement</span>
+                    <span class="lang-content" data-lang="fr">Association Tazoult pour le Développement, la Coopération et l'Environnement</span>
                     <span class="lang-content" data-lang="en">Tazoult Association for Development, Cooperation and Environment</span>
                 </h1>
 
@@ -953,7 +1004,6 @@
         </div>
     </section>
 
-    <!-- Impact Stats -->
     <section class="impact-stats">
         <div class="container">
             <div class="stats-grid">
@@ -993,7 +1043,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -1004,56 +1053,56 @@
                 </h2>
                 <p class="section-subtitle">
                     <span class="lang-content active" data-lang="ar">جمعية تازولت للتنمية والتعاون والبيئة هي منظمة غير ربحية تهدف إلى تحقيق التنمية الشاملة في منطقة تازولت</span>
-                    <span class="lang-content" data-lang="fr">L'Association Tazoult pour le Développement et la Coopération et d'Environnement est une organisation à but non lucratif visant le développement global de la région de Tazoult</span>
+                    <span class="lang-content" data-lang="fr">L'Association Tazoult pour le Développement, la Coopération et l'Environnement est une organisation à but non lucratif visant le développement global de la région de Tazoult</span>
                     <span class="lang-content" data-lang="en">Tazoult Association for Development, Cooperation and Environment is a non-profit organization aiming for comprehensive development in the Tazoult region</span>
                 </p>
             </div>
 
             <div class="card-grid">
                 <div class="card animate-on-scroll">
-                    <div class="card-image">🏫</div>
+                    <div class="card-image"><img src="https://images.unsplash.com/photo-1543196614-e046c7d3d82e?q=80&w=800&auto=format&fit=crop" alt="Education"></div>
                     <div class="card-content">
                         <h3 class="card-title">
                             <span class="lang-content active" data-lang="ar">التعليم ومحاربة الأمية</span>
-                            <span class="lang-content" data-lang="fr">L'éducation et la lutte contre l'analphabétisme</span>
+                            <span class="lang-content" data-lang="fr">Éducation et lutte contre l'analphabétisme</span>
                             <span class="lang-content" data-lang="en">Education and fighting illiteracy</span>
                         </h3>
                         <p class="card-description">
-                            <span class="lang-content active" data-lang="ar">تطوير البنية التحتية وتوفير المياه الصالحة للشرب</span>
-                            <span class="lang-content" data-lang="fr">Développer l'infrastructure et fournir l'eau potable</span>
-                            <span class="lang-content" data-lang="en">Developing infrastructure and providing clean drinking water</span>
+                            <span class="lang-content active" data-lang="ar">نعمل على دعم التعليم وتوفير الفرص التعليمية للأطفال والشباب، وتنظيم برامج محو الأمية للكبار.</span>
+                            <span class="lang-content" data-lang="fr">Nous soutenons l'éducation, offrons des opportunités éducatives aux enfants et organisons des programmes d'alphabétisation pour adultes.</span>
+                            <span class="lang-content" data-lang="en">We support education, provide learning opportunities for children, and organize literacy programs for adults.</span>
                         </p>
                     </div>
                 </div>
 
                 <div class="card animate-on-scroll">
-                    <div class="card-image">💧</div>
+                    <div class="card-image"><img src="https://images.unsplash.com/photo-1598938553331-a3dee4b39b36?q=80&w=800&auto=format&fit=crop" alt="Environment"></div>
                     <div class="card-content">
                         <h3 class="card-title">
-                            <span class="lang-content active" data-lang="ar">الرعاية الصحية والحملات التوعوية</span>
-                            <span class="lang-content" data-lang="fr">Les soins de santé et les campagnes de sensibilisation</span>
-                            <span class="lang-content" data-lang="en">Healthcare and awareness campaigns</span>
+                            <span class="lang-content active" data-lang="ar">البيئة والتنمية المستدامة</span>
+                            <span class="lang-content" data-lang="fr">Environnement et Développement Durable</span>
+                            <span class="lang-content" data-lang="en">Environment and Sustainable Development</span>
                         </h3>
                         <p class="card-description">
-                            <span class="lang-content active" data-lang="ar">حماية البيئة ومحاربة التصحر</span>
-                            <span class="lang-content" data-lang="fr">Protection de l'environnement et lutte contre la désertification</span>
-                            <span class="lang-content" data-lang="en">Environmental protection and combating desertification</span>
+                            <span class="lang-content active" data-lang="ar">نلتزم بحماية البيئة من خلال حملات التشجير، وإدارة الموارد المائية، وتعزيز الزراعة المستدامة.</span>
+                            <span class="lang-content" data-lang="fr">Nous nous engageons à protéger l'environnement par le reboisement, la gestion de l'eau et la promotion de l'agriculture durable.</span>
+                            <span class="lang-content" data-lang="en">We are committed to protecting the environment through reforestation, water management, and promoting sustainable agriculture.</span>
                         </p>
                     </div>
                 </div>
 
                 <div class="card animate-on-scroll">
-                    <div class="card-image">🌱</div>
+                    <div class="card-image"><img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=800&auto=format&fit=crop" alt="Community"></div>
                     <div class="card-content">
                         <h3 class="card-title">
-                            <span class="lang-content active" data-lang="ar">تمكين المرأة والطفل والشباب</span>
-                            <span class="lang-content" data-lang="fr">Autonomisation des femmes, des enfants et des jeunes</span>
-                            <span class="lang-content" data-lang="en">Empowering women, children and youth</span>
+                            <span class="lang-content active" data-lang="ar">تمكين المجتمع</span>
+                            <span class="lang-content" data-lang="fr">Autonomisation de la Communauté</span>
+                            <span class="lang-content" data-lang="en">Community Empowerment</span>
                         </h3>
                         <p class="card-description">
-                            <span class="lang-content active" data-lang="ar">خلق فرص عمل ومشاريع تنموية</span>
-                            <span class="lang-content" data-lang="fr">Création d'emplois et projets de développement</span>
-                            <span class="lang-content" data-lang="en">Creating jobs and development projects</span>
+                            <span class="lang-content active" data-lang="ar">نسعى لتمكين المرأة والشباب من خلال التدريب المهني ودعم المشاريع الصغيرة لخلق فرص اقتصادية محلية.</span>
+                            <span class="lang-content" data-lang="fr">Nous visons à autonomiser les femmes et les jeunes par la formation professionnelle et le soutien aux petites entreprises pour créer des opportunités locales.</span>
+                            <span class="lang-content" data-lang="en">We aim to empower women and youth through vocational training and support for small businesses to create local opportunities.</span>
                         </p>
                     </div>
                 </div>
@@ -1061,7 +1110,6 @@
         </div>
     </section>
 
-    <!-- Enhanced Location Section -->
     <section id="location" class="section location-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -1107,33 +1155,10 @@
                         <span class="lang-content" data-lang="fr">Située dans la région du Petit Atlas, entourée de montagnes et vallées</span>
                         <span class="lang-content" data-lang="en">Located in the Anti-Atlas region, surrounded by mountains and valleys</span>
                     </div>
-                    <div class="location-detail">
-                        <strong>🌾 
-                            <span class="lang-content active" data-lang="ar">النشاط الاقتصادي:</span>
-                            <span class="lang-content" data-lang="fr">Activité économique:</span>
-                            <span class="lang-content" data-lang="en">Economic Activity:</span>
-                        </strong>
-                        <span class="lang-content active" data-lang="ar">منطقة زراعية تشتهر بزراعة الزيتون واللوز والأركان والحبوب</span>
-                        <span class="lang-content" data-lang="fr">Zone agricole connue pour la culture d'olives, d'amandes, d'argan et de céréales</span>
-                        <span class="lang-content" data-lang="en">Agricultural area known for olive, almond, argan and grain cultivation</span>
-                    </div>
-                    <div class="location-detail">
-                        <strong>👥 
-                            <span class="lang-content active" data-lang="ar">عدد السكان:</span>
-                            <span class="lang-content" data-lang="fr">Population:</span>
-                            <span class="lang-content" data-lang="en">Population:</span>
-                        </strong>
-                        <span class="lang-content active" data-lang="ar">حوالي 1200 نسمة موزعين على عدة دواوير</span>
-                        <span class="lang-content" data-lang="fr">Environ 1200 habitants répartis sur plusieurs douars</span>
-                        <span class="lang-content" data-lang="en">Approximately 1200 inhabitants distributed across several douars</span>
-                    </div>
                 </div>
                 <div class="map-container">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d17691.687973501266!2d-7.777784!3d30.784318!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdba827111e28f4b%3A0x8e112529c0bc9609!2sTazoulte%2C%20Morocco!5e1!3m2!1sen!2snl!4v1753787829734!5m2!1sen!2snl" 
-                        width="100%" 
-                        height="400" 
-                        style="border:0; border-radius: 8px;" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3434.664421110543!2d-7.778846923838647!3d30.58742887465715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb7c8052140a331%3A0xe543b592182d334!2sTazoult!5e0!3m2!1sen!2snl!4v1726922338000!5m2!1sen!2snl" 
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade">
@@ -1143,8 +1168,44 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section" style="background: var(--surface);">
+    <section id="gallery" class="section" style="background: var(--surface);">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">
+                    <span class="lang-content active" data-lang="ar">الحياة في تازولت</span>
+                    <span class="lang-content" data-lang="fr">La Vie à Tazoult</span>
+                    <span class="lang-content" data-lang="en">Life in Tazoult</span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-content active" data-lang="ar">لمحات من قريتنا وثقافتنا ومجتمعنا النابض بالحياة</span>
+                    <span class="lang-content" data-lang="fr">Un aperçu de notre village, de notre culture et de notre communauté dynamique</span>
+                    <span class="lang-content" data-lang="en">Glimpses of our village, culture, and vibrant community</span>
+                </p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1595172372275-0453303d987d?q=80&w=800&auto=format&fit=crop" alt="Moroccan village landscape">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1605285229713-17498963c6a5?q=80&w=800&auto=format&fit=crop" alt="Children playing in a Moroccan village">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1547496525-9a00806a8f1e?q=80&w=800&auto=format&fit=crop" alt="Traditional Moroccan agriculture">
+                </div>
+                 <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1604528172887-21586052f65a?q=80&w=800&auto=format&fit=crop" alt="Argan fruits, a local resource">
+                </div>
+                 <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?q=80&w=800&auto=format&fit=crop" alt="A village elder from Morocco">
+                </div>
+                 <div class="gallery-item animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1617231459479-4e12c1b33b7b?q=80&w=800&auto=format&fit=crop" alt="A traditional Moroccan tea ceremony">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
         <div class="container">
             <div class="section-header animate-on-scroll">
                 <h2 class="section-title">
@@ -1159,7 +1220,6 @@
                 </p>
             </div>
 
-            <!-- Current Projects -->
             <div class="projects-group">
                 <h3>
                     <span class="lang-content active" data-lang="ar">🚀 المشاريع الحالية</span>
@@ -1170,7 +1230,7 @@
                 <div class="card-grid">
                     <div class="card animate-on-scroll">
                         <div class="card-image">
-                            <img src="https://via.placeholder.com/400x200/2e8b57/ffffff?text=مشروع+المدرسة" alt="مشروع المدرسة" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="https://images.unsplash.com/photo-1574689049931-16781235e073?q=80&w=800&auto=format&fit=crop" alt="مشروع المدرسة">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">
@@ -1185,60 +1245,45 @@
                             </p>
                             <div class="card-meta">
                                 <span>💰 200,000 درهم</span>
-                                <span>📅 يناير 2024 - أغسطس 2024</span>
+                                <span>📅 2025</span>
                                 <span>👥 150 طالب</span>
                             </div>
                             <div class="card-actions">
                                 <button class="btn btn-small btn-primary" onclick="toggleProject('school-details')">
-                                    <span class="lang-content active" data-lang="ar">اضغط هنا للتفاصيل ↓</span>
-                                    <span class="lang-content" data-lang="fr">Cliquez pour détails ↓</span>
-                                    <span class="lang-content" data-lang="en">Click for details ↓</span>
+                                    <span class="lang-content active" data-lang="ar">التفاصيل ↓</span>
+                                    <span class="lang-content" data-lang="fr">Détails ↓</span>
+                                    <span class="lang-content" data-lang="en">Details ↓</span>
                                 </button>
                             </div>
                             <div id="school-details" class="project-details">
-                                <h4>📊 
-                                    <span class="lang-content active" data-lang="ar">تفاصيل المشروع:</span>
-                                    <span class="lang-content" data-lang="fr">Détails du Projet:</span>
-                                    <span class="lang-content" data-lang="en">Project Details:</span>
-                                </h4>
-                                <div class="detail-grid">
-                                    <div class="detail-item">
-                                        <div class="detail-label">
-                                            <span class="lang-content active" data-lang="ar">الميزانية</span>
-                                            <span class="lang-content" data-lang="fr">Budget</span>
-                                            <span class="lang-content" data-lang="en">Budget</span>
+                                <div class="project-details-content">
+                                    <h4>📊 
+                                        <span class="lang-content active" data-lang="ar">تفاصيل المشروع:</span>
+                                        <span class="lang-content" data-lang="fr">Détails du Projet:</span>
+                                        <span class="lang-content" data-lang="en">Project Details:</span>
+                                    </h4>
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <div class="detail-label">
+                                                <span class="lang-content active" data-lang="ar">الميزانية</span>
+                                                <span class="lang-content" data-lang="fr">Budget</span>
+                                                <span class="lang-content" data-lang="en">Budget</span>
+                                            </div>
+                                            <div class="detail-value">200,000 درهم</div>
                                         </div>
-                                        <div class="detail-value">200,000 درهم</div>
-                                    </div>
-                                    <div class="detail-item">
-                                        <div class="detail-label">
-                                            <span class="lang-content active" data-lang="ar">الرعاة</span>
-                                            <span class="lang-content" data-lang="fr">Sponsors</span>
-                                            <span class="lang-content" data-lang="en">Sponsors</span>
-                                        </div>
-                                        <div class="detail-value">
-                                            <span class="lang-content active" data-lang="ar">وزارة التربية الوطنية، المجلس الإقليمي</span>
-                                            <span class="lang-content" data-lang="fr">Ministère de l'Éducation, Conseil Régional</span>
-                                            <span class="lang-content" data-lang="en">Ministry of Education, Regional Council</span>
-                                        </div>
-                                    </div>
-                                    <div class="detail-item">
-                                        <div class="detail-label">
-                                            <span class="lang-content active" data-lang="ar">الهدف</span>
-                                            <span class="lang-content" data-lang="fr">Objectif</span>
-                                            <span class="lang-content" data-lang="en">Goal</span>
-                                        </div>
-                                        <div class="detail-value">
-                                            <span class="lang-content active" data-lang="ar">بناء فصول دراسية جديدة وتجهيز المدرسة</span>
-                                            <span class="lang-content" data-lang="fr">Construction de nouvelles salles de classe et équipement de l'école</span>
-                                            <span class="lang-content" data-lang="en">Building new classrooms and equipping the school</span>
+                                        <div class="detail-item">
+                                            <div class="detail-label">
+                                                <span class="lang-content active" data-lang="ar">الرعاة</span>
+                                                <span class="lang-content" data-lang="fr">Sponsors</span>
+                                                <span class="lang-content" data-lang="en">Sponsors</span>
+                                            </div>
+                                            <div class="detail-value">
+                                                <span class="lang-content active" data-lang="ar">وزارة التربية الوطنية، المجلس الإقليمي</span>
+                                                <span class="lang-content" data-lang="fr">Ministère de l'Éducation, Conseil Régional</span>
+                                                <span class="lang-content" data-lang="en">Ministry of Education, Regional Council</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="project-gallery">
-                                    <div class="gallery-image">بناء الفصول الجديدة</div>
-                                    <div class="gallery-image">تجهيز المدرسة</div>
-                                    <div class="gallery-image">الأطفال في الفصل</div>
                                 </div>
                             </div>
                         </div>
@@ -1246,7 +1291,7 @@
 
                     <div class="card animate-on-scroll">
                         <div class="card-image">
-                            <img src="https://via.placeholder.com/400x200/20b2aa/ffffff?text=مشروع+المياه" alt="مشروع المياه" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="https://images.unsplash.com/photo-1594833256195-272e2954101e?q=80&w=800&auto=format&fit=crop" alt="مشروع المياه">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">
@@ -1261,73 +1306,35 @@
                             </p>
                             <div class="card-meta">
                                 <span>💰 180,000 درهم</span>
-                                <span>📅 مارس 2024 - ديسمبر 2024</span>
+                                <span>📅 2025</span>
                                 <span>👥 1200 نسمة</span>
                             </div>
                             <div class="card-actions">
                                 <button class="btn btn-small btn-primary" onclick="toggleProject('water-details')">
-                                    <span class="lang-content active" data-lang="ar">اضغط هنا للتفاصيل ↓</span>
-                                    <span class="lang-content" data-lang="fr">Cliquez pour détails ↓</span>
-                                    <span class="lang-content" data-lang="en">Click for details ↓</span>
+                                    <span class="lang-content active" data-lang="ar">التفاصيل ↓</span>
+                                    <span class="lang-content" data-lang="fr">Détails ↓</span>
+                                    <span class="lang-content" data-lang="en">Details ↓</span>
                                 </button>
                             </div>
                             <div id="water-details" class="project-details">
-                                <div class="detail-grid">
-                                    <div class="detail-item">
-                                        <div class="detail-label">
-                                            <span class="lang-content active" data-lang="ar">عدد الآبار</span>
-                                            <span class="lang-content" data-lang="fr">Nombre de puits</span>
-                                            <span class="lang-content" data-lang="en">Number of wells</span>
-                                        </div>
-                                        <div class="detail-value">3 آبار</div>
-                                    </div>
-                                    <div class="detail-item">
-                                        <div class="detail-label">
-                                            <span class="lang-content active" data-lang="ar">الرعاة</span>
-                                            <span class="lang-content" data-lang="fr">Sponsors</span>
-                                            <span class="lang-content" data-lang="en">Sponsors</span>
-                                        </div>
-                                        <div class="detail-value">
-                                            <span class="lang-content active" data-lang="ar">مؤسسة محمد الخامس، المندوبية السامية للمياه</span>
-                                            <span class="lang-content" data-lang="fr">Fondation Mohammed V, Haut Commissariat aux Eaux</span>
-                                            <span class="lang-content" data-lang="en">Mohammed V Foundation, High Commission for Water</span>
+                                <div class="project-details-content">
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <div class="detail-label">
+                                                <span class="lang-content active" data-lang="ar">عدد الآبار</span>
+                                                <span class="lang-content" data-lang="fr">Nombre de puits</span>
+                                                <span class="lang-content" data-lang="en">Number of wells</span>
+                                            </div>
+                                            <div class="detail-value">3 آبار</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="project-gallery">
-                                    <div class="gallery-image">حفر البئر الأول</div>
-                                    <div class="gallery-image">شبكة التوزيع</div>
-                                    <div class="gallery-image">خزان المياه</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card animate-on-scroll">
-                        <div class="card-image">
-                            <img src="https://via.placeholder.com/400x200/90ee90/333333?text=مقر+الجمعية" alt="مقر الجمعية" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">
-                                <span class="lang-content active" data-lang="ar">مقر الجمعية</span>
-                                <span class="lang-content" data-lang="fr">Siège de l'Association</span>
-                                <span class="lang-content" data-lang="en">Association Headquarters</span>
-                            </h3>
-                            <p class="card-description">
-                                <span class="lang-content active" data-lang="ar">إنشاء مقر دائم للجمعية ليكون مركزاً لأنشطتها واجتماعاتها وخدماتها المجتمعية</span>
-                                <span class="lang-content" data-lang="fr">Création d'un siège permanent pour l'association comme centre de ses activités, réunions et services communautaires</span>
-                                <span class="lang-content" data-lang="en">Creating a permanent headquarters for the association as a center for its activities, meetings and community services</span>
-                            </p>
-                            <div class="card-meta">
-                                <span>💰 120,000 درهم</span>
-                                <span>📅 يونيو 2024 - نوفمبر 2024</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Completed Projects -->
             <div class="projects-group">
                 <h3>
                     <span class="lang-content active" data-lang="ar">✅ المشاريع المنجزة</span>
@@ -1338,7 +1345,7 @@
                 <div class="card-grid">
                     <div class="card animate-on-scroll">
                         <div class="card-image">
-                            <img src="Images/Old/image/art/1.jpg" alt="مشروع الفن" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="Images/Old/image/art/1.jpg" alt="مشروع الفن والثقافة">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">
@@ -1347,9 +1354,9 @@
                                 <span class="lang-content" data-lang="en">Art and Culture Project</span>
                             </h3>
                             <p class="card-description">
-                                <span class="lang-content active" data-lang="ar">ورشات فنية وثقافية للشباب والأطفال لتنمية مواهبهم الإبداعية والفنية</span>
-                                <span class="lang-content" data-lang="fr">Ateliers artistiques et culturels pour les jeunes et enfants pour développer leurs talents créatifs</span>
-                                <span class="lang-content" data-lang="en">Artistic and cultural workshops for youth and children to develop their creative talents</span>
+                                <span class="lang-content active" data-lang="ar">ورشات فنية وثقافية للشباب والأطفال لتنمية مواهبهم الإبداعية والفنية.</span>
+                                <span class="lang-content" data-lang="fr">Ateliers artistiques et culturels pour les jeunes et enfants pour développer leurs talents créatifs.</span>
+                                <span class="lang-content" data-lang="en">Artistic and cultural workshops for youth and children to develop their creative talents.</span>
                             </p>
                             <div class="card-meta">
                                 <span>✅ منجز</span>
@@ -1357,13 +1364,19 @@
                                 <span>💰 35,000 درهم</span>
                             </div>
                             <div class="card-actions">
-                                <button class="btn btn-small btn-primary" onclick="toggleProject('art-details')">التفاصيل</button>
+                                <button class="btn btn-small btn-primary" onclick="toggleProject('art-details')">
+                                    <span class="lang-content active" data-lang="ar">عرض الصور ↓</span>
+                                    <span class="lang-content" data-lang="fr">Voir Photos ↓</span>
+                                    <span class="lang-content" data-lang="en">View Photos ↓</span>
+                                </button>
                             </div>
                             <div id="art-details" class="project-details">
-                                <div class="project-gallery">
-                                    <img src="Images/Old/image/art/1.jpg" alt="ورشة الرسم" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/art/2.jpg" alt="المعرض الفني" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/art/3.jpg" alt="الأطفال والفن" class="gallery-image" style="object-fit: cover;">
+                                <div class="project-details-content">
+                                    <div class="project-gallery">
+                                        <img src="Images/Old/image/art/1.jpg" alt="ورشة الرسم" class="gallery-image">
+                                        <img src="Images/Old/image/art/2.jpg" alt="المعرض الفني" class="gallery-image">
+                                        <img src="Images/Old/image/art/3.jpg" alt="الأطفال والفن" class="gallery-image">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1371,7 +1384,7 @@
 
                     <div class="card animate-on-scroll">
                         <div class="card-image">
-                            <img src="Images/Old/image/Football Field/1.jpg" alt="ملعب كرة القدم" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img src="Images/Old/image/Football Field/1.jpg" alt="ملعب كرة القدم">
                         </div>
                         <div class="card-content">
                             <h3 class="card-title">
@@ -1380,9 +1393,9 @@
                                 <span class="lang-content" data-lang="en">Football Field</span>
                             </h3>
                             <p class="card-description">
-                                <span class="lang-content active" data-lang="ar">إنشاء ملعب كرة قدم للشباب لممارسة الرياضة وتنظيم البطولات المحلية</span>
-                                <span class="lang-content" data-lang="fr">Construction d'un terrain de football pour les jeunes pour pratiquer le sport</span>
-                                <span class="lang-content" data-lang="en">Construction of a football field for youth to practice sports</span>
+                                <span class="lang-content active" data-lang="ar">إنشاء ملعب كرة قدم للشباب لممارسة الرياضة وتنظيم البطولات المحلية.</span>
+                                <span class="lang-content" data-lang="fr">Construction d'un terrain de football pour les jeunes pour pratiquer le sport.</span>
+                                <span class="lang-content" data-lang="en">Construction of a football field for youth to practice sports.</span>
                             </p>
                             <div class="card-meta">
                                 <span>✅ منجز</span>
@@ -1390,145 +1403,19 @@
                                 <span>💰 85,000 درهم</span>
                             </div>
                             <div class="card-actions">
-                                <button class="btn btn-small btn-primary" onclick="toggleProject('football-details')">التفاصيل</button>
+                                <button class="btn btn-small btn-primary" onclick="toggleProject('football-details')">
+                                    <span class="lang-content active" data-lang="ar">عرض الصور ↓</span>
+                                    <span class="lang-content" data-lang="fr">Voir Photos ↓</span>
+                                    <span class="lang-content" data-lang="en">View Photos ↓</span>
+                                </button>
                             </div>
                             <div id="football-details" class="project-details">
-                                <div class="project-gallery">
-                                    <img src="Images/Old/image/Football Field/1.jpg" alt="بناء الملعب" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/Football Field/2.jpg" alt="الملعب المكتمل" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/Football Field/3.jpg" alt="أول مباراة" class="gallery-image" style="object-fit: cover;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card animate-on-scroll">
-                        <div class="card-image">
-                            <img src="Images/Old/image/Football torn/1.jpg" alt="بطولة كرة القدم" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">
-                                <span class="lang-content active" data-lang="ar">بطولة كرة القدم</span>
-                                <span class="lang-content" data-lang="fr">Tournoi de Football</span>
-                                <span class="lang-content" data-lang="en">Football Tournament</span>
-                            </h3>
-                            <p class="card-description">
-                                <span class="lang-content active" data-lang="ar">تنظيم بطولة كرة قدم سنوية للشباب من مختلف القرى لتعزيز روح الرياضة</span>
-                                <span class="lang-content" data-lang="fr">Organisation d'un tournoi de football annuel pour les jeunes de différents villages</span>
-                                <span class="lang-content" data-lang="en">Organization of an annual football tournament for youth from different villages</span>
-                            </p>
-                            <div class="card-meta">
-                                <span>✅ منجز</span>
-                                <span>👥 320 لاعب</span>
-                                <span>💰 25,000 درهم</span>
-                            </div>
-                            <div class="card-actions">
-                                <button class="btn btn-small btn-primary" onclick="toggleProject('tournament-details')">التفاصيل</button>
-                            </div>
-                            <div id="tournament-details" class="project-details">
-                                <div class="project-gallery">
-                                    <img src="Images/Old/image/Football torn/1.jpg" alt="افتتاح البطولة" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/Football torn/2.jpg" alt="المباراة النهائية" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/Football torn/3.jpg" alt="توزيع الجوائز" class="gallery-image" style="object-fit: cover;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card animate-on-scroll">
-                        <div class="card-image">
-                            <img src="Images/Old/image/Planting/1.jpg" alt="زراعة النباتات" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">
-                                <span class="lang-content active" data-lang="ar">زراعة النباتات</span>
-                                <span class="lang-content" data-lang="fr">Plantation d'Arbres</span>
-                                <span class="lang-content" data-lang="en">Tree Planting</span>
-                            </h3>
-                            <p class="card-description">
-                                <span class="lang-content active" data-lang="ar">حملة تشجير وزراعة النباتات في المنطقة لمحاربة التصحر وتحسين البيئة المحلية</span>
-                                <span class="lang-content" data-lang="fr">Campagne de reboisement et de plantation dans la région pour lutter contre la désertification</span>
-                                <span class="lang-content" data-lang="en">Reforestation and planting campaign in the region to combat desertification</span>
-                            </p>
-                            <div class="card-meta">
-                                <span>✅ منجز</span>
-                                <span>🌳 550 شجرة</span>
-                                <span>💰 18,000 درهم</span>
-                            </div>
-                            <div class="card-actions">
-                                <button class="btn btn-small btn-primary" onclick="toggleProject('planting-details')">التفاصيل</button>
-                            </div>
-                            <div id="planting-details" class="project-details">
-                                <div class="project-gallery">
-                                    <img src="Images/Old/image/Planting/1.jpg" alt="حملة الزراعة" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/Planting/2.jpg" alt="الأشجار المزروعة" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/Planting/3.jpg" alt="المتطوعون" class="gallery-image" style="object-fit: cover;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card animate-on-scroll">
-                        <div class="card-image">
-                            <img src="Images/Old/image/kids/1.jpg" alt="ألعاب الأطفال" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">
-                                <span class="lang-content active" data-lang="ar">ألعاب وأنشطة الأطفال</span>
-                                <span class="lang-content" data-lang="fr">Jeux et Activités pour Enfants</span>
-                                <span class="lang-content" data-lang="en">Kids Games and Activities</span>
-                            </h3>
-                            <p class="card-description">
-                                <span class="lang-content active" data-lang="ar">تنظيم فعاليات وألعاب ترفيهية للأطفال لتعزيز روح المرح والتعلم من خلال اللعب</span>
-                                <span class="lang-content" data-lang="fr">Organisation d'événements et de jeux récréatifs pour les enfants pour promouvoir l'amusement et l'apprentissage par le jeu</span>
-                                <span class="lang-content" data-lang="en">Organizing recreational events and games for children to promote fun and learning through play</span>
-                            </p>
-                            <div class="card-meta">
-                                <span>✅ منجز</span>
-                                <span>👶 135 طفل</span>
-                                <span>💰 15,000 درهم</span>
-                            </div>
-                            <div class="card-actions">
-                                <button class="btn btn-small btn-primary" onclick="toggleProject('kids-details')">التفاصيل</button>
-                            </div>
-                            <div id="kids-details" class="project-details">
-                                <div class="project-gallery">
-                                    <img src="Images/Old/image/kids/1.jpg" alt="يوم الألعاب" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/kids/2.jpg" alt="الأطفال يلعبون" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/kids/3.jpg" alt="توزيع الهدايا" class="gallery-image" style="object-fit: cover;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card animate-on-scroll">
-                        <div class="card-image">
-                            <img src="Images/Old/image/Food/1.jpg" alt="توزيع الطعام" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">
-                                <span class="lang-content active" data-lang="ar">توزيع الطعام والمساعدات</span>
-                                <span class="lang-content" data-lang="fr">Distribution de Nourriture et d'Aide</span>
-                                <span class="lang-content" data-lang="en">Food Distribution and Aid</span>
-                            </h3>
-                            <p class="card-description">
-                                <span class="lang-content active" data-lang="ar">توزيع المساعدات الغذائية والطرود على الأسر المحتاجة خاصة في المناسبات الدينية</span>
-                                <span class="lang-content" data-lang="fr">Distribution d'aide alimentaire et de colis aux familles nécessiteuses, surtout pendant les occasions religieuses</span>
-                                <span class="lang-content" data-lang="en">Distribution of food aid and packages to needy families, especially during religious occasions</span>
-                            </p>
-                            <div class="card-meta">
-                                <span>✅ منجز</span>
-                                <span>📦 220 طرد</span>
-                                <span>💰 22,000 درهم</span>
-                            </div>
-                            <div class="card-actions">
-                                <button class="btn btn-small btn-primary" onclick="toggleProject('food-details')">التفاصيل</button>
-                            </div>
-                            <div id="food-details" class="project-details">
-                                <div class="project-gallery">
-                                    <img src="Images/Old/image/Food/1.jpg" alt="تحضير الطرود" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/Food/2.jpg" alt="توزيع الطعام" class="gallery-image" style="object-fit: cover;">
-                                    <img src="Images/Old/image/Food/3.jpg" alt="الأسر المستفيدة" class="gallery-image" style="object-fit: cover;">
+                                <div class="project-details-content">
+                                    <div class="project-gallery">
+                                        <img src="Images/Old/image/Football Field/1.jpg" alt="بناء الملعب" class="gallery-image">
+                                        <img src="Images/Old/image/Football Field/2.jpg" alt="الملعب المكتمل" class="gallery-image">
+                                        <img src="Images/Old/image/Football Field/3.jpg" alt="أول مباراة" class="gallery-image">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1538,7 +1425,6 @@
         </div>
     </section>
 
-    <!-- Donation Section -->
     <section id="donate" class="section donation-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -1562,32 +1448,28 @@
                         <span class="lang-content" data-lang="en">Bank Transfer</span>
                     </h4>
                     <div class="bank-detail">
-                        <div>
+                        <div class="bank-detail-text">
                             <strong>
                                 <span class="lang-content active" data-lang="ar">اسم الحساب:</span>
                                 <span class="lang-content" data-lang="fr">Nom du compte:</span>
                                 <span class="lang-content" data-lang="en">Account Name:</span>
                             </strong>
-                            <span>جمعية تازولت للتنمية والتعاون والبيئة</span>
+                            <span>جمعية تازولت للتنمية</span>
                         </div>
                     </div>
                     <div class="bank-detail">
-                        <div>
-                            <strong>
-                                <span class="lang-content active" data-lang="ar">رقم الحساب:</span>
-                                <span class="lang-content" data-lang="fr">Numéro de compte:</span>
-                                <span class="lang-content" data-lang="en">Account Number:</span>
-                            </strong>
-                            <span>123456789012345</span>
+                        <div class="bank-detail-text">
+                            <strong>RIB (24 digits):</strong>
+                            <span>011 780 0001234567890 12</span>
                         </div>
-                        <button class="copy-btn" onclick="copyToClipboard('123456789012345')">
+                        <button class="copy-btn" onclick="copyToClipboard('011780000123456789012', event)">
                             <span class="lang-content active" data-lang="ar">نسخ</span>
                             <span class="lang-content" data-lang="fr">Copier</span>
                             <span class="lang-content" data-lang="en">Copy</span>
                         </button>
                     </div>
                     <div class="bank-detail">
-                        <div>
+                        <div class="bank-detail-text">
                             <strong>
                                 <span class="lang-content active" data-lang="ar">البنك:</span>
                                 <span class="lang-content" data-lang="fr">Banque:</span>
@@ -1595,17 +1477,6 @@
                             </strong>
                             <span>البنك الشعبي المغربي</span>
                         </div>
-                    </div>
-                    <div class="bank-detail">
-                        <div>
-                            <strong>RIB:</strong>
-                            <span>011 780 0001234567890 12</span>
-                        </div>
-                        <button class="copy-btn" onclick="copyToClipboard('011 780 0001234567890 12')">
-                            <span class="lang-content active" data-lang="ar">نسخ</span>
-                            <span class="lang-content" data-lang="fr">Copier</span>
-                            <span class="lang-content" data-lang="en">Copy</span>
-                        </button>
                     </div>
                 </div>
 
@@ -1616,33 +1487,22 @@
                         <span class="lang-content" data-lang="en">Mobile Transfer</span>
                     </h4>
                     <div class="bank-detail">
-                        <div>
+                        <div class="bank-detail-text">
                             <strong>Orange Money:</strong>
                             <span>+212 600 000 100</span>
                         </div>
-                        <button class="copy-btn" onclick="copyToClipboard('+212 600 000 100')">
+                        <button class="copy-btn" onclick="copyToClipboard('+212600000100', event)">
                             <span class="lang-content active" data-lang="ar">نسخ</span>
                             <span class="lang-content" data-lang="fr">Copier</span>
                             <span class="lang-content" data-lang="en">Copy</span>
                         </button>
                     </div>
                     <div class="bank-detail">
-                        <div>
+                        <div class="bank-detail-text">
                             <strong>inwi money:</strong>
                             <span>+212 500 000 100</span>
                         </div>
-                        <button class="copy-btn" onclick="copyToClipboard('+212 500 000 100')">
-                            <span class="lang-content active" data-lang="ar">نسخ</span>
-                            <span class="lang-content" data-lang="fr">Copier</span>
-                            <span class="lang-content" data-lang="en">Copy</span>
-                        </button>
-                    </div>
-                    <div class="bank-detail">
-                        <div>
-                            <strong>Cash Plus:</strong>
-                            <span>+212 700 000 100</span>
-                        </div>
-                        <button class="copy-btn" onclick="copyToClipboard('+212 700 000 100')">
+                        <button class="copy-btn" onclick="copyToClipboard('+212500000100', event)">
                             <span class="lang-content active" data-lang="ar">نسخ</span>
                             <span class="lang-content" data-lang="fr">Copier</span>
                             <span class="lang-content" data-lang="en">Copy</span>
@@ -1660,25 +1520,24 @@
                 <p style="font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.9);">
                     <span class="lang-content active" data-lang="ar">
                         بعد إتمام التحويل، يرجى التواصل معنا عبر النموذج أدناه أو واتساب 
-                        <a href="https://wa.me/212656669162" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a>
-                        لتأكيد التبرع وإرسال إيصال الاستلام.
+                        <a href="https://wa.me/212656669162" target="_blank" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a>
+                         لتأكيد التبرع وإرسال إيصال الاستلام.
                     </span>
                     <span class="lang-content" data-lang="fr">
-                        Après avoir effectué le virement, veuillez nous contacter via le formulaire ci-dessous ou WhatsApp 
-                        <a href="https://wa.me/212656669162" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a>
-                        pour confirmer le don et envoyer un reçu.
+                        Après le virement, contactez-nous via le formulaire ou WhatsApp 
+                        <a href="https://wa.me/212656669162" target="_blank" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a>
+                         pour confirmer le don.
                     </span>
                     <span class="lang-content" data-lang="en">
-                        After completing the transfer, please contact us via the form below or WhatsApp 
-                        <a href="https://wa.me/212656669162" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a>
-                        to confirm the donation and send a receipt.
+                        After the transfer, please contact us via the form below or WhatsApp 
+                        <a href="https://wa.me/212656669162" target="_blank" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a>
+                         to confirm the donation.
                     </span>
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Board Section -->
     <section id="board" class="section">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -1708,7 +1567,6 @@
                         <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
                     </div>
                 </div>
-
                 <div class="member-card animate-on-scroll">
                     <div class="member-avatar">إ.ب</div>
                     <div class="member-name">إسماعيل باكاس</div>
@@ -1719,11 +1577,9 @@
                     </div>
                     <div class="member-contact">
                         <a href="tel:+212633284840">+212 633-284840</a>
-                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
                     </div>
                 </div>
-
-                <div class="member-card animate-on-scroll">
+                 <div class="member-card animate-on-scroll">
                     <div class="member-avatar">س.ح</div>
                     <div class="member-name">سعيد حمداني</div>
                     <div class="member-role">
@@ -1733,11 +1589,9 @@
                     </div>
                     <div class="member-contact">
                         <a href="tel:+212687260271">+212 687-260271</a>
-                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
                     </div>
                 </div>
-
-                <div class="member-card animate-on-scroll">
+                 <div class="member-card animate-on-scroll">
                     <div class="member-avatar">ع.ح</div>
                     <div class="member-name">عمر حمداني</div>
                     <div class="member-role">
@@ -1747,56 +1601,12 @@
                     </div>
                     <div class="member-contact">
                         <a href="tel:+212661760721">+212 661-760721</a>
-                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
-                    </div>
-                </div>
-
-                <div class="member-card animate-on-scroll">
-                    <div class="member-avatar">ع.ج</div>
-                    <div class="member-name">عبد الله جوميط</div>
-                    <div class="member-role">
-                        <span class="lang-content active" data-lang="ar">عضو</span>
-                        <span class="lang-content" data-lang="fr">Membre</span>
-                        <span class="lang-content" data-lang="en">Member</span>
-                    </div>
-                    <div class="member-contact">
-                        <a href="tel:+212662594196">+212 662-594196</a>
-                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
-                    </div>
-                </div>
-
-                <div class="member-card animate-on-scroll">
-                    <div class="member-avatar">ح.أ</div>
-                    <div class="member-name">حسين أنميكور</div>
-                    <div class="member-role">
-                        <span class="lang-content active" data-lang="ar">عضو</span>
-                        <span class="lang-content" data-lang="fr">Membre</span>
-                        <span class="lang-content" data-lang="en">Member</span>
-                    </div>
-                    <div class="member-contact">
-                        <a href="tel:+212658174730">+212 658-174730</a>
-                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
-                    </div>
-                </div>
-
-                <div class="member-card animate-on-scroll">
-                    <div class="member-avatar">س.م</div>
-                    <div class="member-name">سعيد إد موسى</div>
-                    <div class="member-role">
-                        <span class="lang-content active" data-lang="ar">عضو</span>
-                        <span class="lang-content" data-lang="fr">Membre</span>
-                        <span class="lang-content" data-lang="en">Member</span>
-                    </div>
-                    <div class="member-contact">
-                        <a href="tel:+212697516903">+212 697-516903</a>
-                        <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section" style="background: var(--surface);">
         <div class="container">
             <div class="section-header animate-on-scroll">
@@ -1806,9 +1616,9 @@
                     <span class="lang-content" data-lang="en">Contact Us</span>
                 </h2>
                 <p class="section-subtitle">
-                    <span class="lang-content active" data-lang="ar">نحن هنا للإجابة على أسئلتكم ومساعدتكم</span>
-                    <span class="lang-content" data-lang="fr">Nous sommes là pour répondre à vos questions et vous aider</span>
-                    <span class="lang-content" data-lang="en">We're here to answer your questions and help you</span>
+                    <span class="lang-content active" data-lang="ar">هل لديك سؤال أو اقتراح؟ يسعدنا أن نسمع منك!</span>
+                    <span class="lang-content" data-lang="fr">Vous avez une question ou une suggestion? Nous serions ravis de vous entendre!</span>
+                    <span class="lang-content" data-lang="en">Have a question or suggestion? We'd love to hear from you!</span>
                 </p>
             </div>
 
@@ -1830,16 +1640,15 @@
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform" 
                        target="_blank" 
                        class="btn btn-primary">
-                        <span class="lang-content active" data-lang="ar">📝 فتح نموذج الاتصال في نافذة جديدة</span>
-                        <span class="lang-content" data-lang="fr">📝 Ouvrir le formulaire dans une nouvelle fenêtre</span>
-                        <span class="lang-content" data-lang="en">📝 Open contact form in new window</span>
+                        <span class="lang-content active" data-lang="ar">📝 فتح النموذج في نافذة جديدة</span>
+                        <span class="lang-content" data-lang="fr">📝 Ouvrir dans une nouvelle fenêtre</span>
+                        <span class="lang-content" data-lang="en">📝 Open form in new window</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1870,30 +1679,32 @@
                 
                 <div class="footer-section">
                     <h4>
+                        <span class="lang-content active" data-lang="ar">روابط سريعة</span>
+                        <span class="lang-content" data-lang="fr">Liens Rapides</span>
+                        <span class="lang-content" data-lang="en">Quick Links</span>
+                    </h4>
+                    <p>
+                        <a href="#about">About</a><br>
+                        <a href="#projects">Projects</a><br>
+                        <a href="#donate">Donate</a>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>
                         <span class="lang-content active" data-lang="ar">تواصل معنا</span>
-                        <span class="lang-content" data-lang="fr">Nous Contacter</span>
-                        <span class="lang-content" data-lang="en">Contact Us</span>
+                        <span class="lang-content" data-lang="fr">Nous Suivre</span>
+                        <span class="lang-content" data-lang="en">Follow Us</span>
                     </h4>
                     <p>
                         <a href="tel:+212656669162">+212 656-669162</a><br>
                         <a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a>
                     </p>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>
-                        <span class="lang-content active" data-lang="ar">المراجع</span>
-                        <span class="lang-content" data-lang="fr">Références</span>
-                        <span class="lang-content" data-lang="en">References</span>
-                    </h4>
-                    <p>
-                        <a href="https://www.assohelp.org/asso-419-association-tazoult-pour-le-developement-et-la-cooperation-et-d-environement" target="_blank">AssoHelp.org</a>
-                    </p>
-                </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 جمعية تازولت للتنمية والتعاون والبيئة. جميع الحقوق محفوظة.</p>
+                <p>© 2025 جمعية تازولت للتنمية والتعاون والبيئة. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
@@ -1902,57 +1713,39 @@
         // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
         // Mobile menu toggle
         function toggleMobileMenu() {
             const navMenu = document.getElementById('navMenu');
             const menuBtn = document.querySelector('.mobile-menu-btn');
-            const isOpen = navMenu.classList.contains('active');
-            
-            if (isOpen) {
-                navMenu.classList.remove('active');
-                menuBtn.innerHTML = '☰';
-            } else {
-                navMenu.classList.add('active');
-                menuBtn.innerHTML = '✕';
-            }
+            const isOpen = navMenu.classList.toggle('active');
+            menuBtn.innerHTML = isOpen ? '✕' : '☰';
+            menuBtn.setAttribute('aria-expanded', isOpen);
         }
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                const navMenu = document.getElementById('navMenu');
-                const menuBtn = document.querySelector('.mobile-menu-btn');
-                navMenu.classList.remove('active');
-                menuBtn.innerHTML = '☰';
-            });
+        // Close mobile menu when a link is clicked or clicking outside
+        document.addEventListener('click', (e) => {
+            const navMenu = document.getElementById('navMenu');
+            const nav = document.querySelector('.nav');
+            if (!nav.contains(e.target) && navMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            } else if (e.target.closest('.nav-link')) {
+                 if (navMenu.classList.contains('active')) {
+                    toggleMobileMenu();
+                 }
+            }
         });
 
         // Language switching functionality
-        function switchLanguage(lang) {
-            // Update active language button
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
+        function switchLanguage(lang, event) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            if (event) event.target.classList.add('active');
 
-            // Hide all language content
-            document.querySelectorAll('.lang-content').forEach(content => {
-                content.classList.remove('active');
-            });
+            document.querySelectorAll('.lang-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(content => content.classList.add('active'));
 
-            // Show selected language content
-            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(content => {
-                content.classList.add('active');
-            });
-
-            // Update page direction and language
             if (lang === 'ar') {
                 document.documentElement.setAttribute('dir', 'rtl');
                 document.documentElement.setAttribute('lang', 'ar');
@@ -1967,70 +1760,51 @@
             const details = document.getElementById(projectId);
             const isActive = details.classList.contains('active');
             
-            // Close all other project details
+            // Close all other project details first
             document.querySelectorAll('.project-details').forEach(detail => {
-                detail.classList.remove('active');
+                if (detail.id !== projectId) detail.classList.remove('active');
             });
             
-            // Toggle current project
-            if (!isActive) {
-                details.classList.add('active');
-            }
+            // Toggle the clicked one
+            details.classList.toggle('active');
         }
 
-        // Enhanced copy to clipboard functionality
-        function copyToClipboard(text) {
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).then(function() {
-                    showCopyFeedback(event.target);
-                }).catch(function(err) {
-                    console.error('Could not copy text: ', err);
-                    fallbackCopy(text, event.target);
-                });
-            } else {
-                fallbackCopy(text, event.target);
-            }
-        }
-
-        function fallbackCopy(text, button) {
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            textArea.style.position = 'fixed';
-            textArea.style.left = '-999999px';
-            textArea.style.top = '-999999px';
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            
-            try {
-                document.execCommand('copy');
-                showCopyFeedback(button);
-            } catch (err) {
-                console.error('Fallback copy failed: ', err);
-                alert('نسخ النص فشل. يرجى نسخ النص يدوياً.');
-            }
-            
-            document.body.removeChild(textArea);
+        // Copy to clipboard functionality
+        function copyToClipboard(text, event) {
+            navigator.clipboard.writeText(text).then(() => {
+                showCopyFeedback(event.target);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
         }
 
         function showCopyFeedback(button) {
-            const originalText = button.textContent;
-            const isArabic = document.documentElement.getAttribute('lang') === 'ar' || document.documentElement.getAttribute('dir') === 'rtl';
-            const copyText = isArabic ? 'تم النسخ!' : 'Copié!';
+            const originalText = button.querySelector('.lang-content[data-lang="ar"]').textContent; // Assuming AR is default
+            const lang = document.documentElement.lang;
+            let feedbackText = 'Copied!';
+            if (lang === 'ar') feedbackText = 'تم النسخ!';
+            if (lang === 'fr') feedbackText = 'Copié!';
             
-            button.textContent = copyText;
+            button.querySelectorAll('.lang-content').forEach(el => el.style.display = 'none');
+            
+            let feedbackSpan = button.querySelector('.feedback-span');
+            if (!feedbackSpan) {
+                feedbackSpan = document.createElement('span');
+                feedbackSpan.className = 'feedback-span';
+                button.appendChild(feedbackSpan);
+            }
+            feedbackSpan.textContent = feedbackText;
+            feedbackSpan.style.display = 'block';
+            
             button.style.background = 'var(--success-color)';
-            button.style.color = 'white';
-            button.style.transform = 'scale(1.05)';
             
             setTimeout(() => {
-                button.textContent = originalText;
-                button.style.background = 'var(--accent-color)';
-                button.style.color = 'var(--primary-color)';
-                button.style.transform = 'scale(1)';
+                button.querySelectorAll('.lang-content').forEach(el => el.style.display = '');
+                feedbackSpan.style.display = 'none';
+                button.style.background = '';
             }, 2000);
         }
-
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -2048,93 +1822,21 @@
             });
         });
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        // Observe all elements with animate-on-scroll class
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            const navMenu = document.getElementById('navMenu');
-            const mobileBtn = document.querySelector('.mobile-menu-btn');
-            const nav = document.querySelector('.nav');
-            
-            if (!nav.contains(e.target) && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                mobileBtn.innerHTML = '☰';
-            }
-        });
-
-        // Add touch gesture support for mobile carousel if needed
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        function handleGesture() {
-            const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                // Swipe left - could be used for project navigation
-                console.log('Swiped left');
-            }
-            if (touchEndX > touchStartX + swipeThreshold) {
-                // Swipe right - could be used for project navigation
-                console.log('Swiped right');
-            }
-        }
-
-        // Improve form accessibility on mobile
-        document.querySelectorAll('input, textarea, select, iframe').forEach(element => {
-            element.addEventListener('focus', function() {
-                this.style.borderColor = 'var(--primary-color)';
-                this.style.boxShadow = '0 0 0 3px rgba(46, 139, 87, 0.1)';
-            });
-            
-            element.addEventListener('blur', function() {
-                this.style.borderColor = 'var(--border)';
-                this.style.boxShadow = 'none';
-            });
-        });
-
-        // Initialize animations on page load
-        window.addEventListener('load', () => {
-            // Trigger initial animations
-            setTimeout(() => {
-                document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                    if (el.getBoundingClientRect().top < window.innerHeight) {
-                        el.classList.add('in-view');
-                    }
-                });
-            }, 100);
-        });
-
-        // Add scroll progress indicator
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        
+        // Scroll progress indicator
         window.addEventListener('scroll', () => {
             const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            document.documentElement.style.setProperty('--scroll-progress', scrolled + '%');
-        });
-
-        // Enhance button interactions
-        document.querySelectorAll('.btn, .copy-btn, .expand-btn').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-2px)';
-            });
-            
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
+            document.documentElement.style.setProperty('--scroll-progress', `${scrolled}%`);
         });
     </script>
 </body>
