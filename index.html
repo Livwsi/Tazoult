@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جمعية تازولت للتنمية والتعاون والبيئة</title>
+    <title>جمعية تازولت للتنمية والتعاون والبيئة - Tazoult NGO</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* 1. Base Variables & Reset */
         :root {
-            --primary-color: #2e8b57; /* Sea Green */
+            --primary-color: #2e8b57; /* Sea Green - Trust/Nature */
             --primary-dark: #1e5d3a;
             --secondary-color: #20b2aa; /* Light Sea Green */
             --accent-color: #90ee90; /* Light Green */
@@ -41,6 +41,7 @@
             overflow-x: hidden;
         }
 
+        /* Scroll progress bar - Visual indicator */
         body::before {
             content: '';
             position: fixed;
@@ -51,7 +52,7 @@
             transition: width 0.1s linear;
         }
 
-        /* Global Typography & Layout */
+        /* Global Layout & Typography */
         h1, h2, h3 { font-weight: 600; line-height: 1.2; margin-bottom: 1rem; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
         .section { padding: 5rem 0; }
@@ -60,86 +61,129 @@
         .section-title::after { content: ''; display: block; width: 80px; height: 3px; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); margin: 1rem auto; }
         .section-subtitle { color: var(--text-light); font-size: 1.125rem; }
         
-        /* Buttons */
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; font-size: 1rem; }
+        /* Buttons - Optimized for touch */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; font-size: 1rem; min-width: 150px; }
         .btn-primary { background: white; color: var(--primary-color); box-shadow: var(--shadow-lg); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15); }
         .btn-secondary { background: rgba(255, 255, 255, 0.1); color: white; border: 2px solid rgba(255, 255, 255, 0.3); }
         .btn-small { padding: 0.5rem 1rem; font-size: 0.875rem; border-radius: 6px; }
 
-        /* 2. Header & Navigation */
+        /* 2. Header & Navigation (Mobile-First Setup) */
         .header { position: fixed; top: 0; left: 0; right: 0; background: linear-gradient(135deg, rgba(46, 139, 87, 0.9) 0%, rgba(32, 178, 170, 0.9) 100%); backdrop-filter: blur(10px); z-index: 1000; transition: var(--transition); }
-        .header.scrolled { background: rgba(46, 139, 87, 0.95); box-shadow: var(--shadow-lg); }
-        .nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; gap: 1rem; }
+        .nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; }
         .logo-img { width: 48px; height: 48px; border-radius: 50%; background: white; padding: 3px; }
         .logo-img img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        .nav-menu { display: flex; list-style: none; gap: 1.5rem; align-items: center; }
-        .nav-link { text-decoration: none; color: white; font-weight: 500; padding: 0.5rem 0; }
-        .mobile-menu-btn { display: none; }
-        .donate-btn { background: linear-gradient(135deg, var(--warning-color), #f97316); color: white; box-shadow: var(--shadow); }
+        
+        .nav-menu { /* Hidden menu on mobile */
+            display: none; 
+            flex-direction: column; 
+            position: absolute; 
+            top: 100%; 
+            left: 0; 
+            right: 0; 
+            background: var(--primary-dark);
+            padding: 1rem 0;
+            box-shadow: var(--shadow-lg);
+            list-style: none;
+            text-align: center;
+        }
+        .nav-menu.active { display: flex; }
+        .nav-menu a { padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); width: 100%; }
+        
+        .mobile-menu-btn { display: block; font-size: 1.5rem; background: none; border: none; color: white; padding: 0.5rem; cursor: pointer; }
+        .language-switcher { display: none; } /* Hide language buttons in mobile header - space optimization */
 
-        /* 3. Hero Section */
-        .hero { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white; padding: 8rem 0 4rem; position: relative; text-align: center; }
+        /* Desktop Navigation (min-width: 768px overrides) */
+        @media (min-width: 768px) {
+            .mobile-menu-btn { display: none; }
+            .nav-menu { display: flex; flex-direction: row; position: static; background: none; box-shadow: none; padding: 0; gap: 1.5rem; }
+            .nav-menu a { border-bottom: none; width: auto; }
+            .language-switcher { display: flex; gap: 0.5rem; }
+        }
 
-        /* 4. Impact Stats */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; text-align: center; }
-        .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--primary-color); display: block; margin-bottom: 0.5rem; }
+        /* 3. Slider Section */
+        .slider {
+            position: relative;
+            height: 450px; /* Consistent height for mobile viewing */
+            overflow: hidden;
+            padding-top: 5rem; /* Space for fixed header */
+        }
+        .slide-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+            width: 500%; /* 5 slides */
+        }
+        .slide {
+            width: 20%;
+            flex-shrink: 0;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.2); /* Dark overlay for text clarity */
+        }
+        .slider-caption {
+            position: absolute;
+            bottom: 2rem;
+            right: 1.5rem;
+            max-width: 90%;
+            z-index: 10;
+            color: white;
+        }
+        .slider-caption h2 { font-size: 2rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        .slider-caption p { margin-bottom: 0; opacity: 0.9; }
 
-        /* 5. About/Card Grids */
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .card { background: white; border-radius: var(--border-radius); box-shadow: var(--shadow-lg); overflow: hidden; display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15); }
-        .card-image { height: 200px; overflow: hidden; }
-        .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-        .card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        /* 4. Info and Map Section */
+        .location-content { 
+            display: grid; 
+            grid-template-columns: 1fr; /* Stacked columns on mobile */
+            gap: 2rem; 
+            align-items: flex-start; 
+        }
+        @media (min-width: 768px) {
+            .location-content { 
+                grid-template-columns: 1fr 1fr; /* Side-by-side on desktop */
+                gap: 3rem; 
+            }
+        }
+        .location-detail { border-right: 4px solid var(--secondary-color); border-left: none; }
 
-        /* 6. Location Section */
-        .location-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: flex-start; }
-        .location-info { background: var(--surface); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); }
-        .location-detail { margin-bottom: 1rem; padding: 1rem; background: white; border-radius: 8px; border-right: 4px solid var(--secondary-color); border-left: none; }
-        .location-detail strong { color: var(--primary-color); display: block; margin-bottom: 0.5rem; }
-        .map-container iframe { width: 100%; height: 400px; border: 0; border-radius: 8px; }
-
-        /* 7. Gallery Section */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
-        .gallery-item { border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow); position: relative; transition: transform 0.3s; }
-        .gallery-item img { width: 100%; height: 250px; object-fit: cover; display: block; }
-        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(46, 139, 87, 0.8); color: white; padding: 0.5rem; text-align: center; font-size: 0.9rem; }
-
-        /* 8. Projects Section (Accordion) */
-        .projects-group h3 { margin-bottom: 2rem; }
+        /* 5. Projects/Cards */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card { box-shadow: var(--shadow); }
         .project-details {
             background: var(--surface); border-radius: var(--border-radius); margin-top: 1rem;
             overflow: hidden; border-top: 3px solid var(--primary-color);
             max-height: 0;
             transition: max-height 0.5s ease-in-out;
         }
-        .project-details.active { max-height: 1000px; }
-        .project-details-content { padding: 1.5rem; }
-        .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-        .gallery-image { height: 120px; border-radius: 8px; object-fit: cover; width: 100%; }
+        .project-details.active { max-height: 1500px; } /* Increased for more content space */
+        .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.5rem; margin-top: 1rem; }
+        .gallery-image { height: 100px; border-radius: 6px; object-fit: cover; width: 100%; }
 
-        /* 9. Donation Section */
-        .donation-section { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
-        .bank-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .bank-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: var(--border-radius); border: 1px solid var(--accent-color); transition: var(--transition); }
-        .bank-detail { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.1); border-radius: 8px; margin-bottom: 1rem; border-right: 4px solid var(--secondary-color); }
-        .bank-detail-text { flex-grow: 1; word-break: break-all; text-align: right; }
-        .copy-btn { margin-right: 1rem; }
-
-        /* 10. Language Content Toggle & Responsiveness */
-        .lang-content { display: none; }
-        .lang-content.active { display: block; }
-        @media (max-width: 768px) {
-            .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: 1rem; gap: 0.5rem; background: var(--primary-dark); box-shadow: var(--shadow-lg); border-radius: 0 0 var(--border-radius) var(--border-radius); }
-            .nav-menu.active { display: flex; }
-            .mobile-menu-btn { display: block; }
-            .location-content { grid-template-columns: 1fr; }
-            .card-grid { grid-template-columns: 1fr; }
-            .bank-info { grid-template-columns: 1fr; }
+        /* 6. Future Plans Section */
+        .future-content {
+            padding: 2rem;
+            background: var(--background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
         }
 
-        /* 11. Animations */
+        /* 7. Donation and Contact */
+        .donation-section { background: linear-gradient(135deg, var(--primary-dark), var(--secondary-color)); color: white; }
+        .bank-info { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+        .bank-detail { border-right: 4px solid var(--accent-color); border-left: none; }
+        .copy-btn { margin-right: 1rem; }
+        .contact-form iframe { max-height: 500px; }
+        
+        /* 8. Utility & Animation */
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
         .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .animate-on-scroll.in-view { opacity: 1; transform: translateY(0); }
     </style>
@@ -157,9 +201,9 @@
                     <li><a href="#home" class="nav-link"><span class="lang-content active" data-lang="ar">الرئيسية</span><span class="lang-content" data-lang="fr">Accueil</span><span class="lang-content" data-lang="en">Home</span></a></li>
                     <li><a href="#about" class="nav-link"><span class="lang-content active" data-lang="ar">عن الجمعية</span><span class="lang-content" data-lang="fr">À Propos</span><span class="lang-content" data-lang="en">About</span></a></li>
                     <li><a href="#location" class="nav-link"><span class="lang-content active" data-lang="ar">الموقع</span><span class="lang-content" data-lang="fr">Localisation</span><span class="lang-content" data-lang="en">Location</span></a></li>
-                    <li><a href="#gallery" class="nav-link"><span class="lang-content active" data-lang="ar">معرض الصور</span><span class="lang-content" data-lang="fr">Galerie</span><span class="lang-content" data-lang="en">Gallery</span></a></li>
                     <li><a href="#projects" class="nav-link"><span class="lang-content active" data-lang="ar">المشاريع</span><span class="lang-content" data-lang="fr">Projets</span><span class="lang-content" data-lang="en">Projects</span></a></li>
-                    <li><a href="#board" class="nav-link"><span class="lang-content active" data-lang="ar">مجلس الإدارة</span><span class="lang-content" data-lang="fr">Conseil</span><span class="lang-content" data-lang="en">Board</span></a></li>
+                    <li><a href="#board" class="nav-link"><span class="lang-content active" data-lang="ar">الإدارة</span><span class="lang-content" data-lang="fr">Conseil</span><span class="lang-content" data-lang="en">Board</span></a></li>
+                    <li><a href="#donate" class="nav-link"><span class="lang-content active" data-lang="ar">التبرع</span><span class="lang-content" data-lang="fr">Don</span><span class="lang-content" data-lang="en">Donate</span></a></li>
                     <li><a href="#contact" class="nav-link"><span class="lang-content active" data-lang="ar">اتصل بنا</span><span class="lang-content" data-lang="fr">Contact</span><span class="lang-content" data-lang="en">Contact</span></a></li>
                 </ul>
 
@@ -179,77 +223,30 @@
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content animate-on-scroll">
-                <div class="hero-logo"><img src="Logo-removebg-preview.png" alt="شعار جمعية تازولت الكبير"></div>
-                <h1 class="hero-title">
-                    <span class="lang-content active" data-lang="ar">جمعية تازولت للتنمية والتعاون والبيئة</span><span class="lang-content" data-lang="fr">Association Tazoult pour le Développement, la Coopération et l'Environnement</span><span class="lang-content" data-lang="en">Tazoult Association for Development, Cooperation and Environment</span>
-                </h1>
-                <p class="hero-subtitle">
-                    <span class="lang-content active" data-lang="ar">نعمل من أجل التنمية المستدامة وتحسين ظروف المعيشة في منطقة تازولت</span><span class="lang-content" data-lang="fr">Nous œuvrons pour le développement durable et l'amélioration des conditions de vie dans la région de Tazoult</span><span class="lang-content" data-lang="en">We work for sustainable development and improving living conditions in the Tazoult region</span>
-                </p>
-                <div class="hero-cta">
-                    <a href="#about" class="btn btn-primary"><span class="lang-content active" data-lang="ar">اكتشف المزيد</span><span class="lang-content" data-lang="fr">Découvrir plus</span><span class="lang-content" data-lang="en">Learn More</span></a>
-                    <a href="#donate" class="btn btn-secondary"><span class="lang-content active" data-lang="ar">ادعم مشاريعنا</span><span class="lang-content" data-lang="fr">Soutenir nos projets</span><span class="lang-content" data-lang="en">Support Our Projects</span></a>
+    <section id="home" class="slider animate-on-scroll">
+        <div class="slide-track" id="image-slider">
+            <div class="slide" style="background-image: url('Images/Old/image/Village/1.jpg');">
+                <div class="slider-caption container">
+                    <h2><span class="lang-content active" data-lang="ar">مرحبا بكم في تازولت</span><span class="lang-content" data-lang="fr">Bienvenue à Tazoult</span><span class="lang-content" data-lang="en">Welcome to Tazoult</span></h2>
+                    <p><span class="lang-content active" data-lang="ar">بوابة الأمل نحو مستقبل مستدام لمنطقتنا.</span><span class="lang-content" data-lang="fr">La porte de l'espoir pour un avenir durable dans notre région.</span><span class="lang-content" data-lang="en">The gateway to a sustainable future for our region.</span></p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="impact-stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item animate-on-scroll">
-                    <span class="stat-number">1200+</span>
-                    <span class="stat-label"><span class="lang-content active" data-lang="ar">مستفيد</span><span class="lang-content" data-lang="fr">Bénéficiaires</span><span class="lang-content" data-lang="en">Beneficiaries</span></span>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label"><span class="lang-content active" data-lang="ar">مشروع منجز</span><span class="lang-content" data-lang="fr">Projets réalisés</span><span class="lang-content" data-lang="en">Projects Completed</span></span>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <span class="stat-number">550+</span>
-                    <span class="stat-label"><span class="lang-content active" data-lang="ar">شجرة مزروعة</span><span class="lang-content" data-lang="fr">Arbres plantés</span><span class="lang-content" data-lang="en">Trees Planted</span></span>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <span class="stat-number">5</span>
-                    <span class="stat-label"><span class="lang-content active" data-lang="ar">سنوات من العمل</span><span class="lang-content" data-lang="fr">Années d'expérience</span><span class="lang-content" data-lang="en">Years of Service</span></span>
+            <div class="slide" style="background-image: url('Images/Old/image/Village/2.jpg');">
+                 <div class="slider-caption container">
+                    <h2><span class="lang-content active" data-lang="ar">البيئة والتنمية</span><span class="lang-content" data-lang="fr">Environnement et Développement</span><span class="lang-content" data-lang="en">Environment & Development</span></h2>
+                    <p><span class="lang-content active" data-lang="ar">نحمي الطبيعة ونبني المستقبل.</span><span class="lang-content" data-lang="fr">Protéger la nature, bâtir l'avenir.</span><span class="lang-content" data-lang="en">Protecting nature, building the future.</span></p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title"><span class="lang-content active" data-lang="ar">عن الجمعية</span><span class="lang-content" data-lang="fr">À Propos de l'Association</span><span class="lang-content" data-lang="en">About Our Association</span></h2>
-                <p class="section-subtitle"><span class="lang-content active" data-lang="ar">جمعية تازولت للتنمية والتعاون والبيئة هي منظمة غير ربحية تهدف إلى تحقيق التنمية الشاملة في منطقة تازولت</span><span class="lang-content" data-lang="fr">L'Association Tazoult pour le Développement, la Coopération et l'Environnement est une organisation à but non lucratif visant le développement global de la région de Tazoult</span><span class="lang-content" data-lang="en">Tazoult Association for Development, Cooperation and Environment is a non-profit organization aiming for comprehensive development in the Tazoult region</span></p>
+            <div class="slide" style="background-image: url('Images/Old/image/Village/3.jpg');">
+                 <div class="slider-caption container">
+                    <h2><span class="lang-content active" data-lang="ar">مجتمع نابض بالحياة</span><span class="lang-content" data-lang="fr">Une communauté dynamique</span><span class="lang-content" data-lang="en">A Vibrant Community</span></h2>
+                    <p><span class="lang-content active" data-lang="ar">نعمل على تمكين الشباب والنساء.</span><span class="lang-content" data-lang="fr">Nous œuvrons à l'autonomisation des jeunes et des femmes.</span><span class="lang-content" data-lang="en">We work to empower youth and women.</span></p>
+                </div>
             </div>
-
-            <div class="card-grid">
-                <div class="card animate-on-scroll">
-                    <div class="card-image"><img src="Images/Old/image/kids/k8.jpg" alt="Education"></div>
-                    <div class="card-content">
-                        <h3 class="card-title"><span class="lang-content active" data-lang="ar">التعليم ومحاربة الأمية</span><span class="lang-content" data-lang="fr">Éducation et lutte contre l'analphabétisme</span><span class="lang-content" data-lang="en">Education and fighting illiteracy</span></h3>
-                        <p class="card-description"><span class="lang-content active" data-lang="ar">نعمل على دعم التعليم وتوفير الفرص التعليمية للأطفال والشباب، وتنظيم برامج محو الأمية للكبار.</span><span class="lang-content" data-lang="fr">Nous soutenons l'éducation, offrons des opportunités éducatives aux enfants et organisons des programmes d'alphabétisation pour adultes.</span><span class="lang-content" data-lang="en">We support education, provide learning opportunities for children, and organize literacy programs for adults.</span></p>
-                    </div>
-                </div>
-
-                <div class="card animate-on-scroll">
-                    <div class="card-image"><img src="Images/Old/image/Planting/f5.jpg" alt="Environment"></div>
-                    <div class="card-content">
-                        <h3 class="card-title"><span class="lang-content active" data-lang="ar">البيئة والتنمية المستدامة</span><span class="lang-content" data-lang="fr">Environnement et Développement Durable</span><span class="lang-content" data-lang="en">Environment and Sustainable Development</span></h3>
-                        <p class="card-description"><span class="lang-content active" data-lang="ar">نلتزم بحماية البيئة من خلال حملات التشجير، وإدارة الموارد المائية، وتعزيز الزراعة المستدامة.</span><span class="lang-content" data-lang="fr">Nous nous engageons à protéger l'environnement par le reboisement, la gestion de l'eau et la promotion de l'agriculture durable.</span><span class="lang-content" data-lang="en">We are committed to protecting the environment through reforestation, water management, and promoting sustainable agriculture.</span></p>
-                    </div>
-                </div>
-
-                <div class="card animate-on-scroll">
-                    <div class="card-image"><img src="Images/Old/image/Village/3.jpg" alt="Community"></div>
-                    <div class="card-content">
-                        <h3 class="card-title"><span class="lang-content active" data-lang="ar">تمكين المجتمع</span><span class="lang-content" data-lang="fr">Autonomisation de la Communauté</span><span class="lang-content" data-lang="en">Community Empowerment</span></h3>
-                        <p class="card-description"><span class="lang-content active" data-lang="ar">نسعى لتمكين المرأة والشباب من خلال التدريب المهني ودعم المشاريع الصغيرة لخلق فرص اقتصادية محلية.</span><span class="lang-content" data-lang="fr">Nous visons à autonomiser les femmes et les jeunes par la formation professionnelle et le soutien aux petites entreprises pour créer des opportunités locales.</span><span class="lang-content" data-lang="en">We aim to empower women and youth through vocational training and support for small businesses to create local opportunities.</span></p>
-                    </div>
+            <div class="slide" style="background-image: url('Images/Old/image/Village/5.jpg');">
+                 <div class="slider-caption container">
+                    <h2><span class="lang-content active" data-lang="ar">تنمية شاملة</span><span class="lang-content" data-lang="fr">Développement Intégral</span><span class="lang-content" data-lang="en">Comprehensive Development</span></h2>
+                    <p><span class="lang-content active" data-lang="ar">هدفنا هو تحسين جودة الحياة للجميع في تازولت.</span><span class="lang-content" data-lang="fr">Notre objectif est d'améliorer la qualité de vie pour tous à Tazoult.</span><span class="lang-content" data-lang="en">Our goal is to improve the quality of life for everyone in Tazoult.</span></p>
                 </div>
             </div>
         </div>
@@ -258,63 +255,29 @@
     <section id="location" class="section location-section">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <h2 class="section-title"><span class="lang-content active" data-lang="ar">موقعنا</span><span class="lang-content" data-lang="fr">Notre Localisation</span><span class="lang-content" data-lang="en">Our Location</span></h2>
+                <h2 class="section-title"><span class="lang-content active" data-lang="ar">موقعنا ومعلومات القرية</span><span class="lang-content" data-lang="fr">Localisation et Informations du Village</span><span class="lang-content" data-lang="en">Location and Village Info</span></h2>
+                <p class="section-subtitle"><span class="lang-content active" data-lang="ar">دوار تازولت، قلب الأطلس الصغير</span><span class="lang-content" data-lang="fr">Douar Tazoult, le cœur du Petit Atlas</span><span class="lang-content" data-lang="en">Douar Tazoult, the heart of the Anti-Atlas</span></p>
             </div>
 
             <div class="location-content animate-on-scroll">
                 <div class="location-info">
                     <h3><span class="lang-content active" data-lang="ar">دوار تازولت</span><span class="lang-content" data-lang="fr">Douar Tazoult</span><span class="lang-content" data-lang="en">Douar Tazoult</span></h3>
-                    <div class="location-detail"><strong>📍 <span class="lang-content active" data-lang="ar">العنوان الكامل:</span><span class="lang-content" data-lang="fr">Adresse complète:</span><span class="lang-content" data-lang="en">Full Address:</span></strong><span class="lang-content active" data-lang="ar">دوار تازولت، جماعة تويالت، قيادة اسكاون، دائرة تالوين، عمالة تارودانت، المغرب</span><span class="lang-content" data-lang="fr">Douar Tazoult, Commune Twiyalt, Caïdat Askawn, Cercle Talwin, Province Taroudannt, Maroc</span><span class="lang-content" data-lang="en">Douar Tazoult, Twiyalt Municipality, Askawn District, Talwin Circle, Taroudannt Province, Morocco</span></div>
+                    <div class="location-detail"><strong>📍 <span class="lang-content active" data-lang="ar">العنوان:</span><span class="lang-content" data-lang="fr">Adresse:</span><span class="lang-content" data-lang="en">Address:</span></strong><span class="lang-content active" data-lang="ar">دوار تازولت، جماعة تويالت، تارودانت، المغرب</span><span class="lang-content" data-lang="fr">Douar Tazoult, Commune Twiyalt, Province Taroudannt, Maroc</span><span class="lang-content" data-lang="en">Douar Tazoult, Twiyalt Municipality, Taroudannt Province, Morocco</span></div>
                     <div class="location-detail"><strong>🗺️ <span class="lang-content active" data-lang="ar">الإحداثيات:</span><span class="lang-content" data-lang="fr">Coordonnées:</span><span class="lang-content" data-lang="en">Coordinates:</span></strong>Q6MC+XXV تازولت، تارودانت</div>
-                    <div class="location-detail"><strong>🏔️ <span class="lang-content active" data-lang="ar">المنطقة الجغرافية:</span><span class="lang-content" data-lang="fr">Région géographique:</span><span class="lang-content" data-lang="en">Geographical Region:</span></strong><span class="lang-content active" data-lang="ar">تقع في منطقة الأطلس الصغير، محاطة بالجبال والوديان</span><span class="lang-content" data-lang="fr">Située dans la region du Petit Atlas, entourée de montagnes et vallées</span><span class="lang-content" data-lang="en">Located in the Anti-Atlas region, surrounded by mountains and valleys</span></div>
+                    <div class="location-detail"><strong>🏔️ <span class="lang-content active" data-lang="ar">المنطقة:</span><span class="lang-content" data-lang="fr">Région:</span><span class="lang-content" data-lang="en">Region:</span></strong><span class="lang-content active" data-lang="ar">تقع في منطقة الأطلس الصغير، ذات طبيعة جبلية</span><span class="lang-content" data-lang="fr">Située dans la région du Petit Atlas, zone montagneuse</span><span class="lang-content" data-lang="en">Located in the Anti-Atlas region, mountainous area</span></div>
                 </div>
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3434.664421110543!2d-7.778846923838647!3d30.58742887465715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb7c8052140a331%3A0xe543b592182d334!2sTazoult!5e0!3m2!1sen!2snl!4v1726922338000!5m2!1sen!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://maps.app.goo.gl/DeuWd61LjDJMjbT9A" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="section" style="background: var(--surface);">
+    <section id="projects" class="section" style="background: var(--background);">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <h2 class="section-title"><span class="lang-content active" data-lang="ar">معرض صور تازولت</span><span class="lang-content" data-lang="fr">Galerie de Photos Tazoult</span><span class="lang-content" data-lang="en">Tazoult Photo Gallery</span></h2>
-                <p class="section-subtitle"><span class="lang-content active" data-lang="ar">لمحات من قريتنا، فعالياتنا، وثقافتنا النابضة بالحياة</span><span class="lang-content" data-lang="fr">Un aperçu de notre village, de nos événements et de notre culture dynamique</span><span class="lang-content" data-lang="en">Glimpses of our village, events, and vibrant culture</span></p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item animate-on-scroll">
-                    <img src="Images/Old/image/Village/1.jpg" alt="منظر القرية">
-                    <span class="gallery-caption"><span class="lang-content active" data-lang="ar">منظر القرية</span></span>
-                </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="Images/Old/image/Food/f1.jpg" alt="الطعام التقليدي">
-                    <span class="gallery-caption"><span class="lang-content active" data-lang="ar">الطعام التقليدي</span></span>
-                </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="Images/Old/image/kids/k7.jpg" alt="أطفال القرية">
-                    <span class="gallery-caption"><span class="lang-content active" data-lang="ar">أطفال القرية</span></span>
-                </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="Images/Old/image/Planting/f2.jpg" alt="أنشطة التشجير">
-                    <span class="gallery-caption"><span class="lang-content active" data-lang="ar">أنشطة التشجير</span></span>
-                </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="Images/Old/image/Football Field/f3.jpg" alt="ملعب كرة القدم">
-                    <span class="gallery-caption"><span class="lang-content active" data-lang="ar">ملعب كرة القدم</span></span>
-                </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="Images/Old/image/art/p2.jpg" alt="ورشة فنية">
-                    <span class="gallery-caption"><span class="lang-content active" data-lang="ar">ورشة فنية</span></span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title"><span class="lang-content active" data-lang="ar">مشاريعنا</span><span class="lang-content" data-lang="fr">Nos Projets</span><span class="lang-content" data-lang="en">Our Projects</span></h2>
-                <p class="section-subtitle"><span class="lang-content active" data-lang="ar">اكتشف المشاريع التي نعمل عليها لتحسين حياة المجتمع</span><span class="lang-content" data-lang="fr">Découvrez les projets sur lesquels nous travaillons pour améliorer la vie de la communauté</span><span class="lang-content" data-lang="en">Discover the projects we're working on to improve community life</span></p>
+                <h2 class="section-title"><span class="lang-content active" data-lang="ar">مشاريعنا: الأثر المستدام</span><span class="lang-content" data-lang="fr">Nos Projets: Impact Durable</span><span class="lang-content" data-lang="en">Our Projects: Sustainable Impact</span></h2>
+                <p class="section-subtitle"><span class="lang-content active" data-lang="ar">لقطات من جهودنا المنجزة والمستمرة في قلب تازولت</span><span class="lang-content" data-lang="fr">Aperçus de nos efforts réalisés et en cours au cœur de Tazoult</span><span class="lang-content" data-lang="en">Glimpses of our completed and ongoing efforts in the heart of Tazoult</span></p>
             </div>
 
             <div class="projects-group">
@@ -324,22 +287,13 @@
                         <div class="card-image"><img src="Images/Old/image/Village/5.jpg" alt="مشروع المدرسة"></div>
                         <div class="card-content">
                             <h3 class="card-title"><span class="lang-content active" data-lang="ar">مشروع المدرسة</span><span class="lang-content" data-lang="fr">Projet École</span><span class="lang-content" data-lang="en">School Project</span></h3>
-                            <p class="card-description"><span class="lang-content active" data-lang="ar">تطوير وتحسين البنية التحتية التعليمية في المنطقة لضمان تعليم أفضل للأطفال</span><span class="lang-content" data-lang="fr">Développement et amélioration de l'infrastructure éducative dans la région pour assurer une meilleure éducation aux enfants</span><span class="lang-content" data-lang="en">Development and improvement of educational infrastructure in the region to ensure better education for children</span></p>
+                            <p class="card-description"><span class="lang-content active" data-lang="ar">تطوير وتحسين البنية التحتية التعليمية في المنطقة لضمان تعليم أفضل للأطفال.</span><span class="lang-content" data-lang="fr">Développement et amélioration de l'infrastructure éducative dans la région pour assurer une meilleure éducation aux enfants.</span><span class="lang-content" data-lang="en">Development and improvement of educational infrastructure in the region to ensure better education for children.</span></p>
                             <div class="card-meta"><span>💰 200,000 درهم</span><span>📅 2025</span><span>👥 150 طالب</span></div>
                             <div class="card-actions"><button class="btn btn-small btn-primary" onclick="toggleProject('school-details')"><span class="lang-content active" data-lang="ar">التفاصيل ↓</span><span class="lang-content" data-lang="fr">Détails ↓</span><span class="lang-content" data-lang="en">Details ↓</span></button></div>
                             <div id="school-details" class="project-details">
                                 <div class="project-details-content">
                                     <h4>📊 <span class="lang-content active" data-lang="ar">تفاصيل المشروع:</span><span class="lang-content" data-lang="fr">Détails du Projet:</span><span class="lang-content" data-lang="en">Project Details:</span></h4>
-                                    <div class="detail-grid">
-                                        <div class="detail-item">
-                                            <div class="detail-label"><span class="lang-content active" data-lang="ar">الميزانية</span><span class="lang-content" data-lang="fr">Budget</span><span class="lang-content" data-lang="en">Budget</span></div>
-                                            <div class="detail-value">200,000 درهم</div>
-                                        </div>
-                                        <div class="detail-item">
-                                            <div class="detail-label"><span class="lang-content active" data-lang="ar">الرعاة</span><span class="lang-content" data-lang="fr">Sponsors</span><span class="lang-content" data-lang="en">Sponsors</span></div>
-                                            <div class="detail-value"><span class="lang-content active" data-lang="ar">وزارة التربية الوطنية، المجلس الإقليمي</span><span class="lang-content" data-lang="fr">Ministère de l'Éducation, Conseil Régional</span><span class="lang-content" data-lang="en">Ministry of Education, Regional Council</span></div>
-                                        </div>
-                                    </div>
+                                    <div class="detail-grid"><div class="detail-item"><div class="detail-label"><span class="lang-content active" data-lang="ar">الميزانية</span><span class="lang-content" data-lang="fr">Budget</span><span class="lang-content" data-lang="en">Budget</span></div><div class="detail-value">200,000 درهم</div></div><div class="detail-item"><div class="detail-label"><span class="lang-content active" data-lang="ar">الرعاة</span><span class="lang-content" data-lang="fr">Sponsors</span><span class="lang-content" data-lang="en">Sponsors</span></div><div class="detail-value"><span class="lang-content active" data-lang="ar">وزارة التربية الوطنية، المجلس الإقليمي</span><span class="lang-content" data-lang="fr">Ministère de l'Éducation, Conseil Régional</span><span class="lang-content" data-lang="en">Ministry of Education, Regional Council</span></div></div></div>
                                 </div>
                             </div>
                         </div>
@@ -349,18 +303,11 @@
                         <div class="card-image"><img src="Images/Old/image/Village/2.jpg" alt="مشروع المياه"></div>
                         <div class="card-content">
                             <h3 class="card-title"><span class="lang-content active" data-lang="ar">مشروع المياه</span><span class="lang-content" data-lang="fr">Projet Eau</span><span class="lang-content" data-lang="en">Water Project</span></h3>
-                            <p class="card-description"><span class="lang-content active" data-lang="ar">توفير المياه الصالحة للشرب لجميع سكان المنطقة من خلال حفر الآبار وإنشاء شبكة توزيع</span><span class="lang-content" data-lang="fr">Fournir de l'eau potable à tous les habitants de la région par le forage de puits et la création d'un réseau de distribution</span><span class="lang-content" data-lang="en">Providing clean drinking water to all residents through well drilling and creating a distribution network</span></p>
+                            <p class="card-description"><span class="lang-content active" data-lang="ar">توفير المياه الصالحة للشرب لجميع سكان المنطقة من خلال حفر الآبار وإنشاء شبكة توزيع.</span><span class="lang-content" data-lang="fr">Fournir de l'eau potable à tous les habitants de la région par le forage de puits و la création d'un réseau de distribution.</span><span class="lang-content" data-lang="en">Providing clean drinking water to all residents through well drilling and creating a distribution network.</span></p>
                             <div class="card-meta"><span>💰 180,000 درهم</span><span>📅 2025</span><span>👥 1200 نسمة</span></div>
                             <div class="card-actions"><button class="btn btn-small btn-primary" onclick="toggleProject('water-details')"><span class="lang-content active" data-lang="ar">التفاصيل ↓</span><span class="lang-content" data-lang="fr">Détails ↓</span><span class="lang-content" data-lang="en">Details ↓</span></button></div>
                             <div id="water-details" class="project-details">
-                                <div class="project-details-content">
-                                    <div class="detail-grid">
-                                        <div class="detail-item">
-                                            <div class="detail-label"><span class="lang-content active" data-lang="ar">عدد الآبار</span><span class="lang-content" data-lang="fr">Nombre de puits</span><span class="lang-content" data-lang="en">Number of wells</span></div>
-                                            <div class="detail-value">3 آبار</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="project-details-content"><div class="detail-grid"><div class="detail-item"><div class="detail-label"><span class="lang-content active" data-lang="ar">عدد الآبار</span><span class="lang-content" data-lang="fr">Nombre de puits</span><span class="lang-content" data-lang="en">Number of wells</span></div><div class="detail-value">3 آبار</div></div></div></div>
                             </div>
                         </div>
                     </div>
@@ -376,15 +323,9 @@
                             <h3 class="card-title"><span class="lang-content active" data-lang="ar">مشروع الفن والثقافة</span><span class="lang-content" data-lang="fr">Projet Art et Culture</span><span class="lang-content" data-lang="en">Art and Culture Project</span></h3>
                             <p class="card-description"><span class="lang-content active" data-lang="ar">ورشات فنية وثقافية للشباب والأطفال لتنمية مواهبهم الإبداعية والفنية.</span><span class="lang-content" data-lang="fr">Ateliers artistiques et culturels pour les jeunes et enfants pour développer leurs talents créatifs.</span><span class="lang-content" data-lang="en">Artistic and cultural workshops for youth and children to develop their creative talents.</span></p>
                             <div class="card-meta"><span>✅ منجز</span><span>👥 65 مشارك</span><span>💰 35,000 درهم</span></div>
-                            <div class="card-actions"><button class="btn btn-small btn-primary" onclick="toggleProject('art-details')"><span class="lang-content active" data-lang="ar">عرض الصور ↓</span><span class="lang-content" data-lang="fr">Voir Photos ↓</span><span class="lang-content" data-lang="en">View Photos ↓</span></button></div>
+                            <div class="card-actions"><button class="btn btn-small btn-primary" onclick="toggleProject('art-details')"><span class="lang-content active" data-lang="ar">صور ↓</span><span class="lang-content" data-lang="fr">Photos ↓</span><span class="lang-content" data-lang="en">Photos ↓</span></button></div>
                             <div id="art-details" class="project-details">
-                                <div class="project-details-content">
-                                    <div class="project-gallery">
-                                        <img src="Images/Old/image/art/p1.jpg" alt="ورشة الرسم" class="gallery-image">
-                                        <img src="Images/Old/image/art/p2.jpg" alt="المعرض الفني" class="gallery-image">
-                                        <img src="Images/Old/image/art/p3.jpg" alt="الأطفال والفن" class="gallery-image">
-                                    </div>
-                                </div>
+                                <div class="project-details-content"><div class="project-gallery"><img src="Images/Old/image/art/p1.jpg" alt="ورشة الرسم" class="gallery-image"><img src="Images/Old/image/art/p2.jpg" alt="المعرض الفني" class="gallery-image"><img src="Images/Old/image/art/p3.jpg" alt="الأطفال والفن" class="gallery-image"></div></div>
                             </div>
                         </div>
                     </div>
@@ -395,15 +336,9 @@
                             <h3 class="card-title"><span class="lang-content active" data-lang="ar">ملعب كرة القدم</span><span class="lang-content" data-lang="fr">Terrain de Football</span><span class="lang-content" data-lang="en">Football Field</span></h3>
                             <p class="card-description"><span class="lang-content active" data-lang="ar">إنشاء ملعب كرة قدم للشباب لممارسة الرياضة وتنظيم البطولات المحلية.</span><span class="lang-content" data-lang="fr">Construction d'un terrain de football pour les jeunes pour pratiquer le sport.</span><span class="lang-content" data-lang="en">Construction of a football field for youth to practice sports.</span></p>
                             <div class="card-meta"><span>✅ منجز</span><span>👥 200 متفرج</span><span>💰 85,000 درهم</span></div>
-                            <div class="card-actions"><button class="btn btn-small btn-primary" onclick="toggleProject('football-details')"><span class="lang-content active" data-lang="ar">عرض الصور ↓</span><span class="lang-content" data-lang="fr">Voir Photos ↓</span><span class="lang-content" data-lang="en">View Photos ↓</span></button></div>
+                            <div class="card-actions"><button class="btn btn-small btn-primary" onclick="toggleProject('football-details')"><span class="lang-content active" data-lang="ar">صور ↓</span><span class="lang-content" data-lang="fr">Photos ↓</span><span class="lang-content" data-lang="en">Photos ↓</span></button></div>
                             <div id="football-details" class="project-details">
-                                <div class="project-details-content">
-                                    <div class="project-gallery">
-                                        <img src="Images/Old/image/Football Field/f1.jpg" alt="بناء الملعب" class="gallery-image">
-                                        <img src="Images/Old/image/Football Field/f3.jpg" alt="الملعب المكتمل" class="gallery-image">
-                                        <img src="Images/Old/image/Football Field/f6.jpg" alt="أول مباراة" class="gallery-image">
-                                    </div>
-                                </div>
+                                <div class="project-details-content"><div class="project-gallery"><img src="Images/Old/image/Football Field/f1.jpg" alt="بناء الملعب" class="gallery-image"><img src="Images/Old/image/Football Field/f3.jpg" alt="الملعب المكتمل" class="gallery-image"><img src="Images/Old/image/Football Field/f6.jpg" alt="أول مباراة" class="gallery-image"></div></div>
                             </div>
                         </div>
                     </div>
@@ -414,20 +349,46 @@
                             <h3 class="card-title"><span class="lang-content active" data-lang="ar">حملة التشجير البيئية</span><span class="lang-content" data-lang="fr">Campagne de Reboisement</span><span class="lang-content" data-lang="en">Environmental Planting Drive</span></h3>
                             <p class="card-description"><span class="lang-content active" data-lang="ar">تنظيم حملة واسعة لغرس مئات الأشجار المثمرة لتعزيز البيئة والموارد الطبيعية.</span><span class="lang-content" data-lang="fr">Organisation d'une grande campagne de plantation de centaines d'arbres fruitiers pour renforcer l'environnement.</span><span class="lang-content" data-lang="en">Organizing a large campaign to plant hundreds of fruit trees to enhance the environment and natural resources.</span></p>
                             <div class="card-meta"><span>✅ منجز</span><span>👥 50 متطوع</span><span>🌲 550 شجرة</span></div>
-                            <div class="card-actions"><button class="btn btn-small btn-primary" onclick="toggleProject('planting-details')"><span class="lang-content active" data-lang="ar">عرض الصور ↓</span><span class="lang-content" data-lang="fr">Voir Photos ↓</span><span class="lang-content" data-lang="en">View Photos ↓</span></button></div>
+                            <div class="card-actions"><button class="btn btn-small btn-primary" onclick="toggleProject('planting-details')"><span class="lang-content active" data-lang="ar">صور ↓</span><span class="lang-content" data-lang="fr">Photos ↓</span><span class="lang-content" data-lang="en">Photos ↓</span></button></div>
                             <div id="planting-details" class="project-details">
-                                <div class="project-details-content">
-                                    <div class="project-gallery">
-                                        <img src="Images/Old/image/Planting/f1.jpg" alt="غرس شجرة" class="gallery-image">
-                                        <img src="Images/Old/image/Planting/f2.jpg" alt="المتطوعون يزرعون" class="gallery-image">
-                                        <img src="Images/Old/image/Planting/f5.jpg" alt="الأشجار المزروعة" class="gallery-image">
-                                        <img src="Images/Old/image/Planting/4.jpg" alt="جهود الري" class="gallery-image">
-                                    </div>
-                                </div>
+                                <div class="project-details-content"><div class="project-gallery"><img src="Images/Old/image/Planting/f1.jpg" alt="غرس شجرة" class="gallery-image"><img src="Images/Old/image/Planting/f2.jpg" alt="المتطوعون يزرعون" class="gallery-image"><img src="Images/Old/image/Planting/f5.jpg" alt="الأشجار المزروعة" class="gallery-image"><img src="Images/Old/image/Planting/4.jpg" alt="جهود الري" class="gallery-image"></div></div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="future" class="section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title" style="color: var(--secondary-color);"><span class="lang-content active" data-lang="ar">مخططاتنا المستقبلية</span><span class="lang-content" data-lang="fr">Nos Plans Futurs</span><span class="lang-content" data-lang="en">Our Future Plans</span></h2>
+                <p class="section-subtitle"><span class="lang-content active" data-lang="ar">بناء الغد: مشاريع جديدة على جدول الأعمال</span><span class="lang-content" data-lang="fr">Construire demain: de nouveaux projets à l'ordre du jour</span><span class="lang-content" data-lang="en">Building Tomorrow: New projects on the agenda</span></p>
+            </div>
+            <div class="future-content animate-on-scroll">
+                <p style="font-size: 1.2rem; color: var(--text-dark);">
+                    <span class="lang-content active" data-lang="ar">قريبا سيتم الإعلان عن مشاريعنا الجديدة لعام 2026! تابعونا لدعم الأهداف القادمة.</span>
+                    <span class="lang-content" data-lang="fr">Nos nouveaux projets pour 2026 seront annoncés prochainement! Restez connectés pour soutenir nos objectifs futurs.</span>
+                    <span class="lang-content" data-lang="en">Our new projects for 2026 will be announced soon! Stay tuned to support our upcoming goals.</span>
+                </p>
+                <a href="#donate" class="btn btn-primary" style="margin-top: 1.5rem;"><span class="lang-content active" data-lang="ar">كن جزءًا من المستقبل</span><span class="lang-content" data-lang="fr">Faites partie de l'avenir</span><span class="lang-content" data-lang="en">Be Part of the Future</span></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="board" class="section" style="background: var(--surface);">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title"><span class="lang-content active" data-lang="ar">مجلس الإدارة</span><span class="lang-content" data-lang="fr">Conseil d'Administration</span><span class="lang-content" data-lang="en">Board of Directors</span></h2>
+                <p class="section-subtitle"><span class="lang-content active" data-lang="ar">تعرف على فريق القيادة الذي يقود رؤية الجمعية</span><span class="lang-content" data-lang="fr">Rencontrez l'équipe de direction qui mène la vision de l'association</span><span class="lang-content" data-lang="en">Meet the leadership team that drives the association's vision</span></p>
+            </div>
+
+            <div class="board-grid card-grid">
+                <div class="member-card animate-on-scroll card" style="box-shadow: var(--shadow);"><div class="member-avatar">ي.ف</div><div class="member-name">يوسف فرغاب</div><div class="member-role"><span class="lang-content active" data-lang="ar">الرئيس</span><span class="lang-content" data-lang="fr">Président</span><span class="lang-content" data-lang="en">Chairman</span></div><div class="member-contact"><a href="tel:+212656669162">+212 656-669162</a><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></div></div>
+                <div class="member-card animate-on-scroll card" style="box-shadow: var(--shadow);"><div class="member-avatar">إ.ب</div><div class="member-name">إسماعيل باكاس</div><div class="member-role"><span class="lang-content active" data-lang="ar">نائب الرئيس</span><span class="lang-content" data-lang="fr">Vice-Président</span><span class="lang-content" data-lang="en">Vice President</span></div><div class="member-contact"><a href="tel:+212633284840">+212 633-284840</a></div></div>
+                <div class="member-card animate-on-scroll card" style="box-shadow: var(--shadow);"><div class="member-avatar">س.ح</div><div class="member-name">سعيد حمداني</div><div class="member-role"><span class="lang-content active" data-lang="ar">الأمين العام</span><span class="lang-content" data-lang="fr">Secrétaire</span><span class="lang-content" data-lang="en">Secretary</span></div><div class="member-contact"><a href="tel:+212687260271">+212 687-260271</a></div></div>
+                <div class="member-card animate-on-scroll card" style="box-shadow: var(--shadow);"><div class="member-avatar">ع.ح</div><div class="member-name">عمر حمداني</div><div class="member-role"><span class="lang-content active" data-lang="ar">أمين المال</span><span class="lang-content" data-lang="fr">Trésorier</span><span class="lang-content" data-lang="en">Treasurer</span></div><div class="member-contact"><a href="tel:+212661760721">+212 661-760721</a></div></div>
             </div>
         </div>
     </section>
@@ -470,34 +431,10 @@
             <div style="text-align: center; margin: 30px 0; padding: 20px; background: rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); backdrop-filter: blur(10px);">
                 <p style="color: white; margin-bottom: 15px; font-size: 1.1rem;"><strong>💡 <span class="lang-content active" data-lang="ar">تنويه مهم:</span><span class="lang-content" data-lang="fr">Note importante:</span><span class="lang-content" data-lang="en">Important Note:</span></strong></p>
                 <p style="font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.9);">
-                    <span class="lang-content active" data-lang="ar">بعد إتمام التحويل، يرجى التواصل معنا عبر النموذج أدناه أو واتساب <a href="https://wa.me/212656669162" target="_blank" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a> لتأكيد التبرع وإرسال إيصال الاستلام.</span>
-                    <span class="lang-content" data-lang="fr">Après le virement, contactez-nous via le formulaire ou WhatsApp <a href="https://wa.me/212656669162" target="_blank" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a> pour confirmer le don.</span>
-                    <span class="lang-content" data-lang="en">After the transfer, please contact us via the form below or WhatsApp <a href="https://wa.me/212656669162" target="_blank" style="color: #90ee90; text-decoration: none; font-weight: bold;">+212 656-669162</a> to confirm the donation.</span>
+                    <span class="lang-content active" data-lang="ar">بعد إتمام التحويل، يرجى التواصل معنا عبر النموذج أدناه أو واتساب <a href="https://wa.me/212656669162" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">+212 656-669162</a> لتأكيد التبرع وإرسال إيصال الاستلام.</span>
+                    <span class="lang-content" data-lang="fr">Après le virement, contactez-nous via le formulaire ou WhatsApp <a href="https://wa.me/212656669162" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">+212 656-669162</a> pour confirmer le don.</span>
+                    <span class="lang-content" data-lang="en">After the transfer, please contact us via the form below or WhatsApp <a href="https://wa.me/212656669162" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">+212 656-669162</a> to confirm the donation.</span>
                 </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="board" class="section">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2 class="section-title"><span class="lang-content active" data-lang="ar">مجلس الإدارة</span><span class="lang-content" data-lang="fr">Conseil d'Administration</span><span class="lang-content" data-lang="en">Board of Directors</span></h2>
-                <p class="section-subtitle"><span class="lang-content active" data-lang="ar">تعرف على فريق القيادة الذي يقود رؤية الجمعية</span><span class="lang-content" data-lang="fr">Rencontrez l'équipe de direction qui mène la vision de l'association</span><span class="lang-content" data-lang="en">Meet the leadership team that drives the association's vision</span></p>
-            </div>
-
-            <div class="board-grid card-grid">
-                <div class="member-card animate-on-scroll">
-                    <div class="member-avatar">ي.ف</div><div class="member-name">يوسف فرغاب</div><div class="member-role"><span class="lang-content active" data-lang="ar">الرئيس</span><span class="lang-content" data-lang="fr">Président</span><span class="lang-content" data-lang="en">Chairman</span></div><div class="member-contact"><a href="tel:+212656669162">+212 656-669162</a><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></div>
-                </div>
-                <div class="member-card animate-on-scroll">
-                    <div class="member-avatar">إ.ب</div><div class="member-name">إسماعيل باكاس</div><div class="member-role"><span class="lang-content active" data-lang="ar">نائب الرئيس</span><span class="lang-content" data-lang="fr">Vice-Président</span><span class="lang-content" data-lang="en">Vice President</span></div><div class="member-contact"><a href="tel:+212633284840">+212 633-284840</a></div>
-                </div>
-                <div class="member-card animate-on-scroll">
-                    <div class="member-avatar">س.ح</div><div class="member-name">سعيد حمداني</div><div class="member-role"><span class="lang-content active" data-lang="ar">الأمين العام</span><span class="lang-content" data-lang="fr">Secrétaire</span><span class="lang-content" data-lang="en">Secretary</span></div><div class="member-contact"><a href="tel:+212687260271">+212 687-260271</a></div>
-                </div>
-                <div class="member-card animate-on-scroll">
-                    <div class="member-avatar">ع.ح</div><div class="member-name">عمر حمداني</div><div class="member-role"><span class="lang-content active" data-lang="ar">أمين المال</span><span class="lang-content" data-lang="fr">Trésorier</span><span class="lang-content" data-lang="en">Treasurer</span></div><div class="member-contact"><a href="tel:+212661760721">+212 661-760721</a></div>
-                </div>
             </div>
         </div>
     </section>
@@ -510,12 +447,10 @@
             </div>
 
             <div class="contact-form animate-on-scroll">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: var(--border-radius);">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: var(--border-radius);">
                     <span class="lang-content active" data-lang="ar">جاري التحميل...</span><span class="lang-content" data-lang="fr">Chargement...</span><span class="lang-content" data-lang="en">Loading...</span>
                 </iframe>
-                <div class="text-center mt-4">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform" target="_blank" class="btn btn-primary"><span class="lang-content active" data-lang="ar">📝 فتح النموذج في نافذة جديدة</span><span class="lang-content" data-lang="fr">📝 Ouvrir dans une nouvelle fenêtre</span><span class="lang-content" data-lang="en">📝 Open form in new window</span></a>
-                </div>
+                <div class="text-center" style="margin-top: 1rem;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeIlT9QAfE31wi7gTI-br8NW2hbRPAWMdJkXGTfPcFnfZM8kg/viewform?usp=header" target="_blank" class="btn btn-primary"><span class="lang-content active" data-lang="ar">📝 فتح النموذج في نافذة جديدة</span><span class="lang-content" data-lang="fr">📝 Ouvrir dans une nouvelle fenêtre</span><span class="lang-content" data-lang="en">📝 Open form in new window</span></a></div>
             </div>
         </div>
     </section>
@@ -536,16 +471,28 @@
                     <p><a href="tel:+212656669162">+212 656-669162</a><br><a href="mailto:contact.tazoult@gmail.com">contact.tazoult@gmail.com</a></p>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom" style="background: var(--primary-dark); color: rgba(255,255,255,0.8); padding: 2rem 0 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
                 <p>© 2025 جمعية تازولت للتنمية والتعاون والبيئة. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // JS functions are critical for interactivity, keeping them compact and correct.
+        // JS Logic for Interactivity
 
-        // Header scroll effect & progress bar
+        // 1. Image Slider Logic (Simple Auto-Scroll)
+        const slideTrack = document.getElementById('image-slider');
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            slideTrack.style.transform = `translateX(-${currentSlide * 20}%)`;
+        }
+
+        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+        // 2. Header scroll effect & progress bar
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             header.classList.toggle('scrolled', window.scrollY > 50);
@@ -553,7 +500,7 @@
             document.documentElement.style.setProperty('--scroll-progress', `${scrolled}%`);
         });
 
-        // Mobile menu toggle
+        // 3. Mobile menu toggle
         function toggleMobileMenu() {
             const navMenu = document.getElementById('navMenu');
             const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -562,7 +509,7 @@
             menuBtn.setAttribute('aria-expanded', isOpen);
         }
 
-        // Close menu on link click (important for mobile UX)
+        // Close menu on link click 
         document.addEventListener('click', (e) => {
             const navMenu = document.getElementById('navMenu');
             const nav = document.querySelector('.nav');
@@ -575,7 +522,7 @@
             }
         });
 
-        // Language switching functionality
+        // 4. Language switching functionality
         function switchLanguage(lang, event) {
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             if (event) event.target.classList.add('active');
@@ -592,7 +539,7 @@
             }
         }
         
-        // Project details toggle (Uses the stable max-height approach)
+        // 5. Project details toggle 
         function toggleProject(projectId) {
             const details = document.getElementById(projectId);
             const isActive = details.classList.contains('active');
@@ -604,7 +551,7 @@
             details.classList.toggle('active');
         }
 
-        // Copy to clipboard functionality
+        // 6. Copy to clipboard functionality
         function copyToClipboard(text, event) {
             navigator.clipboard.writeText(text).then(() => {
                 showCopyFeedback(event.target);
@@ -631,7 +578,7 @@
             }, 2000);
         }
         
-        // Initialization (Sets default language to Arabic, adds scroll observer)
+        // 7. Initialization & Animations
         window.addEventListener('DOMContentLoaded', () => {
             switchLanguage('ar'); 
             const activeLangButton = document.querySelector('.lang-btn[onclick*="switchLanguage(\'ar\')"]');
